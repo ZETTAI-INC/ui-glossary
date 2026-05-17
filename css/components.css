@@ -1,0 +1,204 @@
+/* Category Section */
+.category-section {
+  margin-bottom: var(--space-16);
+  scroll-margin-top: 80px;
+}
+
+.category-header {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-border-subtle);
+}
+
+.category-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.category-number {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.category-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-2);
+}
+
+/* Term Grid */
+.term-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: var(--space-5);
+}
+
+.term-grid.list-mode {
+  grid-template-columns: 1fr;
+}
+
+/* Term Card */
+.term-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.term-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.term-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.term-card.visible:hover {
+  transform: translateY(-2px);
+}
+
+.term-card-demo {
+  background: var(--demo-bg);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-6);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.term-card-demo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--demo-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.5;
+}
+
+.term-card-demo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.term-card-body {
+  padding: var(--space-4) var(--space-5);
+  min-height: 120px;
+}
+
+/* Text-only card (no demo area) */
+.term-card-body:first-child {
+  border-top: 3px solid var(--color-accent-subtle);
+}
+
+.term-card-name {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.term-card-name-en {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-1);
+}
+
+.term-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+  line-height: 1.7;
+}
+
+/* List mode card */
+.term-grid.list-mode .term-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.term-grid.list-mode .term-card-demo {
+  border-bottom: none;
+  border-right: 1px solid var(--color-border-subtle);
+  min-height: 80px;
+  padding: var(--space-4);
+}
+
+/* Search highlight */
+.search-highlight {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--color-accent-text);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.search-results-info {
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.search-results-info .result-count {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* Tag */
+.term-tag {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  padding: 2px var(--space-2);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent-text);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .term-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .term-grid.list-mode .term-card {
+    grid-template-columns: 1fr;
+  }
+
+  .term-grid.list-mode .term-card-demo {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+}
+
+@media (max-width: 640px) {
+  .term-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .category-title {
+    font-size: var(--font-size-xl);
+  }
+}
