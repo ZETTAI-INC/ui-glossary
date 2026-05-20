@@ -5,6 +5,8 @@
  */
 
 import { debounce, escapeHtml, toTermId } from './utils.js'
+import { getCurrentSection, getCategorySection } from './sections.js'
+import { termDisplay, t } from './i18n.js'
 
 const DEBOUNCE_DELAY = 200
 
@@ -46,7 +48,12 @@ const highlightMatches = (text, regex) => {
  * @returns {boolean} True if the term matches
  */
 const termMatchesQuery = (term, regex) => {
-  return regex.test(term.name) || regex.test(term.nameJa || '') || regex.test(term.desc || '')
+  return (
+    regex.test(term.name) ||
+    regex.test(term.nameJa || '') ||
+    regex.test(term.desc || '') ||
+    regex.test(term.descEn || '')
+  )
 }
 
 /**
@@ -56,9 +63,14 @@ const termMatchesQuery = (term, regex) => {
  * @param {string} query - The raw search query
  * @param {Array} categories - All category data
  */
+const getActiveSearchClear = () => {
+  const sec = getCurrentSection()
+  return document.getElementById(`search-clear-${sec}`)
+}
+
 const applySearch = (query, categories) => {
   const resultsInfo = document.getElementById('search-results-info')
-  const clearButton = document.getElementById('search-clear')
+  const clearButton = getActiveSearchClear()
 
   if (!query.trim()) {
     clearSearch(categories)
@@ -70,10 +82,21 @@ const applySearch = (query, categories) => {
     clearButton.hidden = false
   }
 
+  // Hide hero and intro so the search results take focus
+  const hero = document.getElementById('hero')
+  if (hero) hero.hidden = true
+  const intro = document.getElementById('intro')
+  if (intro) intro.hidden = true
+
   const regex = new RegExp(escapeRegExp(query.trim()), 'gi')
   let matchCount = 0
+  // Only search within the currently visible top-level section
+  const activeSection = getCurrentSection()
+  const visibleCategories = categories.filter(
+    (c) => getCategorySection(c) === activeSection
+  )
 
-  categories.forEach((category) => {
+  visibleCategories.forEach((category) => {
     const sectionEl = document.getElementById(`category-${category.id}`)
     let categoryHasMatch = false
 
@@ -97,14 +120,15 @@ const applySearch = (query, categories) => {
         const nameEnEl = cardEl.querySelector('.term-card-name-en')
         const descEl = cardEl.querySelector('.term-card-desc')
 
+        const disp = termDisplay(term)
         if (nameEl) {
-          nameEl.innerHTML = highlightMatches(term.nameJa || term.name, regex)
+          nameEl.innerHTML = highlightMatches(disp.primary, regex)
         }
         if (nameEnEl) {
-          nameEnEl.innerHTML = highlightMatches(term.name, regex)
+          nameEnEl.innerHTML = highlightMatches(disp.secondary, regex)
         }
         if (descEl) {
-          descEl.innerHTML = highlightMatches(term.desc || '', regex)
+          descEl.innerHTML = highlightMatches(disp.desc, regex)
         }
       } else {
         cardEl.style.display = 'none'
@@ -121,8 +145,8 @@ const applySearch = (query, categories) => {
   if (resultsInfo) {
     resultsInfo.hidden = false
     resultsInfo.innerHTML = `
-      <span class="result-count">${matchCount}</span>件の結果
-      「${escapeHtml(query.trim())}」
+      <span class="result-count">${matchCount}</span>${t('search.results.suffix')}
+      ${t('search.results.for')}「${escapeHtml(query.trim())}」
     `
   }
 }
@@ -134,18 +158,30 @@ const applySearch = (query, categories) => {
  */
 const clearSearch = (categories) => {
   const resultsInfo = document.getElementById('search-results-info')
-  const clearButton = document.getElementById('search-clear')
 
   if (resultsInfo) {
     resultsInfo.hidden = true
     resultsInfo.innerHTML = ''
   }
 
-  if (clearButton) {
-    clearButton.hidden = true
-  }
+  // Hide both clear buttons; the active one's input gets cleared too
+  ;['search-clear-parts', 'search-clear-glossary'].forEach((id) => {
+    const btn = document.getElementById(id)
+    if (btn) btn.hidden = true
+  })
 
-  categories.forEach((category) => {
+  // Restore hero and intro
+  const hero = document.getElementById('hero')
+  if (hero) hero.hidden = false
+  const intro = document.getElementById('intro')
+  if (intro) intro.hidden = false
+
+  const activeSection = getCurrentSection()
+  const visibleCategories = categories.filter(
+    (c) => getCategorySection(c) === activeSection
+  )
+
+  visibleCategories.forEach((category) => {
     const sectionEl = document.getElementById(`category-${category.id}`)
     if (sectionEl) {
       sectionEl.style.display = ''
@@ -168,14 +204,15 @@ const clearSearch = (categories) => {
       const nameEnEl = cardEl.querySelector('.term-card-name-en')
       const descEl = cardEl.querySelector('.term-card-desc')
 
+      const disp = termDisplay(term)
       if (nameEl) {
-        nameEl.textContent = term.nameJa || term.name
+        nameEl.textContent = disp.primary
       }
       if (nameEnEl) {
-        nameEnEl.textContent = term.name
+        nameEnEl.textContent = disp.secondary
       }
       if (descEl) {
-        descEl.textContent = term.desc || ''
+        descEl.textContent = disp.desc
       }
     })
   })
@@ -188,26 +225,28 @@ const clearSearch = (categories) => {
  * @param {Array} categories - Array of category objects
  */
 export const initSearch = (categories) => {
-  const searchInput = document.getElementById('search-input')
-  const clearButton = document.getElementById('search-clear')
-
-  if (!searchInput) {
-    return
-  }
-
   const debouncedSearch = debounce((query) => {
     applySearch(query, categories)
   }, DEBOUNCE_DELAY)
 
-  searchInput.addEventListener('input', (e) => {
-    debouncedSearch(e.target.value)
-  })
+  ;[
+    { inputId: 'search-input-parts', clearId: 'search-clear-parts' },
+    { inputId: 'search-input-glossary', clearId: 'search-clear-glossary' },
+  ].forEach(({ inputId, clearId }) => {
+    const input = document.getElementById(inputId)
+    const clear = document.getElementById(clearId)
+    if (!input) return
 
-  if (clearButton) {
-    clearButton.addEventListener('click', () => {
-      searchInput.value = ''
-      clearSearch(categories)
-      searchInput.focus()
+    input.addEventListener('input', (e) => {
+      debouncedSearch(e.target.value)
     })
-  }
+
+    if (clear) {
+      clear.addEventListener('click', () => {
+        input.value = ''
+        clearSearch(categories)
+        input.focus()
+      })
+    }
+  })
 }

@@ -1,3 +1,37 @@
+import { category as showcase } from './00-showcase.js'
+import { category as showcaseDisplay } from './00b-showcase-display.js'
+import { category as showcaseInput } from './00c-showcase-input.js'
+import { category as showcaseFeedback } from './00d-showcase-feedback.js'
+import { category as showcaseDisplay2 } from './00e-showcase-display-2.js'
+import { category as showcaseInput2 } from './00f-showcase-input-2.js'
+import { category as showcaseNavMobile } from './00g-showcase-nav-mobile.js'
+import { category as refNavigation } from './00h-ref-navigation.js'
+import { category as refLayout } from './00i-ref-layout.js'
+import { category as refFormsData } from './00j-ref-forms-data.js'
+import { category as refFeedbackSocial } from './00k-ref-feedback-social.js'
+import { category as refMisc } from './00l-ref-misc.js'
+import { category as appAiChat } from './00m-ai-chat.js'
+import { category as appMusic } from './00n-music.js'
+import { category as appVideo } from './00o-video.js'
+import { category as appEcommerce } from './00p-ecommerce.js'
+import { category as appSocialFeed } from './00q-social-feed.js'
+import { category as appDevTools } from './00r-dev-tools.js'
+import { category as appProductivity } from './00s-productivity.js'
+import { category as appFinance } from './00t-finance.js'
+import { category as appMapsTravel } from './00u-maps-travel.js'
+import { category as appMessaging } from './00v-messaging.js'
+import { category as appMobileOs } from './00w-mobile-os.js'
+import { category as appCreatorContent } from './00x-creator-content.js'
+import { category as corpHero } from './00y-corp-hero.js'
+import { category as corpNav } from './00z-corp-nav.js'
+import { category as corpStats } from './00z2-corp-stats.js'
+import { category as corpInsights } from './00z3-corp-insights.js'
+import { category as corpTrust } from './00z4-corp-trust.js'
+import { category as corpForms } from './00z5-corp-forms.js'
+import { category as corpLeadership } from './00z6-corp-leadership.js'
+import { category as corpFooter } from './00z7-corp-footer.js'
+import { category as corpPricing } from './00z8-corp-pricing.js'
+import { category as corpCareer } from './00z9-corp-career.js'
 import { category as basic } from './01-basic.js'
 import { category as navigation } from './02-navigation.js'
 import { category as buttonAction } from './03-button-action.js'
@@ -24,6 +58,40 @@ import { category as legacyMinor } from './23-legacy-minor.js'
 import { category as implementationFrontend } from './24-implementation-frontend.js'
 
 export const categories = [
+  showcase,
+  showcaseDisplay,
+  showcaseDisplay2,
+  showcaseInput,
+  showcaseInput2,
+  showcaseFeedback,
+  showcaseNavMobile,
+  refNavigation,
+  refLayout,
+  refFormsData,
+  refFeedbackSocial,
+  refMisc,
+  appAiChat,
+  appMusic,
+  appVideo,
+  appEcommerce,
+  appSocialFeed,
+  appDevTools,
+  appProductivity,
+  appFinance,
+  appMapsTravel,
+  appMessaging,
+  appMobileOs,
+  appCreatorContent,
+  corpHero,
+  corpNav,
+  corpStats,
+  corpInsights,
+  corpTrust,
+  corpForms,
+  corpLeadership,
+  corpFooter,
+  corpPricing,
+  corpCareer,
   basic,
   navigation,
   buttonAction,

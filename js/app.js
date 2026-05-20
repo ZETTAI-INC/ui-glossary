@@ -8,6 +8,9 @@ import { renderGlossary } from './renderer.js'
 import { initSidebar, setActiveCategory } from './sidebar.js'
 import { initSearch } from './search.js'
 import { initTheme } from './theme.js'
+import { initModal } from './modal.js'
+import { initSections, getCurrentSection, getCategorySection, setSection } from './sections.js'
+import { initI18n, onLangChange, updateHero, updateIntro, updateHeroStage } from './i18n.js'
 import { slugify } from './utils.js'
 
 /**
@@ -107,6 +110,9 @@ const init = () => {
     return
   }
 
+  // Initialize i18n (language switch) before anything that reads strings
+  initI18n()
+
   // Initialize sidebar navigation
   initSidebar(categories)
 
@@ -119,6 +125,9 @@ const init = () => {
   // Initialize theme toggle
   initTheme()
 
+  // Initialize term detail modal
+  initModal(categories)
+
   // Set up back-to-top button
   setupBackToTop()
 
@@ -128,10 +137,63 @@ const init = () => {
   // Track active category via scroll observation
   setupCategoryObserver(categories)
 
-  // Activate the first category initially
-  if (categories.length > 0) {
-    setActiveCategory(slugify(categories[0].id))
+  // Pre-compute counts for the hero block
+  const partsCats = categories.filter((c) => getCategorySection(c) === 'parts')
+  const glossaryCats = categories.filter((c) => getCategorySection(c) === 'glossary')
+  const partsCount = partsCats.reduce((n, c) => n + (c.terms?.length || 0), 0)
+  const glossaryCount = glossaryCats.reduce((n, c) => n + (c.terms?.length || 0), 0)
+  const refreshHero = (section) => {
+    updateHero({
+      section,
+      partsCount,
+      glossaryCount,
+      partsCats: partsCats.length,
+      glossaryCats: glossaryCats.length,
+    })
+    updateIntro(section)
+    updateHeroStage(section)
   }
+
+  // Initialize top-level section switcher (UIパーツ集 / UI用語集)
+  initSections({
+    onChange: (section) => {
+      refreshHero(section)
+      const firstInSection = categories.find(
+        (cat) => getCategorySection(cat) === section
+      )
+      if (firstInSection) {
+        setActiveCategory(slugify(firstInSection.id))
+      }
+    },
+  })
+
+  // Activate the first category within the current section
+  const initialSection = getCurrentSection()
+  const firstCategory =
+    categories.find((cat) => getCategorySection(cat) === initialSection) ||
+    categories[0]
+  if (firstCategory) {
+    setActiveCategory(slugify(firstCategory.id))
+  }
+
+  // When language changes, re-render everything that holds translated text.
+  onLangChange(() => {
+    initSidebar(categories)
+    renderGlossary(categories, container)
+    setupCategoryObserver(categories)
+    // Re-apply current section so the right items are visible
+    setSection(getCurrentSection(), { skipScroll: true })
+    const firstCat =
+      categories.find((cat) => getCategorySection(cat) === getCurrentSection()) ||
+      categories[0]
+    if (firstCat) {
+      setActiveCategory(slugify(firstCat.id))
+    }
+    refreshHero(getCurrentSection())
+  })
+
+  // Initial hero fill
+  refreshHero(getCurrentSection())
 }
 
 document.addEventListener('DOMContentLoaded', init)

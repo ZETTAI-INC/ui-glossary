@@ -1,28 +1,40 @@
 /**
  * Sidebar navigation module.
- * Handles category navigation, active state, and mobile toggle.
+ * Two completely separate sidebars (UIパーツ集 / UI用語集) live in the DOM
+ * side-by-side; one is shown at a time based on the active top-level section.
  */
 
 import { slugify } from './utils.js'
+import { getCategorySection } from './sections.js'
+import { categoryDisplay, t } from './i18n.js'
+
+const SECTION_TO_NAV_ID = {
+  parts: 'sidebar-nav-parts',
+  glossary: 'sidebar-nav-glossary',
+}
+
+const SECTION_TO_COUNT_ID = {
+  parts: 'term-count-parts',
+  glossary: 'term-count-glossary',
+}
 
 /**
  * Build the HTML string for a single sidebar nav item.
- *
- * @param {Object} category - Category data
- * @param {number} index - Zero-based index
- * @returns {string} HTML string
  */
 const buildNavItemHtml = (category, index) => {
   const number = String(index + 1).padStart(2, '0')
   const termCount = category.terms ? category.terms.length : 0
+  const section = getCategorySection(category)
+  const { title } = categoryDisplay(category)
 
   return `
     <div class="sidebar-nav-item"
          data-category-id="${slugify(category.id)}"
+         data-section="${section}"
          role="button"
          tabindex="0">
       <span class="nav-number">${number}</span>
-      <span class="nav-title">${category.title}</span>
+      <span class="nav-title">${title}</span>
       <span class="nav-count">${termCount}</span>
     </div>
   `
@@ -30,8 +42,6 @@ const buildNavItemHtml = (category, index) => {
 
 /**
  * Scroll smoothly to the category section matching the given id.
- *
- * @param {string} categoryId - The category identifier
  */
 const scrollToCategory = (categoryId) => {
   const section = document.getElementById(`category-${categoryId}`)
@@ -41,39 +51,33 @@ const scrollToCategory = (categoryId) => {
 }
 
 /**
- * Close the mobile sidebar.
+ * Close the mobile sidebar(s).
  */
 const closeSidebar = () => {
-  const sidebar = document.getElementById('sidebar')
-  if (sidebar) {
-    sidebar.classList.remove('open')
-  }
+  document.querySelectorAll('.sidebar').forEach((s) => s.classList.remove('open'))
 }
 
 /**
- * Open the mobile sidebar.
+ * Open the mobile sidebar matching the active section.
  */
-const openSidebar = () => {
-  const sidebar = document.getElementById('sidebar')
-  if (sidebar) {
-    sidebar.classList.add('open')
-  }
+const openActiveSidebar = () => {
+  const section = document.body.getAttribute('data-section') || 'parts'
+  const id = section === 'glossary' ? 'sidebar-glossary' : 'sidebar-parts'
+  const el = document.getElementById(id)
+  if (el) el.classList.add('open')
 }
 
-/**
- * Set up mobile toggle behavior for the sidebar.
- */
 const setupMobileToggle = () => {
   const menuToggle = document.getElementById('menu-toggle')
   const overlay = document.getElementById('sidebar-overlay')
 
   if (menuToggle) {
     menuToggle.addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar')
-      if (sidebar && sidebar.classList.contains('open')) {
+      const anyOpen = document.querySelector('.sidebar.open')
+      if (anyOpen) {
         closeSidebar()
       } else {
-        openSidebar()
+        openActiveSidebar()
       }
     })
   }
@@ -83,44 +87,13 @@ const setupMobileToggle = () => {
   }
 }
 
-/**
- * Initialize the sidebar navigation.
- * Populates the nav with category links and sets up click handlers.
- *
- * @param {Array} categories - Array of category objects
- */
-export const initSidebar = (categories) => {
-  const nav = document.getElementById('sidebar-nav')
-  if (!nav) {
-    return
-  }
-
-  const html = categories
-    .map((category, index) => buildNavItemHtml(category, index))
-    .join('')
-
-  nav.innerHTML = html
-
-  // Update total term count in footer
-  const totalTerms = categories.reduce(
-    (sum, cat) => sum + (cat.terms ? cat.terms.length : 0),
-    0
-  )
-  const termCountEl = document.getElementById('term-count')
-  if (termCountEl) {
-    termCountEl.textContent = `${totalTerms} terms`
-  }
-
-  // Attach click/keyboard handlers to nav items
-  const navItems = nav.querySelectorAll('.sidebar-nav-item')
-  navItems.forEach((item) => {
+const attachItemHandlers = (navEl) => {
+  navEl.querySelectorAll('.sidebar-nav-item').forEach((item) => {
     const categoryId = item.getAttribute('data-category-id')
-
     item.addEventListener('click', () => {
       scrollToCategory(categoryId)
       closeSidebar()
     })
-
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault()
@@ -129,24 +102,42 @@ export const initSidebar = (categories) => {
       }
     })
   })
+}
+
+/**
+ * Initialize both sidebars. Each sidebar is populated only with the
+ * categories belonging to its section.
+ */
+export const initSidebar = (categories) => {
+  const grouped = { parts: [], glossary: [] }
+  categories.forEach((cat) => {
+    const sec = getCategorySection(cat)
+    grouped[sec].push(cat)
+  })
+
+  ;['parts', 'glossary'].forEach((sec) => {
+    const navEl = document.getElementById(SECTION_TO_NAV_ID[sec])
+    if (!navEl) return
+    const html = grouped[sec]
+      .map((cat, idx) => buildNavItemHtml(cat, idx))
+      .join('')
+    navEl.innerHTML = html
+    attachItemHandlers(navEl)
+
+    const total = grouped[sec].reduce((n, c) => n + (c.terms?.length || 0), 0)
+    const countEl = document.getElementById(SECTION_TO_COUNT_ID[sec])
+    if (countEl) countEl.textContent = `${total} ${t('unit.terms')}`
+  })
 
   setupMobileToggle()
 }
 
 /**
- * Highlight the sidebar nav item for the given category.
- * Removes active state from all other items.
- *
- * @param {string} categoryId - The category identifier to activate
+ * Highlight the sidebar nav item for the given category — in whichever
+ * sidebar currently contains it.
  */
 export const setActiveCategory = (categoryId) => {
-  const nav = document.getElementById('sidebar-nav')
-  if (!nav) {
-    return
-  }
-
-  const items = nav.querySelectorAll('.sidebar-nav-item')
-  items.forEach((item) => {
+  document.querySelectorAll('.sidebar-nav-item').forEach((item) => {
     const id = item.getAttribute('data-category-id')
     if (id === categoryId) {
       item.classList.add('active')
@@ -155,13 +146,16 @@ export const setActiveCategory = (categoryId) => {
     }
   })
 
-  // Update header section title
   const sectionHeader = document.getElementById('current-section')
-  const activeItem = nav.querySelector(
+  const activeItem = document.querySelector(
     `.sidebar-nav-item[data-category-id="${categoryId}"]`
   )
   if (sectionHeader && activeItem) {
     const title = activeItem.querySelector('.nav-title')
     sectionHeader.textContent = title ? title.textContent : ''
   }
+}
+
+export const refreshSidebar = (categories) => {
+  initSidebar(categories)
 }

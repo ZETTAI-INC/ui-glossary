@@ -64,14 +64,14 @@ export const initTheme = () => {
 
   applyTheme(initialTheme)
 
-  const toggleButton = document.getElementById('theme-toggle')
-  if (!toggleButton) {
-    return
-  }
-
-  toggleButton.addEventListener('click', () => {
-    const next = getCurrentTheme() === DARK ? LIGHT : DARK
-    applyTheme(next)
-    saveTheme(next)
+  const buttons = document.querySelectorAll(
+    '#theme-toggle, #theme-toggle-parts, #theme-toggle-glossary'
+  )
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const next = getCurrentTheme() === DARK ? LIGHT : DARK
+      applyTheme(next)
+      saveTheme(next)
+    })
   })
 }
