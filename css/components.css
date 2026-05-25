@@ -358,6 +358,62 @@
   border-color: var(--color-ink);
 }
 
+.term-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.term-modal-nav:hover {
+  background: var(--color-ink);
+  color: var(--color-text-inverse);
+  border-color: var(--color-ink);
+}
+
+.term-modal-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.term-modal-nav--prev {
+  left: calc(var(--space-3) * -1);
+}
+
+.term-modal-nav--next {
+  right: calc(var(--space-3) * -1);
+}
+
+@media (max-width: 720px) {
+  .term-modal-nav {
+    width: 36px;
+    height: 36px;
+  }
+  .term-modal-nav--prev {
+    left: var(--space-2);
+  }
+  .term-modal-nav--next {
+    right: var(--space-2);
+  }
+}
+
 .term-modal-demo {
   background: var(--demo-bg);
   border-bottom: 1px solid var(--color-border-subtle);
@@ -496,48 +552,75 @@ body.modal-open {
 /* ──────────────────────────────────────────────
    Code block — copy & paste UI parts
    ────────────────────────────────────────────── */
-.term-modal-code {
-  margin-top: var(--space-8);
-  padding: var(--space-5);
-  background: var(--color-bg-soft);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
+.term-modal-stage {
   position: relative;
-}
-
-.term-modal-code::before {
-  content: 'CODE';
-  position: absolute;
-  top: -9px;
-  left: 14px;
-  background: var(--color-surface);
-  padding: 0 var(--space-2);
-  font-family: var(--font-num);
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.22em;
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.term-modal-code-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-bottom: var(--space-2);
+  flex-direction: column;
+  border-bottom: 1px solid var(--color-border-subtle);
+  flex-shrink: 0;
 }
 
-.term-modal-code-title {
+.term-modal-tabs {
   display: inline-flex;
-  align-items: center;
   gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  font-weight: 700;
+  padding: var(--space-3) var(--space-6) 0;
+  background: var(--demo-bg);
+}
+
+.term-modal-tab {
+  padding: var(--space-2) var(--space-4);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.term-modal-tab:hover {
   color: var(--color-text-primary);
 }
 
-.term-modal-code-title svg {
-  color: var(--color-accent);
+.term-modal-tab.is-active {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  border-color: var(--color-border-subtle);
+}
+
+.term-modal-code-panel {
+  background: #0f1115;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  max-height: 60vh;
+}
+
+.term-modal-code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: var(--font-size-xs);
+  color: #b0b4bc;
+  flex-shrink: 0;
+}
+
+.term-modal-code-panel .term-modal-code-text {
+  flex: 1;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  max-height: none;
+  overflow: auto;
+  padding: var(--space-4);
 }
 
 .term-modal-code-copy {
@@ -586,8 +669,8 @@ body.modal-open {
 .term-modal-code-help {
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-3);
   line-height: 1.7;
+  margin: 0;
 }
 
 .term-modal-code-text {
@@ -607,10 +690,6 @@ body.modal-open {
 }
 
 @media (max-width: 640px) {
-  .term-modal-code {
-    padding: var(--space-4);
-  }
-
   .term-modal-code-text {
     font-size: 0.72rem;
     padding: var(--space-3);

@@ -7,6 +7,12 @@ import { toTermId } from './utils.js'
 import { getDemoHTML, hasDemo } from '../demos/registry.js'
 import { categoryDisplay, termDisplay, getLang, t } from './i18n.js'
 import { findShowcaseCode, buildIframeDoc } from './renderer.js'
+import { getCategorySection } from './sections.js'
+import {
+  pushModalState,
+  replaceModalCleared,
+  registerModalHandlers,
+} from './router.js'
 
 const INTERACTIVE_DEMO_SELECTOR = [
   '[data-demo-toggle]',
@@ -22,6 +28,9 @@ const INTERACTIVE_DEMO_SELECTOR = [
 ].join(',')
 
 let termLookup = new Map()
+// Ordered list of entry keys per section, so prev/next can step through
+// the same section the current term belongs to.
+let sectionOrder = { parts: [], glossary: [] }
 let modalEl = null
 let demoEl = null
 let categoryEl = null
@@ -30,23 +39,85 @@ let nameEnEl = null
 let descEl = null
 let promptTextEl = null
 let promptCopyBtn = null
-let codeSectionEl = null
+let codePanelEl = null
 let codeTextEl = null
 let codeCopyBtn = null
+let tabsEl = null
+let tabPreviewBtn = null
+let tabCodeBtn = null
+let prevBtn = null
+let nextBtn = null
+let activeTab = 'preview'
 let lastFocused = null
 let copyResetTimer = null
 let codeCopyResetTimer = null
+let currentEntryKey = null
 
 const buildLookup = (categories) => {
   const map = new Map()
+  const order = { parts: [], glossary: [] }
   categories.forEach((category) => {
+    const sec = getCategorySection(category)
     const terms = category.terms || []
     terms.forEach((term) => {
       const key = `${category.id}-${toTermId(term.name)}`
       map.set(key, { term, category })
+      if (order[sec]) order[sec].push(key)
     })
   })
+  sectionOrder = order
   return map
+}
+
+const findNeighbour = (key, delta) => {
+  if (!key) return null
+  for (const sec of ['parts', 'glossary']) {
+    const list = sectionOrder[sec] || []
+    const idx = list.indexOf(key)
+    if (idx === -1) continue
+    const nextIdx = idx + delta
+    if (nextIdx < 0 || nextIdx >= list.length) return null
+    return list[nextIdx]
+  }
+  return null
+}
+
+const updateNavButtons = () => {
+  if (!prevBtn || !nextBtn) return
+  const prevKey = findNeighbour(currentEntryKey, -1)
+  const nextKey = findNeighbour(currentEntryKey, +1)
+  prevBtn.disabled = !prevKey
+  nextBtn.disabled = !nextKey
+}
+
+const setTab = (tab) => {
+  // 'preview' or 'code'. Falls back to preview when code tab is hidden.
+  if (tab === 'code' && tabsEl && tabsEl.hidden) {
+    tab = 'preview'
+  }
+  activeTab = tab
+  if (tabPreviewBtn) {
+    const active = tab === 'preview'
+    tabPreviewBtn.classList.toggle('is-active', active)
+    tabPreviewBtn.setAttribute('aria-selected', active ? 'true' : 'false')
+  }
+  if (tabCodeBtn) {
+    const active = tab === 'code'
+    tabCodeBtn.classList.toggle('is-active', active)
+    tabCodeBtn.setAttribute('aria-selected', active ? 'true' : 'false')
+  }
+  if (demoEl) demoEl.hidden = tab !== 'preview'
+  if (codePanelEl) codePanelEl.hidden = tab !== 'code'
+}
+
+const navigateModal = (delta) => {
+  if (!modalEl || modalEl.hidden) return
+  const targetKey = findNeighbour(currentEntryKey, delta)
+  if (!targetKey) return
+  const entry = termLookup.get(targetKey)
+  if (!entry) return
+  // openModal will push a new URL state, recompute display, and update buttons.
+  openModal(entry)
 }
 
 /**
@@ -222,13 +293,20 @@ const copyPromptToClipboard = async () => {
   copyResetTimer = setTimeout(() => updateCopyButtonState('idle'), 2000)
 }
 
-const openModal = (entry) => {
+const openModal = (entry, { skipUrlPush = false } = {}) => {
   if (!modalEl || !entry) {
     return
   }
 
   const { term, category } = entry
   const termId = toTermId(term.name)
+  const wasAlreadyOpen = !modalEl.hidden
+  currentEntryKey = `${category.id}-${termId}`
+  updateNavButtons()
+
+  if (!skipUrlPush) {
+    pushModalState(category.id, termId)
+  }
 
   // Use the same code-based iframe preview as the card whenever possible,
   // so the modal visual matches the card. Fall back to the registry demo
@@ -260,18 +338,22 @@ const openModal = (entry) => {
   }
   updateCopyButtonState('idle')
 
-  if (codeSectionEl && codeTextEl) {
-    if (term.code) {
-      codeTextEl.textContent = term.code
-      codeSectionEl.hidden = false
-    } else {
-      codeTextEl.textContent = ''
-      codeSectionEl.hidden = true
-    }
+  const hasCode = Boolean(term.code)
+  if (codeTextEl) {
+    codeTextEl.textContent = hasCode ? term.code : ''
   }
+  if (tabsEl) {
+    tabsEl.hidden = !hasCode
+  }
+  // Default to preview whenever the modal switches to a new term so the
+  // primary visual is always shown first. Glossary concepts (no code) stay
+  // on preview implicitly.
+  setTab('preview')
   updateCodeCopyButtonState('idle')
 
-  lastFocused = document.activeElement
+  if (!wasAlreadyOpen) {
+    lastFocused = document.activeElement
+  }
   modalEl.hidden = false
   modalEl.setAttribute('aria-hidden', 'false')
   document.body.classList.add('modal-open')
@@ -280,13 +362,17 @@ const openModal = (entry) => {
     modalEl.classList.add('open')
   })
 
-  const closeBtn = modalEl.querySelector('.term-modal-close')
-  if (closeBtn) {
-    closeBtn.focus()
+  // Only steal focus on first open. Prev/next navigation keeps focus on
+  // whichever nav button the user is pressing.
+  if (!wasAlreadyOpen) {
+    const closeBtn = modalEl.querySelector('.term-modal-close')
+    if (closeBtn) {
+      closeBtn.focus()
+    }
   }
 }
 
-const closeModal = () => {
+const closeModal = ({ skipUrlSync = false } = {}) => {
   if (!modalEl || modalEl.hidden) {
     return
   }
@@ -294,6 +380,7 @@ const closeModal = () => {
   modalEl.classList.remove('open')
   modalEl.setAttribute('aria-hidden', 'true')
   document.body.classList.remove('modal-open')
+  currentEntryKey = null
 
   const onTransitionEnd = () => {
     modalEl.hidden = true
@@ -306,6 +393,17 @@ const closeModal = () => {
     lastFocused.focus()
   }
   lastFocused = null
+
+  if (!skipUrlSync) {
+    // Prefer history.back() so the previous URL (without ?term=...) is restored
+    // and the back button feels natural. Falls back to a manual clear if the
+    // current entry isn't a modal-open we pushed (e.g. direct landing).
+    if (history.state && history.state.modal) {
+      history.back()
+    } else {
+      replaceModalCleared()
+    }
+  }
 }
 
 const isInteractiveDemoClick = (target) => {
@@ -335,6 +433,18 @@ const handleCardActivation = (event) => {
 const handleKeydown = (event) => {
   if (event.key === 'Escape' && modalEl && !modalEl.hidden) {
     closeModal()
+    return
+  }
+
+  // ←/→ steps through the current section while the modal is open.
+  if (modalEl && !modalEl.hidden && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+    const tag = (event.target && event.target.tagName) || ''
+    // Don't hijack arrow keys when the user is typing in a form control.
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+      return
+    }
+    event.preventDefault()
+    navigateModal(event.key === 'ArrowLeft' ? -1 : +1)
     return
   }
 
@@ -370,14 +480,34 @@ export const initModal = (categories) => {
   descEl = document.getElementById('term-modal-desc')
   promptTextEl = document.getElementById('term-modal-prompt-text')
   promptCopyBtn = document.getElementById('term-modal-prompt-copy')
-  codeSectionEl = document.getElementById('term-modal-code-section')
+  codePanelEl = document.getElementById('term-modal-code-panel')
   codeTextEl = document.getElementById('term-modal-code-text')
   codeCopyBtn = document.getElementById('term-modal-code-copy')
+  tabsEl = document.getElementById('term-modal-tabs')
+  tabPreviewBtn = document.getElementById('term-modal-tab-preview')
+  tabCodeBtn = document.getElementById('term-modal-tab-code')
+  prevBtn = document.getElementById('term-modal-prev')
+  nextBtn = document.getElementById('term-modal-next')
 
   termLookup = buildLookup(categories)
 
+  if (prevBtn) prevBtn.addEventListener('click', () => navigateModal(-1))
+  if (nextBtn) nextBtn.addEventListener('click', () => navigateModal(+1))
+  if (tabPreviewBtn) tabPreviewBtn.addEventListener('click', () => setTab('preview'))
+  if (tabCodeBtn) tabCodeBtn.addEventListener('click', () => setTab('code'))
+
+  registerModalHandlers({
+    open: (categoryId, termId) => {
+      const entry = termLookup.get(`${categoryId}-${termId}`)
+      if (entry) openModal(entry, { skipUrlPush: true })
+    },
+    close: () => closeModal({ skipUrlSync: true }),
+    isOpenWith: (categoryId, termId) =>
+      currentEntryKey === `${categoryId}-${termId}`,
+  })
+
   modalEl.querySelectorAll('[data-modal-close]').forEach((el) => {
-    el.addEventListener('click', closeModal)
+    el.addEventListener('click', () => closeModal())
   })
 
   if (promptCopyBtn) {

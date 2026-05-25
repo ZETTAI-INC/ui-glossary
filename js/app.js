@@ -11,6 +11,7 @@ import { initTheme } from './theme.js'
 import { initModal } from './modal.js'
 import { initSections, getCurrentSection, getCategorySection, setSection } from './sections.js'
 import { initI18n, onLangChange, updateHero, updateIntro, updateHeroStage } from './i18n.js'
+import { initRouter, applyInitialUrlState } from './router.js'
 import { slugify } from './utils.js'
 
 /**
@@ -125,6 +126,9 @@ const init = () => {
   // Initialize theme toggle
   initTheme()
 
+  // URL routing — register popstate listener before modules wire up handlers.
+  initRouter()
+
   // Initialize term detail modal
   initModal(categories)
 
@@ -194,6 +198,9 @@ const init = () => {
 
   // Initial hero fill
   refreshHero(getCurrentSection())
+
+  // Honour any initial URL state (?term=, ?q=) after handlers have registered.
+  applyInitialUrlState()
 }
 
 document.addEventListener('DOMContentLoaded', init)

@@ -7,6 +7,7 @@
 import { debounce, escapeHtml, toTermId } from './utils.js'
 import { getCurrentSection, getCategorySection } from './sections.js'
 import { termDisplay, t } from './i18n.js'
+import { registerSearchHandlers, replaceQueryState } from './router.js'
 
 const DEBOUNCE_DELAY = 200
 
@@ -218,6 +219,30 @@ const clearSearch = (categories) => {
   })
 }
 
+const getActiveSearchInput = () => {
+  const sec = getCurrentSection()
+  return document.getElementById(`search-input-${sec}`)
+}
+
+/**
+ * Programmatically apply a query (used by router on URL load).
+ */
+const applyQueryFromUrl = (categories, query) => {
+  const input = getActiveSearchInput()
+  if (input) {
+    input.value = query
+  }
+  applySearch(query, categories)
+}
+
+const clearSearchFromUrl = (categories) => {
+  const input = getActiveSearchInput()
+  if (input) {
+    input.value = ''
+  }
+  clearSearch(categories)
+}
+
 /**
  * Initialize the search system.
  * Sets up debounced input listener, clear button, and results display.
@@ -227,6 +252,7 @@ const clearSearch = (categories) => {
 export const initSearch = (categories) => {
   const debouncedSearch = debounce((query) => {
     applySearch(query, categories)
+    replaceQueryState(query.trim())
   }, DEBOUNCE_DELAY)
 
   ;[
@@ -245,8 +271,18 @@ export const initSearch = (categories) => {
       clear.addEventListener('click', () => {
         input.value = ''
         clearSearch(categories)
+        replaceQueryState('')
         input.focus()
       })
     }
+  })
+
+  registerSearchHandlers({
+    apply: (q) => applyQueryFromUrl(categories, q),
+    clear: () => clearSearchFromUrl(categories),
+    getCurrent: () => {
+      const input = getActiveSearchInput()
+      return input ? input.value : ''
+    },
   })
 }

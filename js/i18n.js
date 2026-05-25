@@ -27,13 +27,16 @@ const STRINGS = {
     'modal.aiPromptTitle': 'AIへの指示プロンプト',
     'modal.aiPromptHelp':
       '下記をコピーして、ChatGPT・Claude などのAIに貼り付けると、このUIを実装するコードや使い方を提案してもらえます。',
-    'modal.codeTitle': 'コピーして使えるコード',
     'modal.codeHelp':
       'HTMLファイルに貼り付けるだけで使えます。プロジェクトに合わせて色やサイズを調整してください。',
     'modal.copy': 'コピー',
     'modal.copied': 'コピーしました',
     'modal.copyFailed': '失敗しました',
     'modal.openTermLabel': 'の解説を開く',
+    'modal.prev': '前の項目',
+    'modal.next': '次の項目',
+    'modal.tab.preview': 'プレビュー',
+    'modal.tab.code': 'コード',
     'backToTop.aria': '上に戻る',
     'unit.terms': '件',
     'hero.parts.eyebrow': 'UI Parts · そのまま使える',
@@ -93,13 +96,16 @@ const STRINGS = {
     'modal.aiPromptTitle': 'AI prompt',
     'modal.aiPromptHelp':
       'Copy and paste the prompt below into ChatGPT, Claude, or another AI to get implementation code and usage tips for this UI.',
-    'modal.codeTitle': 'Copy-paste code',
     'modal.codeHelp':
       'Paste into an HTML file and it works. Adjust colors and sizes to match your project.',
     'modal.copy': 'Copy',
     'modal.copied': 'Copied',
     'modal.copyFailed': 'Failed',
     'modal.openTermLabel': ' — open details',
+    'modal.prev': 'Previous',
+    'modal.next': 'Next',
+    'modal.tab.preview': 'Preview',
+    'modal.tab.code': 'Code',
     'backToTop.aria': 'Back to top',
     'unit.terms': 'terms',
     'hero.parts.eyebrow': 'UI Parts · Ready to ship',
@@ -391,14 +397,16 @@ const applyStaticTranslations = () => {
   // Modal labels
   const modalClose = document.querySelector('.term-modal-close')
   if (modalClose) modalClose.setAttribute('aria-label', t('modal.close'))
+  const modalPrev = document.getElementById('term-modal-prev')
+  if (modalPrev) modalPrev.setAttribute('aria-label', t('modal.prev'))
+  const modalNext = document.getElementById('term-modal-next')
+  if (modalNext) modalNext.setAttribute('aria-label', t('modal.next'))
 
   const promptTitle = document.querySelector('.term-modal-prompt-title span')
   if (promptTitle) promptTitle.textContent = t('modal.aiPromptTitle')
   const promptHelp = document.querySelector('.term-modal-prompt-help')
   if (promptHelp) promptHelp.textContent = t('modal.aiPromptHelp')
 
-  const codeTitle = document.querySelector('.term-modal-code-title span')
-  if (codeTitle) codeTitle.textContent = t('modal.codeTitle')
   const codeHelp = document.querySelector('.term-modal-code-help')
   if (codeHelp) codeHelp.textContent = t('modal.codeHelp')
 

@@ -151,28 +151,35 @@
       <button class="term-modal-close" aria-label="閉じる" data-modal-close>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <div class="term-modal-demo" id="term-modal-demo"></div>
-      <div class="term-modal-body">
-        <p class="term-modal-category" id="term-modal-category"></p>
-        <h2 class="term-modal-name" id="term-modal-name"></h2>
-        <p class="term-modal-name-en" id="term-modal-name-en"></p>
-        <p class="term-modal-desc" id="term-modal-desc"></p>
-
-        <section class="term-modal-code" id="term-modal-code-section" hidden>
-          <div class="term-modal-code-header">
-            <div class="term-modal-code-title">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              <span>コピーして使えるコード</span>
-            </div>
+      <button class="term-modal-nav term-modal-nav--prev" id="term-modal-prev" type="button" aria-label="前の項目">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="term-modal-nav term-modal-nav--next" id="term-modal-next" type="button" aria-label="次の項目">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="term-modal-stage" id="term-modal-stage">
+        <div class="term-modal-tabs" role="tablist" id="term-modal-tabs" hidden>
+          <button class="term-modal-tab is-active" type="button" role="tab" aria-selected="true" data-modal-tab="preview" id="term-modal-tab-preview" data-i18n="modal.tab.preview">プレビュー</button>
+          <button class="term-modal-tab" type="button" role="tab" aria-selected="false" data-modal-tab="code" id="term-modal-tab-code" data-i18n="modal.tab.code">コード</button>
+        </div>
+        <div class="term-modal-demo" id="term-modal-demo" role="tabpanel" aria-labelledby="term-modal-tab-preview"></div>
+        <div class="term-modal-code-panel" id="term-modal-code-panel" role="tabpanel" aria-labelledby="term-modal-tab-code" hidden>
+          <div class="term-modal-code-bar">
+            <span class="term-modal-code-help" id="term-modal-code-help">HTMLファイルに貼り付けるだけで使えます。</span>
             <button type="button" class="term-modal-code-copy" id="term-modal-code-copy" aria-label="コードをコピー">
               <svg class="icon-copy" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <svg class="icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               <span class="term-modal-code-copy-label">コピー</span>
             </button>
           </div>
-          <p class="term-modal-code-help">HTMLファイルに貼り付けるだけで使えます。プロジェクトに合わせて色やサイズを調整してください。</p>
           <pre class="term-modal-code-text" id="term-modal-code-text"></pre>
-        </section>
+        </div>
+      </div>
+      <div class="term-modal-body">
+        <p class="term-modal-category" id="term-modal-category"></p>
+        <h2 class="term-modal-name" id="term-modal-name"></h2>
+        <p class="term-modal-name-en" id="term-modal-name-en"></p>
+        <p class="term-modal-desc" id="term-modal-desc"></p>
 
         <section class="term-modal-prompt">
           <div class="term-modal-prompt-header">
