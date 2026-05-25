@@ -59,6 +59,7 @@ let viewportButtons = []
 let codePenBtn = null
 let currentCode = ''
 let currentTitle = ''
+let savedScrollY = 0
 
 const buildLookup = (categories) => {
   const map = new Map()
@@ -467,6 +468,9 @@ const openModal = (entry, { skipUrlPush = false } = {}) => {
 
   if (!wasAlreadyOpen) {
     lastFocused = document.activeElement
+    // Lock scroll without losing position: stash scrollY, pin body in place.
+    savedScrollY = window.scrollY || window.pageYOffset || 0
+    document.body.style.top = `-${savedScrollY}px`
   }
   modalEl.hidden = false
   modalEl.setAttribute('aria-hidden', 'false')
@@ -494,6 +498,12 @@ const closeModal = ({ skipUrlSync = false } = {}) => {
   modalEl.classList.remove('open')
   modalEl.setAttribute('aria-hidden', 'true')
   document.body.classList.remove('modal-open')
+  // Restore scroll position from the locked-state stash.
+  document.body.style.top = ''
+  if (savedScrollY) {
+    window.scrollTo(0, savedScrollY)
+    savedScrollY = 0
+  }
   currentEntryKey = null
 
   const onTransitionEnd = () => {

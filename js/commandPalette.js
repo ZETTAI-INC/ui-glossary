@@ -359,14 +359,22 @@ export const initCommandPalette = (categories, openTerm) => {
   buildPaletteDom()
 
   document.addEventListener('keydown', (e) => {
-    // Cmd/Ctrl + K — primary trigger
-    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+    // Cmd/Ctrl + K — primary trigger. Match either e.key or e.code so it
+    // still fires under JIS / kana layouts where e.key can be unusual.
+    const isCmdK =
+      (e.metaKey || e.ctrlKey) &&
+      (e.key === 'k' || e.key === 'K' || e.code === 'KeyK')
+    if (isCmdK) {
       e.preventDefault()
+      e.stopPropagation()
       open()
       return
     }
-    // "/" — like GitHub / Linear (only when not editing)
-    if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+    // "/" — like GitHub / Linear (only when not editing, no modifiers)
+    const isSlash =
+      !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey &&
+      (e.key === '/' || e.code === 'Slash')
+    if (isSlash) {
       const tag = (e.target && e.target.tagName) || ''
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
       if (e.target && e.target.isContentEditable) return

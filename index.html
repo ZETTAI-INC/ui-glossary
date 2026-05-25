@@ -157,8 +157,10 @@
   <div id="term-modal" class="term-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="term-modal-name">
     <div class="term-modal-backdrop" data-modal-close></div>
     <div class="term-modal-dialog" role="document">
-      <button class="term-modal-close" aria-label="閉じる" data-modal-close>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <button class="term-modal-close" type="button" aria-label="閉じる" data-modal-close>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <span class="term-modal-close-label" data-i18n="modal.close">閉じる</span>
+        <kbd class="term-modal-close-kbd" aria-hidden="true">Esc</kbd>
       </button>
       <button class="term-modal-nav term-modal-nav--prev" id="term-modal-prev" type="button" aria-label="前の項目">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>

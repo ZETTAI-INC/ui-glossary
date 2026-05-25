@@ -336,19 +336,19 @@ export const renderCategory = (category, index) => {
  * @param {HTMLElement} container - The container holding all cards
  */
 const observeCards = (container) => {
-  // Keep observing cards so they re-animate every time they enter the
-  // viewport (instead of firing only once).
+  // One-shot: once a card has been seen, keep it visible. Toggling .visible
+  // off on scroll-out causes cards to disappear after the user returns from
+  // the modal, which feels broken.
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible')
-        } else {
-          entry.target.classList.remove('visible')
+          observer.unobserve(entry.target)
         }
       })
     },
-    { threshold: 0.05, rootMargin: '0px 0px -10% 0px' }
+    { threshold: 0.01, rootMargin: '0px 0px 0px 0px' }
   )
 
   const cards = container.querySelectorAll('.term-card')

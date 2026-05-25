@@ -148,14 +148,17 @@ const setupSidebarToggle = () => {
     overlay.dataset.bound = '1'
   }
 
-  // Keyboard shortcut: `[` or `\` toggles the sidebar (desktop & mobile)
+  // Keyboard shortcut: `[` toggles the sidebar (desktop & mobile).
+  // Use both e.key and e.code so JIS / kana layouts still trigger.
   if (!document.body.dataset.sidebarKbdBound) {
     document.addEventListener('keydown', (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return
       const tag = (e.target && e.target.tagName) || ''
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
       if (e.target && e.target.isContentEditable) return
-      if (e.key === '[' || e.key === '\\') {
+      const isOpenBracket =
+        e.key === '[' || e.code === 'BracketLeft'
+      if (isOpenBracket) {
         e.preventDefault()
         toggleSidebar()
       }

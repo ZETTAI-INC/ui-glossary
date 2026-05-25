@@ -93,20 +93,26 @@ export const close = () => {
 
 export const initHelpOverlay = () => {
   document.addEventListener('keydown', (e) => {
+    // Escape closes overlay regardless of where focus is.
+    if (e.key === 'Escape' && overlayEl && !overlayEl.hidden) {
+      e.preventDefault()
+      close()
+      return
+    }
     if (e.metaKey || e.ctrlKey || e.altKey) return
     const tag = (e.target && e.target.tagName) || ''
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
     if (e.target && e.target.isContentEditable) return
-    if (e.key === '?') {
+    // "?" is Shift+/ on most layouts. Match via e.key OR explicit Shift+Slash
+    // to survive Japanese / kana keyboards where e.key sometimes differs.
+    const isQuestion = e.key === '?' || (e.shiftKey && e.code === 'Slash')
+    if (isQuestion) {
       e.preventDefault()
       if (overlayEl && !overlayEl.hidden) {
         close()
       } else {
         openHelp()
       }
-    } else if (e.key === 'Escape' && overlayEl && !overlayEl.hidden) {
-      e.preventDefault()
-      close()
     }
   })
 }
