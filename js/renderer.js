@@ -145,6 +145,13 @@ export const buildIframeDoc = (code, opts = {}) => {
         }
       }catch(e){}
     }
+    // Forward ESC presses up to the parent so the host modal can close
+    // even when focus has moved into the iframe.
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'||e.keyCode===27){
+        try{window.parent.postMessage({type:'ui-glossary-esc'},'*');}catch(_){ }
+      }
+    });
     fit();
     autoOpen();
     window.addEventListener('resize',fit);
@@ -154,6 +161,8 @@ export const buildIframeDoc = (code, opts = {}) => {
     setTimeout(function(){fit();autoOpen();},30);
     setTimeout(function(){fit();autoOpen();},150);
     setTimeout(function(){fit();autoOpen();},500);
+    // One more refit after images / fonts likely settle.
+    setTimeout(function(){fit();},1200);
   })();`
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     html,body{margin:0;padding:0;background:transparent;height:100%;width:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Inter','Hiragino Sans','Noto Sans JP',sans-serif;color:#1d1d1f;-webkit-font-smoothing:antialiased}

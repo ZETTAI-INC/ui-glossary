@@ -676,6 +676,15 @@ export const initModal = (categories) => {
   document.addEventListener('click', handleCardActivation)
   document.addEventListener('keydown', handleKeydown)
 
+  // Iframe previews dispatch an ESC postMessage when focus has moved inside
+  // them and the host keydown listener can't see the keyup.
+  window.addEventListener('message', (event) => {
+    if (!event || !event.data) return
+    if (event.data.type === 'ui-glossary-esc' && modalEl && !modalEl.hidden) {
+      closeModal()
+    }
+  })
+
   // Make every term card keyboard-accessible
   const makeCardsAccessible = () => {
     document.querySelectorAll('.term-card').forEach((card) => {

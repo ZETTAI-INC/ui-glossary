@@ -164,7 +164,7 @@ export const category = {
   .ui-photo-grid__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
   .ui-photo-tile{background:#fff;border-top:3px solid transparent;padding-top:12px;cursor:pointer;transition:border-color .15s}
   .ui-photo-tile:hover{border-top-color:#d04a02}
-  .ui-photo-tile__img{aspect-ratio:16/10;background:#e8e8e8;margin-bottom:14px}
+  .ui-photo-tile__img{height:150px;background:#e8e8e8;margin-bottom:14px}
   .ui-photo-tile__img--a{background:linear-gradient(135deg,#fff5ed 0%,#ffcfa6 100%)}
   .ui-photo-tile__img--b{background:linear-gradient(135deg,#ffe7e3 0%,#ff9088 100%)}
   .ui-photo-tile__img--c{background:linear-gradient(135deg,#ebf4ed 0%,#7fbc8c 100%)}
