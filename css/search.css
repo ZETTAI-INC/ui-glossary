@@ -51,3 +51,53 @@
 .search-clear:hover {
   color: var(--sidebar-text-active);
 }
+
+.search-history {
+  margin-top: var(--space-2);
+  padding: var(--space-2) 0 0;
+}
+
+.search-history__label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: var(--space-2);
+}
+
+.search-history__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.search-history__chip {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-history__chip:hover {
+  color: var(--sidebar-text-active);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.search-results-info.is-empty {
+  color: var(--color-text-secondary);
+}
+
+.search-results-hint {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  opacity: 0.85;
+}

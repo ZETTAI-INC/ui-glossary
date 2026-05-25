@@ -10,6 +10,35 @@ import { termDisplay, t } from './i18n.js'
 import { registerSearchHandlers, replaceQueryState } from './router.js'
 
 const DEBOUNCE_DELAY = 200
+const HISTORY_KEY = 'uiGlossary.searchHistory'
+const HISTORY_MAX = 6
+
+const loadHistory = () => {
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY)
+    if (!raw) return []
+    const arr = JSON.parse(raw)
+    return Array.isArray(arr) ? arr.slice(0, HISTORY_MAX) : []
+  } catch (_) {
+    return []
+  }
+}
+
+const saveHistory = (list) => {
+  try {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(list.slice(0, HISTORY_MAX)))
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+const recordHistory = (query) => {
+  const q = query.trim()
+  if (!q) return
+  const list = loadHistory().filter((v) => v !== q)
+  list.unshift(q)
+  saveHistory(list)
+}
 
 /**
  * Escape special regex characters in a string.
@@ -145,10 +174,20 @@ const applySearch = (query, categories) => {
   // Update results info
   if (resultsInfo) {
     resultsInfo.hidden = false
-    resultsInfo.innerHTML = `
-      <span class="result-count">${matchCount}</span>${t('search.results.suffix')}
-      ${t('search.results.for')}「${escapeHtml(query.trim())}」
-    `
+    if (matchCount === 0) {
+      resultsInfo.classList.add('is-empty')
+      resultsInfo.innerHTML = `
+        <span class="result-count">0</span>${t('search.results.suffix')}
+        ${t('search.results.for')}「${escapeHtml(query.trim())}」
+        <span class="search-results-hint">${t('search.noResultsHint')}</span>
+      `
+    } else {
+      resultsInfo.classList.remove('is-empty')
+      resultsInfo.innerHTML = `
+        <span class="result-count">${matchCount}</span>${t('search.results.suffix')}
+        ${t('search.results.for')}「${escapeHtml(query.trim())}」
+      `
+    }
   }
 }
 
@@ -243,6 +282,47 @@ const clearSearchFromUrl = (categories) => {
   clearSearch(categories)
 }
 
+const ensureHistoryPanel = (container) => {
+  let panel = container.querySelector('.search-history')
+  if (panel) return panel
+  panel = document.createElement('div')
+  panel.className = 'search-history'
+  panel.hidden = true
+  panel.innerHTML = `
+    <span class="search-history__label"></span>
+    <div class="search-history__chips"></div>
+  `
+  container.appendChild(panel)
+  return panel
+}
+
+const renderHistoryChips = (container) => {
+  const panel = ensureHistoryPanel(container)
+  const label = panel.querySelector('.search-history__label')
+  const chips = panel.querySelector('.search-history__chips')
+  const list = loadHistory()
+  if (list.length === 0) {
+    panel.hidden = true
+    return
+  }
+  if (label) label.textContent = t('search.recent')
+  chips.innerHTML = ''
+  for (const q of list) {
+    const btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'search-history__chip'
+    btn.setAttribute('data-search-chip', q)
+    btn.textContent = q
+    chips.appendChild(btn)
+  }
+  panel.hidden = false
+}
+
+const hideHistoryPanel = (container) => {
+  const panel = container.querySelector('.search-history')
+  if (panel) panel.hidden = true
+}
+
 /**
  * Initialize the search system.
  * Sets up debounced input listener, clear button, and results display.
@@ -253,6 +333,8 @@ export const initSearch = (categories) => {
   const debouncedSearch = debounce((query) => {
     applySearch(query, categories)
     replaceQueryState(query.trim())
+    // Only record once the query has settled and is non-empty.
+    if (query.trim()) recordHistory(query)
   }, DEBOUNCE_DELAY)
 
   ;[
@@ -262,9 +344,31 @@ export const initSearch = (categories) => {
     const input = document.getElementById(inputId)
     const clear = document.getElementById(clearId)
     if (!input) return
+    const container = input.closest('.search-container')
 
     input.addEventListener('input', (e) => {
-      debouncedSearch(e.target.value)
+      const value = e.target.value
+      debouncedSearch(value)
+      if (container) {
+        if (!value) {
+          renderHistoryChips(container)
+        } else {
+          hideHistoryPanel(container)
+        }
+      }
+    })
+
+    input.addEventListener('focus', () => {
+      if (container && !input.value) {
+        renderHistoryChips(container)
+      }
+    })
+
+    input.addEventListener('blur', () => {
+      // Delay so clicking a chip is still registered before the panel hides.
+      setTimeout(() => {
+        if (container) hideHistoryPanel(container)
+      }, 150)
     })
 
     if (clear) {
@@ -273,8 +377,35 @@ export const initSearch = (categories) => {
         clearSearch(categories)
         replaceQueryState('')
         input.focus()
+        if (container) renderHistoryChips(container)
       })
     }
+
+    if (container) {
+      container.addEventListener('mousedown', (event) => {
+        const chip = event.target.closest('[data-search-chip]')
+        if (!chip) return
+        event.preventDefault()
+        const q = chip.getAttribute('data-search-chip')
+        input.value = q
+        applySearch(q, categories)
+        replaceQueryState(q)
+        recordHistory(q)
+        hideHistoryPanel(container)
+        input.focus()
+      })
+    }
+  })
+
+  // Cmd/Ctrl+K focuses the active section's search input.
+  document.addEventListener('keydown', (event) => {
+    const isShortcut = (event.metaKey || event.ctrlKey) && (event.key === 'k' || event.key === 'K')
+    if (!isShortcut) return
+    const input = getActiveSearchInput()
+    if (!input) return
+    event.preventDefault()
+    input.focus()
+    input.select()
   })
 
   registerSearchHandlers({

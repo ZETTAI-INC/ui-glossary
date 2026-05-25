@@ -13,6 +13,7 @@ import {
   replaceModalCleared,
   registerModalHandlers,
 } from './router.js'
+import { recordCopy } from './copyHistory.js'
 
 const INTERACTIVE_DEMO_SELECTOR = [
   '[data-demo-toggle]',
@@ -255,6 +256,7 @@ const copyCodeToClipboard = async () => {
   try {
     await copyToClipboard(text)
     updateCodeCopyButtonState('copied')
+    if (currentEntryKey) recordCopy(currentEntryKey, 'code')
   } catch (err) {
     updateCodeCopyButtonState('error')
   }
@@ -284,6 +286,7 @@ const copyPromptToClipboard = async () => {
       document.body.removeChild(ta)
     }
     updateCopyButtonState('copied')
+    if (currentEntryKey) recordCopy(currentEntryKey, 'prompt')
   } catch (err) {
     updateCopyButtonState('error')
   }
@@ -421,6 +424,10 @@ const handleCardActivation = (event) => {
   }
   // Don't open the modal when the user is interacting with a demo control
   if (isInteractiveDemoClick(event.target)) {
+    return
+  }
+  // Don't open the modal when the user clicks the favorite-toggle button.
+  if (event.target.closest('[data-fav-toggle]')) {
     return
   }
   const key = card.getAttribute('data-term-id')

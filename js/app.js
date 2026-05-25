@@ -12,6 +12,8 @@ import { initModal } from './modal.js'
 import { initSections, getCurrentSection, getCategorySection, setSection } from './sections.js'
 import { initI18n, onLangChange, updateHero, updateIntro, updateHeroStage } from './i18n.js'
 import { initRouter, applyInitialUrlState } from './router.js'
+import { initFavorites, refreshFavoritesView } from './favoritesUi.js'
+import { initCopyHistory, refreshCopyHistoryView } from './copyHistoryUi.js'
 import { slugify } from './utils.js'
 
 /**
@@ -132,6 +134,12 @@ const init = () => {
   // Initialize term detail modal
   initModal(categories)
 
+  // Favorites (star toggle on each card + sidebar filter button)
+  initFavorites(categories)
+
+  // Recently copied list in each sidebar
+  initCopyHistory(categories)
+
   // Set up back-to-top button
   setupBackToTop()
 
@@ -194,6 +202,8 @@ const init = () => {
       setActiveCategory(slugify(firstCat.id))
     }
     refreshHero(getCurrentSection())
+    refreshFavoritesView(categories)
+    refreshCopyHistoryView(categories)
   })
 
   // Initial hero fill

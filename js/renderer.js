@@ -7,7 +7,8 @@
 import { slugify, escapeHtml, toTermId } from './utils.js'
 import { getDemoHTML, hasDemo, initDemoInteractions } from '../demos/registry.js'
 import { getCategorySection } from './sections.js'
-import { categoryDisplay, termDisplay } from './i18n.js'
+import { categoryDisplay, termDisplay, t } from './i18n.js'
+import { isFavorite } from './favorites.js'
 
 /**
  * Create a term card element.
@@ -242,8 +243,21 @@ export const renderTermCard = (term, categoryId) => {
     ? '<span class="term-card-badge term-card-badge--part" aria-hidden="true">CODE</span>'
     : '<span class="term-card-badge term-card-badge--concept" aria-hidden="true">TERM</span>'
 
+  const cardKey = `${categoryId}-${termId}`
+  const starred = isFavorite(cardKey)
+  const starBtn = `
+    <button class="term-card-fav${starred ? ' is-on' : ''}" type="button"
+      aria-label="${escapeHtml(t('favorite.toggle'))}" aria-pressed="${starred ? 'true' : 'false'}"
+      data-fav-toggle data-fav-key="${escapeHtml(cardKey)}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>
+    </button>
+  `
+
   card.innerHTML = `
     ${demoSection}
+    ${starBtn}
     <div class="term-card-body">
       ${badge}
       <h3 class="term-card-name">${escapeHtml(primary)}</h3>

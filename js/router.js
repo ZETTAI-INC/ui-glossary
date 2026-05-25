@@ -123,6 +123,16 @@ export const initRouter = () => {
 }
 
 /**
+ * Programmatically open a term modal as if the user had clicked its card —
+ * pushes new URL state and triggers modal open. Used by features like
+ * the copy-history sidebar list.
+ */
+export const openTermViaRouter = (categoryId, termId) => {
+  pushModalState(categoryId, termId)
+  syncFromUrl({ skipQuerySync: true })
+}
+
+/**
  * Apply the URL state once at startup. Separate from initRouter so that
  * modal/search handlers can register before the first sync runs.
  */
