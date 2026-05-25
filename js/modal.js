@@ -202,8 +202,13 @@ const setTab = (tab) => {
     tabCodeBtn.classList.toggle('is-active', active)
     tabCodeBtn.setAttribute('aria-selected', active ? 'true' : 'false')
   }
-  if (demoEl) demoEl.hidden = tab !== 'preview'
-  if (codePanelEl) codePanelEl.hidden = tab !== 'code'
+  const onPreview = tab === 'preview'
+  if (demoEl) demoEl.hidden = !onPreview
+  if (codePanelEl) codePanelEl.hidden = onPreview
+  // Hide the whole demo-wrap (incl. viewport switcher) on code tab so
+  // the panel can claim full height.
+  const wrap = document.getElementById('term-modal-demo-wrap')
+  if (wrap) wrap.hidden = !onPreview
 }
 
 const navigateModal = (delta) => {

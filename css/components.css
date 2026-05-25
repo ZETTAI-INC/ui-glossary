@@ -742,7 +742,7 @@ body[data-section='parts'] .term-grid {
 
 .term-modal-iframe {
   width: 100%;
-  height: 460px;
+  height: 380px;
   border: 0;
   background: #ffffff;
   display: block;
@@ -754,10 +754,10 @@ body[data-section='parts'] .term-grid {
 
 @media (max-width: 640px) {
   .term-modal-iframe {
-    height: 360px;
+    height: 300px;
   }
   .term-modal-demo--iframe {
-    min-height: 240px;
+    min-height: 220px;
   }
 }
 
@@ -905,6 +905,17 @@ body.modal-open {
   flex-direction: column;
   min-height: 200px;
   max-height: 60vh;
+}
+
+/* The hidden attribute must beat the display: flex above. Same for the
+   demo wrap and viewport switcher — without this, both preview and code
+   render simultaneously when switching tabs. */
+.term-modal-code-panel[hidden],
+.term-modal-demo[hidden],
+.term-modal-demo-wrap[hidden],
+.term-modal-viewport[hidden],
+.term-modal-tabs[hidden] {
+  display: none !important;
 }
 
 .term-modal-code-bar {
