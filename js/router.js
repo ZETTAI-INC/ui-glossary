@@ -61,6 +61,16 @@ export const pushModalState = (categoryId, termId) => {
 }
 
 /**
+ * Replace (don't push) the current entry's modal state. Used when stepping
+ * through prev/next inside the modal so the browser back button always
+ * returns to the page state — not to every visited modal item.
+ */
+export const replaceModalState = (categoryId, termId) => {
+  const url = buildUrl({ [KEY_TERM]: `${categoryId}/${termId}` })
+  history.replaceState({ modal: `${categoryId}/${termId}` }, '', url)
+}
+
+/**
  * Replace the current entry to drop the modal param.
  * Use this when the modal closes without a popstate.
  */

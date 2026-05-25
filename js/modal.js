@@ -10,6 +10,7 @@ import { findShowcaseCode, buildIframeDoc } from './renderer.js'
 import { getCategorySection } from './sections.js'
 import {
   pushModalState,
+  replaceModalState,
   replaceModalCleared,
   registerModalHandlers,
 } from './router.js'
@@ -217,8 +218,10 @@ const navigateModal = (delta) => {
   if (!targetKey) return
   const entry = termLookup.get(targetKey)
   if (!entry) return
-  // openModal will push a new URL state, recompute display, and update buttons.
-  openModal(entry)
+  // Replace (don't push) URL state when stepping through prev/next so the
+  // browser back button always returns to the page underneath — not to
+  // every modal item the user happened to scroll past.
+  openModal(entry, { replaceUrl: true })
 }
 
 /**
@@ -400,7 +403,7 @@ const copyPromptToClipboard = async () => {
   copyResetTimer = setTimeout(() => updateCopyButtonState('idle'), 2000)
 }
 
-const openModal = (entry, { skipUrlPush = false } = {}) => {
+const openModal = (entry, { skipUrlPush = false, replaceUrl = false } = {}) => {
   if (!modalEl || !entry) {
     return
   }
@@ -412,7 +415,11 @@ const openModal = (entry, { skipUrlPush = false } = {}) => {
   updateNavButtons()
 
   if (!skipUrlPush) {
-    pushModalState(category.id, termId)
+    if (replaceUrl) {
+      replaceModalState(category.id, termId)
+    } else {
+      pushModalState(category.id, termId)
+    }
   }
 
   // Use the same code-based iframe preview as the card whenever possible,
@@ -675,12 +682,29 @@ export const initModal = (categories) => {
 
   document.addEventListener('click', handleCardActivation)
   document.addEventListener('keydown', handleKeydown)
+  // Capture-phase fallback: even if some inner element swallows the bubble,
+  // an ESC anywhere in the host document still closes the modal.
+  window.addEventListener(
+    'keydown',
+    (event) => {
+      if (event.key === 'Escape' && modalEl && !modalEl.hidden) {
+        closeModal()
+      }
+    },
+    true,
+  )
 
-  // Iframe previews dispatch an ESC postMessage when focus has moved inside
-  // them and the host keydown listener can't see the keyup.
+  // Iframe previews dispatch a postMessage when focus has moved inside them
+  // and the host keydown listener can't see the keyup, or when the user
+  // clicks the iframe margin (outside the preview stage).
   window.addEventListener('message', (event) => {
     if (!event || !event.data) return
-    if (event.data.type === 'ui-glossary-esc' && modalEl && !modalEl.hidden) {
+    const type = event.data.type
+    if (
+      (type === 'ui-glossary-esc' || type === 'ui-glossary-close') &&
+      modalEl &&
+      !modalEl.hidden
+    ) {
       closeModal()
     }
   })
