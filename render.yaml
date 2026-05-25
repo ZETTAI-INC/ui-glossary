@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ui-glossary
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: ./
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /css/*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /js/*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /data/*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /demos/*
+        name: Cache-Control
+        value: public, max-age=3600
