@@ -43,6 +43,65 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </span>
         <button id="search-clear-parts" class="search-clear" hidden>&times;</button>
+        <div class="search-filters" data-section="parts" role="group" aria-label="絞り込み">
+          <div class="search-filters__row">
+            <button type="button" class="search-filters__chip is-active" data-filter-type="all" data-i18n="search.filter.all">すべて</button>
+            <button type="button" class="search-filters__chip" data-filter-type="code" data-i18n="search.filter.code">コードあり</button>
+            <button type="button" class="search-filters__chip" data-filter-type="concept" data-i18n="search.filter.concept">用語のみ</button>
+            <button type="button" class="search-filters__chip search-filters__chip--fav" data-filter-favorites aria-pressed="false">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span data-i18n="search.filter.fav">お気に入り</span>
+            </button>
+          </div>
+          <button type="button" class="search-filters__more" data-filter-toggle aria-expanded="false">
+            <span data-i18n="search.filter.more">もっと絞り込む</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            <span class="search-filters__count" data-filter-count hidden>0</span>
+          </button>
+          <div class="search-filters__adv" data-filter-adv hidden>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.style">スタイル</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-style="dark">◐ <span data-i18n="search.filter.style.dark">ダーク</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="light">☀ <span data-i18n="search.filter.style.light">明るい</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="gradient">✦ <span data-i18n="search.filter.style.gradient">グラデ</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="glass">◇ <span data-i18n="search.filter.style.glass">グラス</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="anim">⟲ <span data-i18n="search.filter.style.anim">アニメ</span></button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.tech">技術</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-tech="js" data-i18n="search.filter.tech.js">JS</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="responsive" data-i18n="search.filter.tech.responsive">レスポンシブ</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="svg" data-i18n="search.filter.tech.svg">SVG</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="hover" data-i18n="search.filter.tech.hover">ホバー</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="themed" data-i18n="search.filter.tech.themed">ダーク対応</button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.elem">要素</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-elem="form" data-i18n="search.filter.elem.form">フォーム</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="button" data-i18n="search.filter.elem.button">ボタン</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="card" data-i18n="search.filter.elem.card">カード</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="nav" data-i18n="search.filter.elem.nav">ナビ</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="display" data-i18n="search.filter.elem.display">見出し</button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.genre">ジャンル</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-genre="showcase" data-i18n="search.filter.genre.showcase">ショーケース</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="ref" data-i18n="search.filter.genre.ref">リファレンス</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="app" data-i18n="search.filter.genre.app">アプリ</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="corp" data-i18n="search.filter.genre.corp">コーポ</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="site" data-i18n="search.filter.genre.site">サイト骨格</button>
+              </div>
+            </div>
+            <button type="button" class="search-filters__reset" data-filter-reset data-i18n="search.filter.reset">フィルタを全て解除</button>
+          </div>
+        </div>
       </div>
       <nav id="sidebar-nav-parts" class="sidebar-nav"></nav>
       <div class="sidebar-footer">
@@ -65,6 +124,65 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         </span>
         <button id="search-clear-glossary" class="search-clear" hidden>&times;</button>
+        <div class="search-filters" data-section="glossary" role="group" aria-label="絞り込み">
+          <div class="search-filters__row">
+            <button type="button" class="search-filters__chip is-active" data-filter-type="all" data-i18n="search.filter.all">すべて</button>
+            <button type="button" class="search-filters__chip" data-filter-type="code" data-i18n="search.filter.code">コードあり</button>
+            <button type="button" class="search-filters__chip" data-filter-type="concept" data-i18n="search.filter.concept">用語のみ</button>
+            <button type="button" class="search-filters__chip search-filters__chip--fav" data-filter-favorites aria-pressed="false">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span data-i18n="search.filter.fav">お気に入り</span>
+            </button>
+          </div>
+          <button type="button" class="search-filters__more" data-filter-toggle aria-expanded="false">
+            <span data-i18n="search.filter.more">もっと絞り込む</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            <span class="search-filters__count" data-filter-count hidden>0</span>
+          </button>
+          <div class="search-filters__adv" data-filter-adv hidden>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.style">スタイル</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-style="dark">◐ <span data-i18n="search.filter.style.dark">ダーク</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="light">☀ <span data-i18n="search.filter.style.light">明るい</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="gradient">✦ <span data-i18n="search.filter.style.gradient">グラデ</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="glass">◇ <span data-i18n="search.filter.style.glass">グラス</span></button>
+                <button type="button" class="search-filters__chip" data-filter-style="anim">⟲ <span data-i18n="search.filter.style.anim">アニメ</span></button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.tech">技術</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-tech="js" data-i18n="search.filter.tech.js">JS</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="responsive" data-i18n="search.filter.tech.responsive">レスポンシブ</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="svg" data-i18n="search.filter.tech.svg">SVG</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="hover" data-i18n="search.filter.tech.hover">ホバー</button>
+                <button type="button" class="search-filters__chip" data-filter-tech="themed" data-i18n="search.filter.tech.themed">ダーク対応</button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.elem">要素</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-elem="form" data-i18n="search.filter.elem.form">フォーム</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="button" data-i18n="search.filter.elem.button">ボタン</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="card" data-i18n="search.filter.elem.card">カード</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="nav" data-i18n="search.filter.elem.nav">ナビ</button>
+                <button type="button" class="search-filters__chip" data-filter-elem="display" data-i18n="search.filter.elem.display">見出し</button>
+              </div>
+            </div>
+            <div class="search-filters__group">
+              <span class="search-filters__lbl" data-i18n="search.filter.group.genre">ジャンル</span>
+              <div class="search-filters__row">
+                <button type="button" class="search-filters__chip" data-filter-genre="showcase" data-i18n="search.filter.genre.showcase">ショーケース</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="ref" data-i18n="search.filter.genre.ref">リファレンス</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="app" data-i18n="search.filter.genre.app">アプリ</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="corp" data-i18n="search.filter.genre.corp">コーポ</button>
+                <button type="button" class="search-filters__chip" data-filter-genre="site" data-i18n="search.filter.genre.site">サイト骨格</button>
+              </div>
+            </div>
+            <button type="button" class="search-filters__reset" data-filter-reset data-i18n="search.filter.reset">フィルタを全て解除</button>
+          </div>
+        </div>
       </div>
       <nav id="sidebar-nav-glossary" class="sidebar-nav"></nav>
       <div class="sidebar-footer">
