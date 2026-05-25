@@ -397,16 +397,8 @@ export const initSearch = (categories) => {
     }
   })
 
-  // Cmd/Ctrl+K focuses the active section's search input.
-  document.addEventListener('keydown', (event) => {
-    const isShortcut = (event.metaKey || event.ctrlKey) && (event.key === 'k' || event.key === 'K')
-    if (!isShortcut) return
-    const input = getActiveSearchInput()
-    if (!input) return
-    event.preventDefault()
-    input.focus()
-    input.select()
-  })
+  // Cmd/Ctrl+K is now owned by the global command palette (commandPalette.js).
+  // The sidebar search inputs remain available via click / focus.
 
   registerSearchHandlers({
     apply: (q) => applyQueryFromUrl(categories, q),

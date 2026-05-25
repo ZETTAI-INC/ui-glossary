@@ -340,7 +340,9 @@ body {
 }
 
 .menu-toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: var(--space-2);
   border-radius: var(--radius-sm);
   color: var(--color-text-secondary);
@@ -351,6 +353,18 @@ body {
   background: var(--color-surface-hover);
   color: var(--color-text-primary);
 }
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Show the chevron-open icon when the sidebar is collapsed.
+   Default state: closer-to-burger icon. */
+.menu-toggle .icon-close-sidebar { display: block; }
+.menu-toggle .icon-open-sidebar { display: none; }
+body.sidebar-collapsed .menu-toggle .icon-close-sidebar { display: none; }
+body.sidebar-collapsed .menu-toggle .icon-open-sidebar { display: block; }
 
 .header-info {
   flex: 1;
@@ -741,6 +755,32 @@ body[data-section='glossary'] .hero-title {
   font-variant-numeric: tabular-nums;
 }
 
+/* ──────────────────────────────────────────────
+   Desktop sidebar collapse — slides off, main expands
+   ────────────────────────────────────────────── */
+@media (min-width: 1025px) {
+  .main-content {
+    transition: margin-left var(--transition-base);
+  }
+
+  body.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
+    box-shadow: none;
+  }
+
+  body.sidebar-collapsed .main-content {
+    margin-left: 0;
+  }
+
+  /* In the expanded section's glossary cards, the wider canvas should
+     let cards grow a bit instead of becoming awkwardly wide single columns. */
+  body.sidebar-collapsed .glossary-content {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .sidebar {
@@ -757,10 +797,6 @@ body[data-section='glossary'] .hero-title {
 
   .main-content {
     margin-left: 0;
-  }
-
-  .menu-toggle {
-    display: flex;
   }
 
   .glossary-content {

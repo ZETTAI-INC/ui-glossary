@@ -14,6 +14,7 @@ import {
   registerModalHandlers,
 } from './router.js'
 import { recordCopy } from './copyHistory.js'
+import { showToast } from './toast.js'
 
 const INTERACTIVE_DEMO_SELECTOR = [
   '[data-demo-toggle]',
@@ -53,6 +54,11 @@ let lastFocused = null
 let copyResetTimer = null
 let codeCopyResetTimer = null
 let currentEntryKey = null
+let viewportEl = null
+let viewportButtons = []
+let codePenBtn = null
+let currentCode = ''
+let currentTitle = ''
 
 const buildLookup = (categories) => {
   const map = new Map()
@@ -89,6 +95,94 @@ const updateNavButtons = () => {
   const nextKey = findNeighbour(currentEntryKey, +1)
   prevBtn.disabled = !prevKey
   nextBtn.disabled = !nextKey
+}
+
+/**
+ * Render code text into a <pre> as a list of <span class="cm-line">,
+ * one per line, so CSS counters can paint line numbers in the gutter.
+ * Preserves whitespace; HTML-escapes content.
+ */
+const renderCodeWithLineNumbers = (preEl, raw) => {
+  const text = String(raw || '')
+  // Stash the original text so copy actions return clean source (no
+  // zero-width-space placeholders, no extra spans).
+  preEl.dataset.rawSource = text
+  preEl.innerHTML = ''
+  preEl.classList.add('with-line-numbers')
+  const lines = text.split('\n')
+  for (let i = 0; i < lines.length; i++) {
+    const span = document.createElement('span')
+    span.className = 'cm-line'
+    // Empty lines need a zero-width char to keep height visible.
+    span.textContent = lines[i].length === 0 ? '​' : lines[i]
+    preEl.appendChild(span)
+    if (i < lines.length - 1) {
+      preEl.appendChild(document.createTextNode('\n'))
+    }
+  }
+}
+
+const setViewport = (size) => {
+  if (!demoEl) return
+  const wrap = document.getElementById('term-modal-demo-wrap')
+  if (wrap) wrap.setAttribute('data-viewport', size)
+  viewportButtons.forEach((btn) => {
+    const match = btn.getAttribute('data-viewport') === size
+    btn.classList.toggle('is-active', match)
+    btn.setAttribute('aria-pressed', match ? 'true' : 'false')
+  })
+}
+
+/**
+ * Build a "view in CodePen" prefill URL using their documented
+ * data-prefill form-POST trick. We split the snippet into html / css / js
+ * heuristically by tag.
+ */
+const splitForCodePen = (code) => {
+  const raw = String(code || '')
+  const cssMatches = [...raw.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+  const jsMatches = [...raw.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/gi)]
+  const css = cssMatches.map((m) => m[1].trim()).join('\n\n')
+  const js = jsMatches.map((m) => m[1].trim()).join('\n\n')
+  const html = raw
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    .trim()
+  return { html, css, js }
+}
+
+const openInCodePen = () => {
+  if (!currentCode) return
+  const { html, css, js } = splitForCodePen(currentCode)
+  const data = {
+    title: currentTitle || 'UI Parts snippet',
+    html,
+    css,
+    js,
+    editors: '111',
+    layout: 'left',
+  }
+  // CodePen takes a JSON string in a hidden form field. We submit a form to
+  // their endpoint so the snippet opens in a new tab.
+  const form = document.createElement('form')
+  form.action = 'https://codepen.io/pen/define'
+  form.method = 'POST'
+  form.target = '_blank'
+  form.rel = 'noopener'
+  form.style.display = 'none'
+  const input = document.createElement('input')
+  input.type = 'hidden'
+  input.name = 'data'
+  input.value = JSON.stringify(data)
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+  // form.appendChild then form.submit — but the &quot;-escaped trick must use
+  // the live value, not the displayed attribute, so set value directly.
+  input.value = JSON.stringify(data)
+  form.appendChild(input)
+  document.body.appendChild(form)
+  form.submit()
+  document.body.removeChild(form)
 }
 
 const setTab = (tab) => {
@@ -252,13 +346,15 @@ const copyCodeToClipboard = async () => {
   if (!codeTextEl) {
     return
   }
-  const text = codeTextEl.textContent || ''
+  const text = codeTextEl.dataset.rawSource || codeTextEl.textContent || ''
   try {
     await copyToClipboard(text)
     updateCodeCopyButtonState('copied')
+    showToast(t('toast.copied'), { kind: 'success' })
     if (currentEntryKey) recordCopy(currentEntryKey, 'code')
   } catch (err) {
     updateCodeCopyButtonState('error')
+    showToast(t('toast.copyFailed'), { kind: 'error' })
   }
   if (codeCopyResetTimer) {
     clearTimeout(codeCopyResetTimer)
@@ -286,9 +382,11 @@ const copyPromptToClipboard = async () => {
       document.body.removeChild(ta)
     }
     updateCopyButtonState('copied')
+    showToast(t('toast.copied'), { kind: 'success' })
     if (currentEntryKey) recordCopy(currentEntryKey, 'prompt')
   } catch (err) {
     updateCopyButtonState('error')
+    showToast(t('toast.copyFailed'), { kind: 'error' })
   }
   if (copyResetTimer) {
     clearTimeout(copyResetTimer)
@@ -317,6 +415,8 @@ const openModal = (entry, { skipUrlPush = false } = {}) => {
   demoEl.innerHTML = ''
   demoEl.classList.remove('term-modal-demo--iframe')
   const previewCode = findShowcaseCode(term)
+  currentCode = previewCode || ''
+  currentTitle = term.nameJa || term.name || ''
   if (previewCode) {
     demoEl.classList.add('term-modal-demo--iframe')
     const iframe = document.createElement('iframe')
@@ -325,8 +425,15 @@ const openModal = (entry, { skipUrlPush = false } = {}) => {
     iframe.setAttribute('sandbox', 'allow-scripts')
     iframe.srcdoc = buildIframeDoc(previewCode, { interactive: true })
     demoEl.appendChild(iframe)
+    if (viewportEl) {
+      viewportEl.hidden = false
+      setViewport('full')
+    }
   } else if (hasDemo(termId)) {
     demoEl.innerHTML = getDemoHTML(termId, category.id)
+    if (viewportEl) viewportEl.hidden = true
+  } else if (viewportEl) {
+    viewportEl.hidden = true
   }
 
   const { title: catTitle } = categoryDisplay(category)
@@ -343,7 +450,11 @@ const openModal = (entry, { skipUrlPush = false } = {}) => {
 
   const hasCode = Boolean(term.code)
   if (codeTextEl) {
-    codeTextEl.textContent = hasCode ? term.code : ''
+    if (hasCode) {
+      renderCodeWithLineNumbers(codeTextEl, term.code)
+    } else {
+      codeTextEl.textContent = ''
+    }
   }
   if (tabsEl) {
     tabsEl.hidden = !hasCode
@@ -474,6 +585,15 @@ const handleKeydown = (event) => {
  *
  * @param {Array} categories - Array of category objects
  */
+/**
+ * Programmatically open a term by category and term id — used by the
+ * command palette and any other external launcher.
+ */
+export const openTermById = (categoryId, termId) => {
+  const entry = termLookup.get(`${categoryId}-${termId}`)
+  if (entry) openModal(entry)
+}
+
 export const initModal = (categories) => {
   modalEl = document.getElementById('term-modal')
   if (!modalEl) {
@@ -495,6 +615,9 @@ export const initModal = (categories) => {
   tabCodeBtn = document.getElementById('term-modal-tab-code')
   prevBtn = document.getElementById('term-modal-prev')
   nextBtn = document.getElementById('term-modal-next')
+  viewportEl = document.getElementById('term-modal-viewport')
+  viewportButtons = viewportEl ? Array.from(viewportEl.querySelectorAll('[data-viewport]')) : []
+  codePenBtn = document.getElementById('term-modal-code-pen')
 
   termLookup = buildLookup(categories)
 
@@ -502,6 +625,17 @@ export const initModal = (categories) => {
   if (nextBtn) nextBtn.addEventListener('click', () => navigateModal(+1))
   if (tabPreviewBtn) tabPreviewBtn.addEventListener('click', () => setTab('preview'))
   if (tabCodeBtn) tabCodeBtn.addEventListener('click', () => setTab('code'))
+
+  viewportButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const size = btn.getAttribute('data-viewport')
+      if (size) setViewport(size)
+    })
+  })
+
+  if (codePenBtn) {
+    codePenBtn.addEventListener('click', openInCodePen)
+  }
 
   registerModalHandlers({
     open: (categoryId, termId) => {

@@ -18,6 +18,13 @@ const SECTION_TO_COUNT_ID = {
   glossary: 'term-count-glossary',
 }
 
+const COLLAPSE_STORAGE_KEY = 'uiGlossary.sidebarCollapsed'
+const DESKTOP_MQ = '(min-width: 1025px)'
+
+const isDesktop = () =>
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia(DESKTOP_MQ).matches
+
 /**
  * Build the HTML string for a single sidebar nav item.
  */
@@ -51,7 +58,7 @@ const scrollToCategory = (categoryId) => {
 }
 
 /**
- * Close the mobile sidebar(s).
+ * Close the mobile sidebar drawer(s).
  */
 const closeSidebar = () => {
   document.querySelectorAll('.sidebar').forEach((s) => s.classList.remove('open'))
@@ -67,24 +74,126 @@ const openActiveSidebar = () => {
   if (el) el.classList.add('open')
 }
 
-const setupMobileToggle = () => {
+/* ──────────────────────────────────────────────
+   Sidebar collapse (desktop) — push main content
+   to take over freed space. Mobile keeps using
+   the drawer pattern via .sidebar.open.
+   ────────────────────────────────────────────── */
+const isCollapsed = () => document.body.classList.contains('sidebar-collapsed')
+
+const persistCollapsed = (collapsed) => {
+  try {
+    localStorage.setItem(COLLAPSE_STORAGE_KEY, collapsed ? '1' : '0')
+  } catch (_) {
+    /* ignore */
+  }
+}
+
+const readSavedCollapsed = () => {
+  try {
+    return localStorage.getItem(COLLAPSE_STORAGE_KEY) === '1'
+  } catch (_) {
+    return false
+  }
+}
+
+const syncMenuToggleAria = () => {
+  const btn = document.getElementById('menu-toggle')
+  if (!btn) return
+  const expanded = isDesktop() ? !isCollapsed() : Boolean(document.querySelector('.sidebar.open'))
+  btn.setAttribute('aria-expanded', expanded ? 'true' : 'false')
+  btn.setAttribute('aria-controls', 'sidebar-parts sidebar-glossary')
+}
+
+export const setSidebarCollapsed = (collapsed) => {
+  if (isDesktop()) {
+    document.body.classList.toggle('sidebar-collapsed', Boolean(collapsed))
+    // Closing the drawer if it happened to be open from a viewport change.
+    if (collapsed) closeSidebar()
+    persistCollapsed(Boolean(collapsed))
+  } else {
+    // On mobile, "expanded" means open drawer.
+    if (collapsed) {
+      closeSidebar()
+    } else {
+      openActiveSidebar()
+    }
+  }
+  syncMenuToggleAria()
+}
+
+export const toggleSidebar = () => {
+  if (isDesktop()) {
+    setSidebarCollapsed(!isCollapsed())
+  } else {
+    const anyOpen = Boolean(document.querySelector('.sidebar.open'))
+    setSidebarCollapsed(anyOpen)
+  }
+}
+
+const setupSidebarToggle = () => {
   const menuToggle = document.getElementById('menu-toggle')
   const overlay = document.getElementById('sidebar-overlay')
 
   if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      const anyOpen = document.querySelector('.sidebar.open')
-      if (anyOpen) {
-        closeSidebar()
-      } else {
-        openActiveSidebar()
-      }
-    })
+    // Avoid double-binding when initSidebar is re-invoked on language change.
+    if (!menuToggle.dataset.toggleBound) {
+      menuToggle.addEventListener('click', toggleSidebar)
+      menuToggle.dataset.toggleBound = '1'
+    }
   }
 
-  if (overlay) {
+  if (overlay && !overlay.dataset.bound) {
     overlay.addEventListener('click', closeSidebar)
+    overlay.dataset.bound = '1'
   }
+
+  // Keyboard shortcut: `[` or `\` toggles the sidebar (desktop & mobile)
+  if (!document.body.dataset.sidebarKbdBound) {
+    document.addEventListener('keydown', (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const tag = (e.target && e.target.tagName) || ''
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
+      if (e.target && e.target.isContentEditable) return
+      if (e.key === '[' || e.key === '\\') {
+        e.preventDefault()
+        toggleSidebar()
+      }
+    })
+    document.body.dataset.sidebarKbdBound = '1'
+  }
+
+  // Re-evaluate viewport-driven state on resize. We don't auto-toggle on
+  // resize, but we do keep the menu-toggle's aria-expanded in sync.
+  if (!window.__sidebarMqlBound) {
+    const mql = window.matchMedia(DESKTOP_MQ)
+    const handler = () => {
+      // When switching to mobile, collapse-state is irrelevant — the
+      // drawer pattern takes over. When switching to desktop, restore
+      // the user's saved collapse preference.
+      if (mql.matches) {
+        document.body.classList.toggle('sidebar-collapsed', readSavedCollapsed())
+        closeSidebar()
+      } else {
+        document.body.classList.remove('sidebar-collapsed')
+      }
+      syncMenuToggleAria()
+    }
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', handler)
+    } else if (typeof mql.addListener === 'function') {
+      mql.addListener(handler)
+    }
+    window.__sidebarMqlBound = true
+  }
+
+  // Initial state
+  if (isDesktop()) {
+    document.body.classList.toggle('sidebar-collapsed', readSavedCollapsed())
+  } else {
+    document.body.classList.remove('sidebar-collapsed')
+  }
+  syncMenuToggleAria()
 }
 
 const attachItemHandlers = (navEl) => {
@@ -129,7 +238,7 @@ export const initSidebar = (categories) => {
     if (countEl) countEl.textContent = `${total} ${t('unit.terms')}`
   })
 
-  setupMobileToggle()
+  setupSidebarToggle()
 }
 
 /**

@@ -8,12 +8,14 @@ import { renderGlossary } from './renderer.js'
 import { initSidebar, setActiveCategory } from './sidebar.js'
 import { initSearch } from './search.js'
 import { initTheme } from './theme.js'
-import { initModal } from './modal.js'
+import { initModal, openTermById } from './modal.js'
 import { initSections, getCurrentSection, getCategorySection, setSection } from './sections.js'
 import { initI18n, onLangChange, updateHero, updateIntro, updateHeroStage } from './i18n.js'
 import { initRouter, applyInitialUrlState } from './router.js'
 import { initFavorites, refreshFavoritesView } from './favoritesUi.js'
 import { initCopyHistory, refreshCopyHistoryView } from './copyHistoryUi.js'
+import { initCommandPalette, refreshPalette, openPalette } from './commandPalette.js'
+import { initHelpOverlay, openHelp } from './helpOverlay.js'
 import { slugify } from './utils.js'
 
 /**
@@ -140,6 +142,18 @@ const init = () => {
   // Recently copied list in each sidebar
   initCopyHistory(categories)
 
+  // Global Cmd/Ctrl+K command palette
+  initCommandPalette(categories, openTermById)
+
+  // ? / Shift+/ keyboard shortcut help overlay
+  initHelpOverlay()
+
+  // Header click handlers for palette + help
+  const paletteBtn = document.getElementById('open-palette')
+  if (paletteBtn) paletteBtn.addEventListener('click', () => openPalette())
+  const helpBtn = document.getElementById('open-help')
+  if (helpBtn) helpBtn.addEventListener('click', () => openHelp())
+
   // Set up back-to-top button
   setupBackToTop()
 
@@ -204,6 +218,7 @@ const init = () => {
     refreshHero(getCurrentSection())
     refreshFavoritesView(categories)
     refreshCopyHistoryView(categories)
+    refreshPalette(categories)
   })
 
   // Initial hero fill

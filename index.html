@@ -80,13 +80,22 @@
 
     <main id="main-content" class="main-content">
       <header class="main-header">
-        <button id="menu-toggle" class="menu-toggle" aria-label="メニュー">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-label="サイドバーを開閉" aria-expanded="true">
+          <svg class="icon-close-sidebar" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path d="M15 10l-2 2 2 2"/></svg>
+          <svg class="icon-open-sidebar" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/><path d="M13 10l2 2-2 2"/></svg>
         </button>
         <div class="header-info">
           <h2 id="current-section" class="current-section"></h2>
         </div>
         <div class="header-actions">
+          <button id="open-palette" class="palette-launch" type="button" data-i18n-attr="aria-label" data-i18n="cmdk.open" aria-label="コマンドパレットを開く" title="⌘K">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="palette-launch__label" data-i18n="cmdk.placeholder">パーツ・用語を検索</span>
+            <span class="palette-launch__kbd" aria-hidden="true"><kbd>⌘</kbd><kbd>K</kbd></span>
+          </button>
+          <button id="open-help" class="help-button" type="button" data-i18n-attr="aria-label" data-i18n="help.openHelp" aria-label="ヘルプを開く" title="?">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
           <button id="view-toggle" class="view-toggle" aria-label="表示切替">
             <svg class="icon-grid" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
             <svg class="icon-list" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
@@ -162,15 +171,37 @@
           <button class="term-modal-tab is-active" type="button" role="tab" aria-selected="true" data-modal-tab="preview" id="term-modal-tab-preview" data-i18n="modal.tab.preview">プレビュー</button>
           <button class="term-modal-tab" type="button" role="tab" aria-selected="false" data-modal-tab="code" id="term-modal-tab-code" data-i18n="modal.tab.code">コード</button>
         </div>
-        <div class="term-modal-demo" id="term-modal-demo" role="tabpanel" aria-labelledby="term-modal-tab-preview"></div>
+        <div class="term-modal-demo-wrap" id="term-modal-demo-wrap">
+          <div class="term-modal-viewport" id="term-modal-viewport" hidden role="group" aria-label="プレビュー画面幅">
+            <button type="button" class="term-modal-viewport-btn is-active" data-viewport="full" aria-pressed="true" title="フル幅">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
+            <button type="button" class="term-modal-viewport-btn" data-viewport="desktop" aria-pressed="false" title="PC">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </button>
+            <button type="button" class="term-modal-viewport-btn" data-viewport="tablet" aria-pressed="false" title="タブレット">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </button>
+            <button type="button" class="term-modal-viewport-btn" data-viewport="phone" aria-pressed="false" title="スマホ">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </button>
+          </div>
+          <div class="term-modal-demo" id="term-modal-demo" role="tabpanel" aria-labelledby="term-modal-tab-preview"></div>
+        </div>
         <div class="term-modal-code-panel" id="term-modal-code-panel" role="tabpanel" aria-labelledby="term-modal-tab-code" hidden>
           <div class="term-modal-code-bar">
             <span class="term-modal-code-help" id="term-modal-code-help">HTMLファイルに貼り付けるだけで使えます。</span>
-            <button type="button" class="term-modal-code-copy" id="term-modal-code-copy" aria-label="コードをコピー">
-              <svg class="icon-copy" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              <svg class="icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="term-modal-code-copy-label">コピー</span>
-            </button>
+            <div class="term-modal-code-actions">
+              <button type="button" class="term-modal-code-pen" id="term-modal-code-pen" aria-label="CodePenで開く" title="CodePenで開く">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/><polyline points="2 15.5 12 8.5 22 15.5"/><line x1="12" y1="2" x2="12" y2="8.5"/></svg>
+                <span>CodePen</span>
+              </button>
+              <button type="button" class="term-modal-code-copy" id="term-modal-code-copy" aria-label="コードをコピー">
+                <svg class="icon-copy" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="icon-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span class="term-modal-code-copy-label">コピー</span>
+              </button>
+            </div>
           </div>
           <pre class="term-modal-code-text" id="term-modal-code-text"></pre>
         </div>
