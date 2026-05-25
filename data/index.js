@@ -35,6 +35,9 @@ import { category as corpCareer } from './00z9-corp-career.js'
 import { category as siteMinimal } from './00zA-site-apple.js'
 import { category as siteDark } from './00zB-site-accenture.js'
 import { category as sitePhoto } from './00zC-site-pwc.js'
+import { category as siteAuralis } from './00zD-site-auralis.js'
+import { category as siteStitch } from './00zE-site-stitch.js'
+import { category as siteStitchHome } from './00zF-site-stitch-home.js'
 import { category as basic } from './01-basic.js'
 import { category as navigation } from './02-navigation.js'
 import { category as buttonAction } from './03-button-action.js'
@@ -98,6 +101,9 @@ export const categories = [
   siteMinimal,
   siteDark,
   sitePhoto,
+  siteAuralis,
+  siteStitch,
+  siteStitchHome,
   basic,
   navigation,
   buttonAction,
