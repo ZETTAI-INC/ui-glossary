@@ -115,12 +115,12 @@ export const category = {
     <circle cx="300" cy="22" r="3" fill="#00c805"/>
   </svg>
   <div class="ui-stk__tabs" id="ui-stk-tabs">
-    <button class="ui-stk__tab">1D</button>
-    <button class="ui-stk__tab is-active">1W</button>
-    <button class="ui-stk__tab">1M</button>
-    <button class="ui-stk__tab">3M</button>
-    <button class="ui-stk__tab">1Y</button>
-    <button class="ui-stk__tab">ALL</button>
+    <button type="button" class="ui-stk__tab">1D</button>
+    <button type="button" class="ui-stk__tab is-active">1W</button>
+    <button type="button" class="ui-stk__tab">1M</button>
+    <button type="button" class="ui-stk__tab">3M</button>
+    <button type="button" class="ui-stk__tab">1Y</button>
+    <button type="button" class="ui-stk__tab">ALL</button>
   </div>
 </div>
 
@@ -154,7 +154,7 @@ export const category = {
   <label class="ui-send__lbl">送金額</label>
   <div class="ui-send__row">
     <input class="ui-send__amt" value="1,250.00" inputmode="decimal">
-    <button class="ui-send__cur">
+    <button type="button" class="ui-send__cur">
       <span class="ui-send__flag" aria-hidden="true">🇺🇸</span>
       <span>USD</span>
       <span class="ui-send__caret">⌄</span>
@@ -163,19 +163,19 @@ export const category = {
   <div class="ui-send__fee">手数料 $4.81 · 受取人は $1,245.19 を受け取ります</div>
   <div class="ui-send__rcp-lbl">最近の送金先</div>
   <div class="ui-send__rcp">
-    <button class="ui-send__rcp-item">
+    <button type="button" class="ui-send__rcp-item">
       <span class="ui-send__av" style="background:#fde2c7;color:#9a4d10">YT</span>
       <span class="ui-send__rcp-name">Yuki T.</span>
     </button>
-    <button class="ui-send__rcp-item">
+    <button type="button" class="ui-send__rcp-item">
       <span class="ui-send__av" style="background:#d5e7ff;color:#1e3a8a">MK</span>
       <span class="ui-send__rcp-name">Maria K.</span>
     </button>
-    <button class="ui-send__rcp-item">
+    <button type="button" class="ui-send__rcp-item">
       <span class="ui-send__av" style="background:#d4f4e2;color:#0a6e3a">JP</span>
       <span class="ui-send__rcp-name">Jay P.</span>
     </button>
-    <button class="ui-send__rcp-item">
+    <button type="button" class="ui-send__rcp-item">
       <span class="ui-send__av ui-send__av--add">+</span>
       <span class="ui-send__rcp-name">新規</span>
     </button>
@@ -303,7 +303,7 @@ export const category = {
     <div class="ui-qr__logo">P</div>
   </div>
   <div class="ui-qr__bal">残高: <b>¥12,300</b></div>
-  <button class="ui-qr__refresh">↻ 更新する</button>
+  <button type="button" class="ui-qr__refresh">↻ 更新する</button>
 </div>
 
 <style>
@@ -377,22 +377,22 @@ export const category = {
   <div class="ui-fx__row">
     <div class="ui-fx__side">
       <div class="ui-fx__lbl">送る金額</div>
-      <input class="ui-fx__input" id="ui-fx-a" value="100.00">
+      <input aria-label="Input" class="ui-fx__input" id="ui-fx-a" value="100.00">
     </div>
-    <button class="ui-fx__cur">
+    <button type="button" class="ui-fx__cur">
       <span class="ui-fx__flag">🇺🇸</span>USD
     </button>
   </div>
   <div class="ui-fx__rate">
     <span>1 USD = 156.23 JPY</span>
-    <button class="ui-fx__swap" title="入れ替え">⇅</button>
+    <button type="button" class="ui-fx__swap" title="入れ替え">⇅</button>
   </div>
   <div class="ui-fx__row">
     <div class="ui-fx__side">
       <div class="ui-fx__lbl">受け取り金額</div>
-      <input class="ui-fx__input" id="ui-fx-b" value="15,623.00">
+      <input aria-label="Input" class="ui-fx__input" id="ui-fx-b" value="15,623.00">
     </div>
-    <button class="ui-fx__cur">
+    <button type="button" class="ui-fx__cur">
       <span class="ui-fx__flag">🇯🇵</span>JPY
     </button>
   </div>

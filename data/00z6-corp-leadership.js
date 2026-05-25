@@ -217,13 +217,13 @@ export const category = {
   <h2 class="ui-pchips__h">Meet our team</h2>
   <p class="ui-pchips__sub">Filter by practice area to find the right specialists for your business.</p>
   <div class="ui-pchips__bar" role="tablist">
-    <button class="ui-pchip is-active" role="tab">All <span class="ui-pchip__n">412</span></button>
-    <button class="ui-pchip" role="tab">Consulting <span class="ui-pchip__n">118</span></button>
-    <button class="ui-pchip" role="tab">Audit &amp; Assurance <span class="ui-pchip__n">96</span></button>
-    <button class="ui-pchip" role="tab">Tax &amp; Legal <span class="ui-pchip__n">72</span></button>
-    <button class="ui-pchip" role="tab">Risk Advisory <span class="ui-pchip__n">58</span></button>
-    <button class="ui-pchip" role="tab">Financial Advisory <span class="ui-pchip__n">38</span></button>
-    <button class="ui-pchip" role="tab">Technology &amp; AI <span class="ui-pchip__n">30</span></button>
+    <button type="button" class="ui-pchip is-active" role="tab">All <span class="ui-pchip__n">412</span></button>
+    <button type="button" class="ui-pchip" role="tab">Consulting <span class="ui-pchip__n">118</span></button>
+    <button type="button" class="ui-pchip" role="tab">Audit &amp; Assurance <span class="ui-pchip__n">96</span></button>
+    <button type="button" class="ui-pchip" role="tab">Tax &amp; Legal <span class="ui-pchip__n">72</span></button>
+    <button type="button" class="ui-pchip" role="tab">Risk Advisory <span class="ui-pchip__n">58</span></button>
+    <button type="button" class="ui-pchip" role="tab">Financial Advisory <span class="ui-pchip__n">38</span></button>
+    <button type="button" class="ui-pchip" role="tab">Technology &amp; AI <span class="ui-pchip__n">30</span></button>
   </div>
   <p class="ui-pchips__result">Showing <b>412</b> partners and directors across all practices</p>
 </section>
@@ -490,8 +490,8 @@ export const category = {
         <div><dt>Previously</dt><dd>Director, Wearables · 2021–2026</dd></div>
       </dl>
       <div class="ui-annc__cta">
-        <button class="ui-annc__btn ui-annc__btn--p">Read the announcement</button>
-        <button class="ui-annc__btn ui-annc__btn--s">Congratulate on LinkedIn</button>
+        <button type="button" class="ui-annc__btn ui-annc__btn--p">Read the announcement</button>
+        <button type="button" class="ui-annc__btn ui-annc__btn--s">Congratulate on LinkedIn</button>
       </div>
     </div>
   </div>

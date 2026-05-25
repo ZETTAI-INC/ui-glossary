@@ -19,19 +19,19 @@ export const category = {
       code: `/* Inspired by Instagram */
 <div class="ui-tab-bar-phone">
   <nav class="ui-tab-bar">
-    <button class="ui-tab-bar__item is-active">
+    <button type="button" class="ui-tab-bar__item is-active">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="#000"><path d="M22 9.2v12.3a1 1 0 01-1 1h-5.6a.5.5 0 01-.5-.5v-7.5a.5.5 0 00-.5-.5h-4.8a.5.5 0 00-.5.5v7.5a.5.5 0 01-.5.5H3a1 1 0 01-1-1V9.2a1 1 0 01.4-.8l9-7a1 1 0 011.2 0l9 7a1 1 0 01.4.8z"/></svg>
     </button>
-    <button class="ui-tab-bar__item">
+    <button type="button" class="ui-tab-bar__item">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#000" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
     </button>
-    <button class="ui-tab-bar__item">
+    <button type="button" class="ui-tab-bar__item">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#000" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
     </button>
-    <button class="ui-tab-bar__item">
+    <button type="button" class="ui-tab-bar__item">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#000" stroke-width="1.8" stroke-linejoin="round"><polygon points="3 3 21 12 3 21 3 14 13 12 3 10 3 3"/></svg>
     </button>
-    <button class="ui-tab-bar__item ui-tab-bar__item--avatar">
+    <button type="button" class="ui-tab-bar__item ui-tab-bar__item--avatar">
       <span class="ui-tab-bar__avatar">M</span>
     </button>
   </nav>
@@ -66,11 +66,11 @@ export const category = {
 <div class="ui-app-bar-phone">
   <div class="ui-app-bar__status"><span>9:41</span><span>●●● 5G ▮</span></div>
   <header class="ui-app-bar">
-    <button class="ui-app-bar__menu" aria-label="menu">
+    <button type="button" class="ui-app-bar__menu" aria-label="menu">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#5f6368" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-    <input class="ui-app-bar__search" placeholder="Search in mail">
-    <button class="ui-app-bar__avatar">y</button>
+    <input aria-label="Search in mail" class="ui-app-bar__search" placeholder="Search in mail">
+    <button type="button" class="ui-app-bar__avatar">y</button>
   </header>
   <div class="ui-app-bar__sub">
     <span class="ui-app-bar__inbox">Inbox</span>
@@ -109,15 +109,15 @@ export const category = {
         <span class="ui-action-sheet__quote-text">Are we still on for dinner at 7?</span>
       </div>
       <div class="ui-action-sheet__reactions">
-        <button>❤️</button><button>😂</button><button>😮</button><button>😢</button><button>🙏</button><button>+</button>
+        <button type="button">❤️</button><button type="button">😂</button><button type="button">😮</button><button type="button">😢</button><button type="button">🙏</button><button type="button">+</button>
       </div>
       <div class="ui-action-sheet__group">
-        <button class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 17l-5-5 5-5"/><path d="M20 18v-2a4 4 0 00-4-4H4"/></svg><span>Reply</span></button>
-        <button class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V4a2 2 0 012-2h11"/></svg><span>Copy</span></button>
-        <button class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2"/></svg><span>Star</span></button>
-        <button class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M15 17l5-5-5-5"/><path d="M4 18v-2a4 4 0 014-4h12"/></svg><span>Forward</span></button>
-        <button class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><span>Share</span></button>
-        <button class="ui-action-sheet__item ui-action-sheet__item--danger"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff453a" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Delete</span></button>
+        <button type="button" class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 17l-5-5 5-5"/><path d="M20 18v-2a4 4 0 00-4-4H4"/></svg><span>Reply</span></button>
+        <button type="button" class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V4a2 2 0 012-2h11"/></svg><span>Copy</span></button>
+        <button type="button" class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2"/></svg><span>Star</span></button>
+        <button type="button" class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M15 17l5-5-5-5"/><path d="M4 18v-2a4 4 0 014-4h12"/></svg><span>Forward</span></button>
+        <button type="button" class="ui-action-sheet__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><span>Share</span></button>
+        <button type="button" class="ui-action-sheet__item ui-action-sheet__item--danger"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff453a" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg><span>Delete</span></button>
       </div>
     </div>
   </div>
@@ -153,7 +153,7 @@ export const category = {
     <div class="ui-bottom-sheet-pin"></div>
   </div>
   <section class="ui-bottom-sheet" id="bs" data-state="half">
-    <button class="ui-bottom-sheet__handle" id="bsHandle"></button>
+    <button type="button" class="ui-bottom-sheet__handle" id="bsHandle"></button>
     <div class="ui-bottom-sheet__body">
       <div class="ui-bottom-sheet__row">
         <span class="ui-bottom-sheet__dot ui-bottom-sheet__dot--green"></span>
@@ -175,7 +175,7 @@ export const category = {
         <div class="ui-bottom-sheet__ride-info"><strong>Comfort <span>· 6 mins away</span></strong><small>Newer cars with extra legroom</small></div>
         <span class="ui-bottom-sheet__price">¥2,310</span>
       </div>
-      <button class="ui-bottom-sheet__cta">Choose UberX</button>
+      <button type="button" class="ui-bottom-sheet__cta">Choose UberX</button>
     </div>
   </section>
 </div>
@@ -227,13 +227,13 @@ export const category = {
       code: `/* Inspired by Spotify */
 <div class="ui-pills-wrap">
   <div class="ui-pills" role="group">
-    <button class="ui-pill is-active">All</button>
-    <button class="ui-pill">Music</button>
-    <button class="ui-pill">Podcasts &amp; Shows</button>
-    <button class="ui-pill">Audiobooks</button>
-    <button class="ui-pill">Episodes</button>
-    <button class="ui-pill">Playlists</button>
-    <button class="ui-pill">Artists</button>
+    <button type="button" class="ui-pill is-active">All</button>
+    <button type="button" class="ui-pill">Music</button>
+    <button type="button" class="ui-pill">Podcasts &amp; Shows</button>
+    <button type="button" class="ui-pill">Audiobooks</button>
+    <button type="button" class="ui-pill">Episodes</button>
+    <button type="button" class="ui-pill">Playlists</button>
+    <button type="button" class="ui-pill">Artists</button>
   </div>
   <div class="ui-pills__chip-row">
     <span class="ui-pills__chip">
@@ -284,7 +284,7 @@ export const category = {
     <div class="ui-cmdp__panel">
       <div class="ui-cmdp__search">
         <span class="ui-cmdp__breadcrumb">ENG-2341</span>
-        <input id="cpInput" type="text" placeholder="Type a command or search...">
+        <input aria-label="Type a command or search..." id="cpInput" type="text" placeholder="Type a command or search...">
       </div>
       <ul class="ui-cmdp__list">
         <li class="ui-cmdp__group">Suggestions</li>
@@ -408,11 +408,11 @@ export const category = {
   <header class="ui-notif__head">
     <h3>Inbox</h3>
     <div class="ui-notif__tabs">
-      <button class="is-active">Inbox <span>14</span></button>
-      <button>Saved</button>
-      <button>Done</button>
+      <button type="button" class="is-active">Inbox <span>14</span></button>
+      <button type="button">Saved</button>
+      <button type="button">Done</button>
     </div>
-    <button class="ui-notif__readall">✓ Mark all as done</button>
+    <button type="button" class="ui-notif__readall">✓ Mark all as done</button>
   </header>
   <ul class="ui-notif__list">
     <li class="ui-notif__item is-unread">

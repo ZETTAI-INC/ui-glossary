@@ -53,11 +53,11 @@ export const category = {
       code: `<!-- Inspired by X (Twitter) profile tabs -->
 <div class="ui-tabs" id="tabs">
   <nav class="ui-tabs__list" role="tablist">
-    <button class="ui-tabs__tab is-active" role="tab" data-target="t1">Posts</button>
-    <button class="ui-tabs__tab" role="tab" data-target="t2">Replies</button>
-    <button class="ui-tabs__tab" role="tab" data-target="t3">Highlights</button>
-    <button class="ui-tabs__tab" role="tab" data-target="t4">Media</button>
-    <button class="ui-tabs__tab" role="tab" data-target="t5">Likes</button>
+    <button type="button" class="ui-tabs__tab is-active" role="tab" data-target="t1">Posts</button>
+    <button type="button" class="ui-tabs__tab" role="tab" data-target="t2">Replies</button>
+    <button type="button" class="ui-tabs__tab" role="tab" data-target="t3">Highlights</button>
+    <button type="button" class="ui-tabs__tab" role="tab" data-target="t4">Media</button>
+    <button type="button" class="ui-tabs__tab" role="tab" data-target="t5">Likes</button>
   </nav>
   <section class="ui-tabs__panel is-active" id="t1">
     <p><b>Jay Park</b> @jaypark · 2h<br>Shipped the new compose box today. 3 weeks of dogfooding, 47 internal bug reports, finally feels right.</p>
@@ -104,7 +104,7 @@ export const category = {
 <article class="ui-card">
   <div class="ui-card__media">
     <div class="ui-card__photo" style="background:linear-gradient(135deg,#f8d3a5 0%,#e5805a 55%,#b34a3e 100%)"></div>
-    <button class="ui-card__heart" aria-label="Save">
+    <button type="button" class="ui-card__heart" aria-label="Save">
       <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M16 28C8 22 3 17.7 3 12.2 3 8.2 6.2 5 10.2 5c2.4 0 4.6 1.2 5.8 3 1.2-1.8 3.4-3 5.8-3C25.8 5 29 8.2 29 12.2 29 17.7 24 22 16 28z" fill="rgba(0,0,0,.5)" stroke="#fff" stroke-width="2"/></svg>
     </button>
     <span class="ui-card__badge">Guest favorite</span>
@@ -226,7 +226,7 @@ export const category = {
   <div class="ui-rating-card__count">14.2K Ratings</div>
   <div class="ui-rating-card__tap" id="rating">
     <div class="ui-rating-card__stars">
-      <button data-v="1" aria-label="1">★</button><button data-v="2" aria-label="2">★</button><button data-v="3" aria-label="3">★</button><button data-v="4" aria-label="4">★</button><button data-v="5" aria-label="5">★</button>
+      <button type="button" data-v="1" aria-label="1">★</button><button type="button" data-v="2" aria-label="2">★</button><button type="button" data-v="3" aria-label="3">★</button><button type="button" data-v="4" aria-label="4">★</button><button type="button" data-v="5" aria-label="5">★</button>
     </div>
     <div class="ui-rating-card__hint" id="rText">Tap to Rate</div>
   </div>

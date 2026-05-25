@@ -245,7 +245,7 @@ export const category = {
   </button>
   <div class="ui-bp__pop">
     <div class="ui-bp__head">Switch branches/tags</div>
-    <input class="ui-bp__search" placeholder="Find a branch...">
+    <input aria-label="Find a branch..." class="ui-bp__search" placeholder="Find a branch...">
     <ul class="ui-bp__list">
       <li class="is-current"><span class="ui-bp__check">✓</span>main<span class="ui-bp__tag">default</span></li>
       <li><span class="ui-bp__check"></span>develop</li>

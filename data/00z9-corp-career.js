@@ -37,7 +37,7 @@ export const category = {
   </div>
   <div class="ui-jcard__foot">
     <span class="ui-jcard__posted">Posted 3 days ago</span>
-    <button class="ui-jcard__apply">Apply</button>
+    <button type="button" class="ui-jcard__apply">Apply</button>
   </div>
 </article>
 
@@ -465,7 +465,7 @@ export const category = {
     </ul>
     <div class="ui-intern__foot">
       <span class="ui-intern__deadline">⏰ Apply by <b>Jan 31, 2026</b></span>
-      <button class="ui-intern__cta">Apply now</button>
+      <button type="button" class="ui-intern__cta">Apply now</button>
     </div>
   </div>
 </article>

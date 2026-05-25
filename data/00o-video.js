@@ -76,16 +76,16 @@ export const category = {
   <div class="ui-vp-bar">
     <div class="ui-vp-scrub"><div class="ui-vp-scrub__buf"></div><div class="ui-vp-scrub__fill"></div><div class="ui-vp-scrub__knob"></div></div>
     <div class="ui-vp-row">
-      <button class="ui-vp-btn" aria-label="Play">▶</button>
-      <button class="ui-vp-btn" aria-label="Next">⏭</button>
-      <button class="ui-vp-btn" aria-label="Mute">🔊</button>
+      <button type="button" class="ui-vp-btn" aria-label="Play">▶</button>
+      <button type="button" class="ui-vp-btn" aria-label="Next">⏭</button>
+      <button type="button" class="ui-vp-btn" aria-label="Mute">🔊</button>
       <div class="ui-vp-vol"><div class="ui-vp-vol__fill"></div></div>
       <span class="ui-vp-time">3:42 / 12:34</span>
       <span class="ui-vp-spacer"></span>
-      <button class="ui-vp-btn" aria-label="Captions">CC</button>
-      <button class="ui-vp-btn" aria-label="Settings">⚙</button>
-      <button class="ui-vp-btn" aria-label="Picture in picture">⧉</button>
-      <button class="ui-vp-btn" aria-label="Fullscreen">⛶</button>
+      <button type="button" class="ui-vp-btn" aria-label="Captions">CC</button>
+      <button type="button" class="ui-vp-btn" aria-label="Settings">⚙</button>
+      <button type="button" class="ui-vp-btn" aria-label="Picture in picture">⧉</button>
+      <button type="button" class="ui-vp-btn" aria-label="Fullscreen">⛶</button>
     </div>
   </div>
 </div>
@@ -148,7 +148,7 @@ export const category = {
       detailEn: 'Tap the gear and this resolution menu slides up. It lists choices like "2160p 4K", "1440p", "1080p HD", "720p", and "Auto", with a check mark on the current selection. Tiny "4K" or "HD" badges at the end of each row signal the bandwidth trade-off at a glance. YouTube, Netflix, and Vimeo all use a near-identical layout because it works: it puts the viewer in control of how much data they are spending on this stream.',
       code: `<!-- Inspired by YouTube -->
 <div class="ui-qp">
-  <header class="ui-qp__hd"><button class="ui-qp__back">‹</button><span>Quality</span></header>
+  <header class="ui-qp__hd"><button type="button" class="ui-qp__back">‹</button><span>Quality</span></header>
   <ul class="ui-qp__list" role="radiogroup">
     <li role="radio" aria-checked="false"><span class="ui-qp__mark"></span>2160p<span class="ui-qp__badge ui-qp__badge--4k">4K</span></li>
     <li role="radio" aria-checked="false"><span class="ui-qp__mark"></span>1440p<span class="ui-qp__badge">HD</span></li>
@@ -400,13 +400,13 @@ export const category = {
     <ul class="ui-tt__rail">
       <li class="ui-tt__user">
         <div class="ui-tt__avatar">K</div>
-        <button class="ui-tt__plus" aria-label="Follow">+</button>
+        <button type="button" class="ui-tt__plus" aria-label="Follow">+</button>
       </li>
-      <li><button class="ui-tt__act ui-tt__act--like is-on" aria-pressed="true"><span class="ui-tt__icon">❤</span></button><span class="ui-tt__cnt">1.2M</span></li>
-      <li><button class="ui-tt__act"><span class="ui-tt__icon">💬</span></button><span class="ui-tt__cnt">8,431</span></li>
-      <li><button class="ui-tt__act"><span class="ui-tt__icon">🔖</span></button><span class="ui-tt__cnt">42K</span></li>
-      <li><button class="ui-tt__act"><span class="ui-tt__icon">↪</span></button><span class="ui-tt__cnt">Share</span></li>
-      <li><button class="ui-tt__disc" aria-label="Spinning disc"><span>♬</span></button></li>
+      <li><button type="button" class="ui-tt__act ui-tt__act--like is-on" aria-pressed="true"><span class="ui-tt__icon">❤</span></button><span class="ui-tt__cnt">1.2M</span></li>
+      <li><button type="button" class="ui-tt__act"><span class="ui-tt__icon">💬</span></button><span class="ui-tt__cnt">8,431</span></li>
+      <li><button type="button" class="ui-tt__act"><span class="ui-tt__icon">🔖</span></button><span class="ui-tt__cnt">42K</span></li>
+      <li><button type="button" class="ui-tt__act"><span class="ui-tt__icon">↪</span></button><span class="ui-tt__cnt">Share</span></li>
+      <li><button type="button" class="ui-tt__disc" aria-label="Spinning disc"><span>♬</span></button></li>
     </ul>
   </div>
 </div>

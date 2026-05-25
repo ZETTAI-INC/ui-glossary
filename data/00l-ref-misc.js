@@ -34,7 +34,7 @@ export const category = {
       <span class="ui-pcard__list">List: <s>$399.99</s></span>
     </div>
     <div class="ui-pcard__prime"><b>prime</b> FREE delivery <strong>Thu, May 23</strong></div>
-    <button class="ui-pcard__cta">Add to cart</button>
+    <button type="button" class="ui-pcard__cta">Add to cart</button>
   </div>
 </article>
 
@@ -93,15 +93,15 @@ export const category = {
     </li>
   </ul>
   <div class="ui-cart__promo">
-    <input placeholder="Discount code or gift card">
-    <button>Apply</button>
+    <input aria-label="Discount code or gift card" placeholder="Discount code or gift card">
+    <button type="button">Apply</button>
   </div>
   <dl class="ui-cart__sum">
     <div><dt>Subtotal</dt><dd>$112.00</dd></div>
     <div><dt>Shipping</dt><dd class="muted">Calculated at next step</dd></div>
     <div class="total"><dt>Total <span>USD</span></dt><dd>$112.00</dd></div>
   </dl>
-  <button class="ui-cart__checkout">Continue to shipping</button>
+  <button type="button" class="ui-cart__checkout">Continue to shipping</button>
 </section>
 
 <style>
@@ -162,7 +162,7 @@ export const category = {
       </div>
     </div>
     <div class="ui-rating__stars" id="rt">
-      <button>★</button><button>★</button><button>★</button><button>★</button><button>★</button>
+      <button type="button">★</button><button type="button">★</button><button type="button">★</button><button type="button">★</button><button type="button">★</button>
     </div>
     <p>The loft was even better than the photos. Sofia's tips for the neighborhood made our stay feel local — would book again in a heartbeat.</p>
   </article>
@@ -213,15 +213,15 @@ export const category = {
   <h3 class="ui-theme__h">Appearance</h3>
   <p class="ui-theme__sub">Customize how Notion looks on your device.</p>
   <div class="ui-theme__opts">
-    <button class="ui-theme__opt active" data-mode="light">
+    <button type="button" class="ui-theme__opt active" data-mode="light">
       <div class="ui-theme__preview light"><span></span><span></span></div>
       <span>Light</span>
     </button>
-    <button class="ui-theme__opt" data-mode="dark">
+    <button type="button" class="ui-theme__opt" data-mode="dark">
       <div class="ui-theme__preview dark"><span></span><span></span></div>
       <span>Dark</span>
     </button>
-    <button class="ui-theme__opt" data-mode="system">
+    <button type="button" class="ui-theme__opt" data-mode="system">
       <div class="ui-theme__preview system"><span></span><span></span></div>
       <span>Use system setting</span>
     </button>
@@ -231,7 +231,7 @@ export const category = {
       <div class="ui-theme__label">Open links in the desktop app</div>
       <div class="ui-theme__hint">Notion links open in the app instead of browser.</div>
     </div>
-    <button class="ui-theme__sw on" aria-pressed="true"><i></i></button>
+    <button type="button" class="ui-theme__sw on" aria-pressed="true"><i></i></button>
   </div>
 </div>
 
@@ -288,7 +288,7 @@ export const category = {
     <span class="ui-dnd__dot in-progress"></span>
     <h3>In Progress</h3>
     <span class="ui-dnd__count">4</span>
-    <button class="ui-dnd__add">+</button>
+    <button type="button" class="ui-dnd__add">+</button>
   </div>
   <ul class="ui-dnd__list" id="dnd">
     <li draggable="true"><span class="ui-dnd__id">ENG-241</span><span class="ui-dnd__title">Fix flickering when switching workspaces</span><span class="ui-dnd__pri high"></span></li>
@@ -406,9 +406,9 @@ export const category = {
     <div class="ui-resp__dots"><i></i><i></i><i></i></div>
     <div class="ui-resp__url">commerce-template-git-main.vercel.app</div>
     <div class="ui-resp__sizes">
-      <button class="active" data-w="375"><span>📱</span> 375</button>
-      <button data-w="768"><span>📋</span> 768</button>
-      <button data-w="1280"><span>🖥</span> 1280</button>
+      <button type="button" class="active" data-w="375"><span>📱</span> 375</button>
+      <button type="button" data-w="768"><span>📋</span> 768</button>
+      <button type="button" data-w="1280"><span>🖥</span> 1280</button>
     </div>
   </div>
   <div class="ui-resp__stage">
@@ -417,7 +417,7 @@ export const category = {
       <div class="ui-resp__hero">
         <h1>Build with the tools you love.</h1>
         <p>Ship faster on the platform for frontend developers.</p>
-        <button>Start Deploying</button>
+        <button type="button">Start Deploying</button>
       </div>
       <div class="ui-resp__grid"><div></div><div></div><div></div></div>
     </div>
@@ -471,18 +471,18 @@ export const category = {
   <header>
     <div class="ui-ig__avatar"></div>
     <div class="ui-ig__user"><strong>sora.kitchen</strong><small>Tokyo, Japan</small></div>
-    <button class="ui-ig__more">⋯</button>
+    <button type="button" class="ui-ig__more">⋯</button>
   </header>
   <div class="ui-ig__photo" id="ph">
     <div class="ui-ig__heart" id="bigHeart">♥</div>
   </div>
   <div class="ui-ig__actions">
-    <button class="ui-ig__like" id="lk" aria-pressed="false">
+    <button type="button" class="ui-ig__like" id="lk" aria-pressed="false">
       <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 21s-7-4.5-9.3-9.1C1 8 3 4 6.5 4c2 0 3.5 1 5.5 3.3C14 5 15.5 4 17.5 4 21 4 23 8 21.3 11.9 19 16.5 12 21 12 21z"/></svg>
     </button>
-    <button class="ui-ig__btn"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></button>
-    <button class="ui-ig__btn"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
-    <button class="ui-ig__btn save"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+    <button type="button" class="ui-ig__btn"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></button>
+    <button type="button" class="ui-ig__btn"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+    <button type="button" class="ui-ig__btn save"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
   </div>
   <div class="ui-ig__likes" id="ct">Liked by <strong>mei_o</strong> and <strong>2,481 others</strong></div>
   <div class="ui-ig__caption"><strong>sora.kitchen</strong> finally nailed the miso-cured egg yolks 🌕 recipe up tomorrow</div>
@@ -540,20 +540,20 @@ export const category = {
       descEn: 'An overlay listing available keyboard shortcuts.',
       detailEn: 'A keyboard shortcuts dialog is an overlay that lists every shortcut the app supports — say Ctrl+K to search or ? to open help. Many productivity SaaS apps (Slack, Linear, Notion) follow the convention of opening it with the "?" key, a quiet nod to power users. Grouping shortcuts by category and rendering each key as a "kbd" chip improves scannability. A nice side effect is discoverability: users learn shortcuts exist by stumbling on the list.',
       code: `/* Inspired by Linear */
-<button class="ui-trigger" onclick="document.getElementById('ks').showModal()">Show keyboard shortcuts <kbd>?</kbd></button>
+<button type="button" class="ui-trigger" onclick="document.getElementById('ks').showModal()">Show keyboard shortcuts <kbd>?</kbd></button>
 
 <dialog id="ks" class="ui-kbd">
   <header>
     <h2>Keyboard shortcuts</h2>
-    <input placeholder="Search shortcuts…" class="ui-kbd__search">
-    <button class="ui-kbd__close" onclick="document.getElementById('ks').close()">esc</button>
+    <input aria-label="Search shortcuts…" placeholder="Search shortcuts…" class="ui-kbd__search">
+    <button type="button" class="ui-kbd__close" onclick="document.getElementById('ks').close()">esc</button>
   </header>
   <div class="ui-kbd__body">
     <aside>
-      <button class="active">Navigation</button>
-      <button>Issue</button>
-      <button>Views</button>
-      <button>Application</button>
+      <button type="button" class="active">Navigation</button>
+      <button type="button">Issue</button>
+      <button type="button">Views</button>
+      <button type="button">Application</button>
     </aside>
     <section>
       <h3>Navigation</h3>
@@ -671,9 +671,9 @@ export const category = {
   <h1>Create your Vercel account</h1>
   <p class="ui-su__sub">Continue with your work email — we recommend GitHub for faster setup.</p>
   <div class="ui-su__providers">
-    <button><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.5 15.6c.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1-2.7-1-.4-1-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.5.8-2.1 0-.2-.4-1 .1-2.2 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3-1.8 3.6-3.6 3.8.3.2.6.7.6 1.4v2.2c0 .2.1.5.5.4A8 8 0 0 0 8 0z"/></svg> Continue with GitHub</button>
-    <button>Continue with GitLab</button>
-    <button>Continue with Bitbucket</button>
+    <button type="button"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 0a8 8 0 0 0-2.5 15.6c.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1-2.7-1-.4-1-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.5.8-2.1 0-.2-.4-1 .1-2.2 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3-1.8 3.6-3.6 3.8.3.2.6.7.6 1.4v2.2c0 .2.1.5.5.4A8 8 0 0 0 8 0z"/></svg> Continue with GitHub</button>
+    <button type="button">Continue with GitLab</button>
+    <button type="button">Continue with Bitbucket</button>
   </div>
   <div class="ui-su__sep"><span>OR</span></div>
   <form class="ui-su__form" onsubmit="event.preventDefault()">
@@ -681,9 +681,9 @@ export const category = {
       <input type="email" placeholder="you@company.com" required>
     </label>
     <label>Password
-      <input type="password" id="pw" placeholder="At least 8 characters" required minlength="8">
-      <div class="ui-su__meter"><div id="pwBar"></div></div>
-      <small id="pwHint">Use a mix of letters, numbers, and symbols.</small>
+      <input type="password" id="suPw" placeholder="At least 8 characters" required minlength="8">
+      <div class="ui-su__meter"><div id="suPwBar"></div></div>
+      <small id="suPwHint">Use a mix of letters, numbers, and symbols.</small>
     </label>
     <label class="ui-su__tos">
       <input type="checkbox" required>
@@ -723,7 +723,7 @@ export const category = {
 </style>
 
 <script>
-  const pw=document.getElementById('pw'),bar=document.getElementById('pwBar'),hint=document.getElementById('pwHint');
+  const pw=document.getElementById('suPw'),bar=document.getElementById('suPwBar'),hint=document.getElementById('suPwHint');
   pw.addEventListener('input',()=>{
     let s=0;
     if(pw.value.length>=8)s++;
@@ -747,8 +747,8 @@ export const category = {
 <div class="ui-404">
   <header class="ui-404__nav">
     <svg viewBox="0 0 16 16" width="32" height="32" fill="#fff"><path d="M8 0a8 8 0 0 0-2.5 15.6c.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1-2.7-1-.4-1-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8 0 1.2.8 1.2.8.7 1.2 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.5.8-2.1 0-.2-.4-1 .1-2.2 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 2 .1 2.2.5.6.8 1.2.8 2.1 0 3-1.8 3.6-3.6 3.8.3.2.6.7.6 1.4v2.2c0 .2.1.5.5.4A8 8 0 0 0 8 0z"/></svg>
-    <input type="search" placeholder="Search or jump to…">
-    <button class="ui-404__signin">Sign in</button>
+    <input aria-label="Search or jump to…" type="search" placeholder="Search or jump to…">
+    <button type="button" class="ui-404__signin">Sign in</button>
   </header>
   <main class="ui-404__main">
     <pre class="ui-404__ascii">    ____ __  __
@@ -821,7 +821,7 @@ export const category = {
   <span class="t">15:23:52</span> <span class="r">  at lib/cart.ts:24:18</span>
   <span class="t">15:23:53</span> <span class="r">Error: Command "next build" exited with 1</span></pre>
     <div class="ui-err__actions">
-      <button class="ui-err__btn">Redeploy</button>
+      <button type="button" class="ui-err__btn">Redeploy</button>
       <a href="#" class="ui-err__btn ghost">View Build Logs</a>
       <a href="#" class="ui-err__btn ghost">Visit Docs</a>
     </div>
@@ -891,8 +891,8 @@ export const category = {
       </div>
     </div>
     <div class="ui-maint__sub">
-      <input placeholder="email@example.com">
-      <button>Subscribe to updates</button>
+      <input aria-label="email@example.com" placeholder="email@example.com">
+      <button type="button">Subscribe to updates</button>
     </div>
   </main>
 </div>
@@ -936,10 +936,10 @@ export const category = {
     <p>We use optional cookies to improve your experience on our website, including to analyze usage and measure marketing effectiveness. <a href="#">Read our Privacy Statement</a> and <a href="#">Cookie Policy</a> to learn more.</p>
   </div>
   <div class="ui-cookie__actions">
-    <button class="ui-cookie__btn primary" onclick="document.getElementById('ck').remove()">Accept</button>
-    <button class="ui-cookie__btn" onclick="document.getElementById('ck').remove()">Reject</button>
-    <button class="ui-cookie__btn" onclick="document.getElementById('ck').classList.toggle('open')">Manage cookies ▾</button>
-    <button class="ui-cookie__close" onclick="document.getElementById('ck').remove()" aria-label="Close">✕</button>
+    <button type="button" class="ui-cookie__btn primary" onclick="document.getElementById('ck').remove()">Accept</button>
+    <button type="button" class="ui-cookie__btn" onclick="document.getElementById('ck').remove()">Reject</button>
+    <button type="button" class="ui-cookie__btn" onclick="document.getElementById('ck').classList.toggle('open')">Manage cookies ▾</button>
+    <button type="button" class="ui-cookie__close" onclick="document.getElementById('ck').remove()" aria-label="Close">✕</button>
   </div>
   <div class="ui-cookie__panel">
     <div class="ui-cookie__row">
@@ -954,17 +954,17 @@ export const category = {
         <strong>Analytics</strong>
         <p>Help us understand how visitors interact with the site.</p>
       </div>
-      <button class="ui-cookie__sw on" onclick="this.classList.toggle('on')"><i></i></button>
+      <button type="button" class="ui-cookie__sw on" onclick="this.classList.toggle('on')"><i></i></button>
     </div>
     <div class="ui-cookie__row">
       <div>
         <strong>Marketing</strong>
         <p>Used to deliver advertisements more relevant to you.</p>
       </div>
-      <button class="ui-cookie__sw" onclick="this.classList.toggle('on')"><i></i></button>
+      <button type="button" class="ui-cookie__sw" onclick="this.classList.toggle('on')"><i></i></button>
     </div>
     <div class="ui-cookie__save">
-      <button onclick="document.getElementById('ck').remove()">Save preferences</button>
+      <button type="button" onclick="document.getElementById('ck').remove()">Save preferences</button>
     </div>
   </div>
 </div>

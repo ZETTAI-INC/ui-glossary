@@ -166,8 +166,8 @@ export const category = {
 <div class="ui-bt">
   <div class="ui-bt__head">Pricing</div>
   <div class="ui-bt__toggle" id="btToggle">
-    <button class="ui-bt__opt is-active" data-v="m">Monthly</button>
-    <button class="ui-bt__opt" data-v="y">Yearly<span class="ui-bt__chip">Save 20%</span></button>
+    <button type="button" class="ui-bt__opt is-active" data-v="m">Monthly</button>
+    <button type="button" class="ui-bt__opt" data-v="y">Yearly<span class="ui-bt__chip">Save 20%</span></button>
   </div>
   <div class="ui-bt__cards">
     <div class="ui-bt__card">
@@ -427,12 +427,12 @@ export const category = {
   </div>
   <div class="ui-calc__row">
     <div class="ui-calc__lbl">Users</div>
-    <input type="range" min="1" max="100" value="12" class="ui-calc__sl" id="calcU">
+    <input aria-label="Input" type="range" min="1" max="100" value="12" class="ui-calc__sl" id="calcU">
     <div class="ui-calc__val" id="calcUV">12</div>
   </div>
   <div class="ui-calc__row">
     <div class="ui-calc__lbl">Storage (GB)</div>
-    <input type="range" min="10" max="1000" step="10" value="200" class="ui-calc__sl" id="calcS">
+    <input aria-label="Input" type="range" min="10" max="1000" step="10" value="200" class="ui-calc__sl" id="calcS">
     <div class="ui-calc__val" id="calcSV">200</div>
   </div>
   <div class="ui-calc__break">
@@ -489,9 +489,9 @@ export const category = {
   <div class="ui-seat__qrow">
     <div class="ui-seat__qlbl">Number of members</div>
     <div class="ui-seat__step">
-      <button class="ui-seat__btn" id="seatMinus">−</button>
-      <input class="ui-seat__inp" id="seatQty" type="text" value="12">
-      <button class="ui-seat__btn" id="seatPlus">+</button>
+      <button type="button" class="ui-seat__btn" id="seatMinus">−</button>
+      <input aria-label="Input" class="ui-seat__inp" id="seatQty" type="text" value="12">
+      <button type="button" class="ui-seat__btn" id="seatPlus">+</button>
     </div>
   </div>
   <div class="ui-seat__line"></div>

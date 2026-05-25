@@ -135,9 +135,9 @@ export const category = {
     <p class="ui-cookie__txt">We use cookies and similar technologies to deliver our services, analyze traffic, and personalize content. By clicking "Accept all", you consent to our use of cookies. <a href="#">Privacy Statement</a></p>
   </div>
   <div class="ui-cookie__actions">
-    <button class="ui-cookie__btn ui-cookie__btn--ghost">Reject all</button>
-    <button class="ui-cookie__btn ui-cookie__btn--ghost">Customize</button>
-    <button class="ui-cookie__btn ui-cookie__btn--primary">Accept all</button>
+    <button type="button" class="ui-cookie__btn ui-cookie__btn--ghost">Reject all</button>
+    <button type="button" class="ui-cookie__btn ui-cookie__btn--ghost">Customize</button>
+    <button type="button" class="ui-cookie__btn ui-cookie__btn--primary">Accept all</button>
   </div>
 </div>
 
@@ -167,7 +167,7 @@ export const category = {
 <div class="ui-cprefs">
   <header class="ui-cprefs__head">
     <h3>Cookie Preferences</h3>
-    <button class="ui-cprefs__close" aria-label="Close">&times;</button>
+    <button type="button" class="ui-cprefs__close" aria-label="Close">&times;</button>
   </header>
   <p class="ui-cprefs__intro">Manage your cookie choices below. You can change these settings at any time.</p>
   <div class="ui-cprefs__list">
@@ -204,8 +204,8 @@ export const category = {
     </label>
   </div>
   <footer class="ui-cprefs__foot">
-    <button class="ui-cprefs__btn ui-cprefs__btn--ghost">Reject all</button>
-    <button class="ui-cprefs__btn ui-cprefs__btn--primary">Save preferences</button>
+    <button type="button" class="ui-cprefs__btn ui-cprefs__btn--ghost">Reject all</button>
+    <button type="button" class="ui-cprefs__btn ui-cprefs__btn--primary">Save preferences</button>
   </footer>
 </div>
 
@@ -245,7 +245,7 @@ export const category = {
       detailEn: 'A region and language selector lets users on a global site switch into their own country and language. Apple and Microsoft both anchor a small trigger to the very bottom of the footer — something like "🌐 United States (English)" — that opens a flag-prefixed list of countries with a language sub-list. The control sits low and unobtrusive, but because picking the right locale is so important for the user, the text color is usually a notch darker than ordinary footer text so it stays findable.',
       code: `<!-- Inspired by Apple -->
 <div class="ui-region">
-  <button class="ui-region__trigger" id="rgtrig">
+  <button type="button" class="ui-region__trigger" id="rgtrig">
     <span class="ui-region__globe">🌐</span>
     <span>United States</span>
     <span class="ui-region__sep">|</span>
@@ -307,7 +307,7 @@ export const category = {
     <h4 class="ui-nlf__h">Subscribe to our newsletter</h4>
     <p class="ui-nlf__sub">Get product updates, engineering deep-dives, and community stories — once a month.</p>
     <form class="ui-nlf__form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed ✓'">
-      <input type="email" class="ui-nlf__input" placeholder="you@example.com" required>
+      <input aria-label="you@example.com" type="email" class="ui-nlf__input" placeholder="you@example.com" required>
       <button type="submit" class="ui-nlf__btn">Subscribe</button>
     </form>
     <p class="ui-nlf__note">We respect your inbox. Unsubscribe at any time. <a href="#">Privacy Policy</a></p>
@@ -530,7 +530,7 @@ export const category = {
       code: `<!-- Inspired by Accenture -->
 <div class="ui-btt-stage">
   <div class="ui-btt-stage__hint">↓ scroll, then click the corner button ↓</div>
-  <button class="ui-btt" id="btt" aria-label="Back to top">
+  <button type="button" class="ui-btt" id="btt" aria-label="Back to top">
     <span class="ui-btt__arrow">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
     </span>

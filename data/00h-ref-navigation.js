@@ -18,19 +18,19 @@ export const category = {
       detailEn: 'A tab bar sits permanently at the bottom of a mobile app, showing three to five icon-and-label tabs for the app\'s main sections — home, search, notifications, profile, and the like. One tap jumps between top-level destinations, and the currently active tab is highlighted so users never get lost. Placing it at the bottom keeps it within easy thumb reach for one-handed use. It is the default pattern in almost every modern mobile app, from Instagram and X to Apple\'s own system apps.',
       code: `/* Inspired by Instagram */
 <nav class="ui-tabbar" aria-label="Instagram bottom nav">
-  <button class="ui-tabbar__item ui-tabbar__item--active" aria-label="Home">
+  <button type="button" class="ui-tabbar__item ui-tabbar__item--active" aria-label="Home">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
   </button>
-  <button class="ui-tabbar__item" aria-label="Search">
+  <button type="button" class="ui-tabbar__item" aria-label="Search">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
   </button>
-  <button class="ui-tabbar__item" aria-label="Reels">
+  <button type="button" class="ui-tabbar__item" aria-label="Reels">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m10 8 6 4-6 4z" fill="currentColor"/></svg>
   </button>
-  <button class="ui-tabbar__item" aria-label="Shop">
+  <button type="button" class="ui-tabbar__item" aria-label="Shop">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18l-2 12H5z"/><path d="M8 8a4 4 0 0 1 8 0"/></svg>
   </button>
-  <button class="ui-tabbar__item" aria-label="Profile">
+  <button type="button" class="ui-tabbar__item" aria-label="Profile">
     <span class="ui-tabbar__avatar"></span>
   </button>
 </nav>
@@ -224,7 +224,7 @@ export const category = {
   <header class="ui-sticky-header">
     <div class="ui-sticky-header__l">
       <strong>Medium</strong>
-      <input class="ui-sticky-header__search" placeholder="Search"/>
+      <input aria-label="Search" class="ui-sticky-header__search" placeholder="Search"/>
     </div>
     <div class="ui-sticky-header__r">
       <a href="#">Write</a>
@@ -270,10 +270,10 @@ export const category = {
       code: `/* Inspired by X (Twitter) For You / Following */
 <div class="ui-seg-wrap">
   <div class="ui-seg" role="tablist">
-    <button class="ui-seg__btn ui-seg__btn--active" role="tab" aria-selected="true">For you</button>
-    <button class="ui-seg__btn" role="tab" aria-selected="false">Following</button>
-    <button class="ui-seg__btn" role="tab" aria-selected="false">Tech</button>
-    <button class="ui-seg__btn" role="tab" aria-selected="false">Sports</button>
+    <button type="button" class="ui-seg__btn ui-seg__btn--active" role="tab" aria-selected="true">For you</button>
+    <button type="button" class="ui-seg__btn" role="tab" aria-selected="false">Following</button>
+    <button type="button" class="ui-seg__btn" role="tab" aria-selected="false">Tech</button>
+    <button type="button" class="ui-seg__btn" role="tab" aria-selected="false">Sports</button>
   </div>
 </div>
 
@@ -319,8 +319,8 @@ export const category = {
     <label>Legal business name<input value="Acme, Inc." readonly/></label>
     <label>Country<input value="United States" readonly/></label>
     <div class="ui-wiz__nav">
-      <button class="ui-wiz__btn ghost" id="wizPrev" disabled>Back</button>
-      <button class="ui-wiz__btn primary" id="wizNext">Continue →</button>
+      <button type="button" class="ui-wiz__btn ghost" id="wizPrev" disabled>Back</button>
+      <button type="button" class="ui-wiz__btn primary" id="wizNext">Continue →</button>
     </div>
   </section>
 </div>
@@ -372,7 +372,7 @@ export const category = {
     <a href="#sec2">Design</a>
     <a href="#sec3">Performance</a>
     <a href="#sec4">Tech Specs</a>
-    <button class="ui-anchor__buy">Buy</button>
+    <button type="button" class="ui-anchor__buy">Buy</button>
   </nav>
   <div class="ui-anchor-body">
     <section id="sec1"><h3>Overview</h3><p>Mind-blowing. Head-turning. The most advanced Mac laptops ever.</p></section>
@@ -423,7 +423,7 @@ export const category = {
     <div class="ui-fab-mail__row"><span class="ui-fab-mail__star ui-fab-mail__star--on">★</span><b>GitHub</b><span class="ui-fab-mail__sub">Pull request #482 merged · Yesterday</span></div>
     <div class="ui-fab-mail__row"><span class="ui-fab-mail__star">☆</span><b>Figma</b><span class="ui-fab-mail__sub">Design system v2 shared · Tue</span></div>
   </div>
-  <button class="ui-fab" aria-label="Compose" onclick="alert('Compose')">
+  <button type="button" class="ui-fab" aria-label="Compose" onclick="alert('Compose')">
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#1f1f1f" stroke-width="2" stroke-linecap="round"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/><path d="m14.06 6.19 3.75 3.75 2.07-2.07a1.5 1.5 0 0 0 0-2.12l-1.63-1.63a1.5 1.5 0 0 0-2.12 0z"/></svg>
     <span>Compose</span>
   </button>
@@ -504,8 +504,8 @@ export const category = {
       code: `/* Inspired by Linear */
 <div class="ui-split-stage">
   <div class="ui-split" id="splitBtn">
-    <button class="ui-split__main"><span class="ui-split__icon">+</span>New issue</button>
-    <button class="ui-split__caret" aria-label="More options" aria-haspopup="menu">
+    <button type="button" class="ui-split__main"><span class="ui-split__icon">+</span>New issue</button>
+    <button type="button" class="ui-split__caret" aria-label="More options" aria-haspopup="menu">
       <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 4.5 3 3 3-3"/></svg>
     </button>
     <ul class="ui-split__menu" role="menu">
@@ -553,20 +553,20 @@ export const category = {
 <div class="ui-btng-stage">
   <div class="ui-btng-label">Align</div>
   <div class="ui-btng" role="group" aria-label="Horizontal align">
-    <button class="ui-btng__btn ui-btng__btn--active" aria-pressed="true" title="Align left">
+    <button type="button" class="ui-btng__btn ui-btng__btn--active" aria-pressed="true" title="Align left">
       <svg viewBox="0 0 16 16" width="14" height="14"><rect x="2" y="2" width="1.5" height="12" fill="currentColor"/><rect x="5" y="4" width="8" height="2" fill="currentColor"/><rect x="5" y="10" width="5" height="2" fill="currentColor"/></svg>
     </button>
-    <button class="ui-btng__btn" aria-pressed="false" title="Align center">
+    <button type="button" class="ui-btng__btn" aria-pressed="false" title="Align center">
       <svg viewBox="0 0 16 16" width="14" height="14"><rect x="7.25" y="2" width="1.5" height="12" fill="currentColor"/><rect x="4" y="4" width="8" height="2" fill="currentColor"/><rect x="5.5" y="10" width="5" height="2" fill="currentColor"/></svg>
     </button>
-    <button class="ui-btng__btn" aria-pressed="false" title="Align right">
+    <button type="button" class="ui-btng__btn" aria-pressed="false" title="Align right">
       <svg viewBox="0 0 16 16" width="14" height="14"><rect x="12.5" y="2" width="1.5" height="12" fill="currentColor"/><rect x="3" y="4" width="8" height="2" fill="currentColor"/><rect x="6" y="10" width="5" height="2" fill="currentColor"/></svg>
     </button>
   </div>
   <div class="ui-btng" role="group" aria-label="Vertical align">
-    <button class="ui-btng__btn" aria-pressed="false" title="Top">⊤</button>
-    <button class="ui-btng__btn ui-btng__btn--active" aria-pressed="true" title="Middle">▭</button>
-    <button class="ui-btng__btn" aria-pressed="false" title="Bottom">⊥</button>
+    <button type="button" class="ui-btng__btn" aria-pressed="false" title="Top">⊤</button>
+    <button type="button" class="ui-btng__btn ui-btng__btn--active" aria-pressed="true" title="Middle">▭</button>
+    <button type="button" class="ui-btng__btn" aria-pressed="false" title="Bottom">⊥</button>
   </div>
 </div>
 
@@ -606,21 +606,21 @@ export const category = {
   </div>
   <ul class="ui-swipe">
     <li class="ui-swipe__row">
-      <div class="ui-swipe__actions"><button class="flag">Flag</button><button class="del">Trash</button></div>
+      <div class="ui-swipe__actions"><button type="button" class="flag">Flag</button><button type="button" class="del">Trash</button></div>
       <div class="ui-swipe__content" data-tx="0">
         <span class="ui-swipe__dot"></span>
         <div class="ui-swipe__msg"><strong>Apple</strong><span class="ui-swipe__time">9:41 AM</span><p class="ui-swipe__pre">Your receipt from Apple</p><p class="ui-swipe__pre ui-swipe__pre--lite">Thank you for your purchase. Order #W123456789…</p></div>
       </div>
     </li>
     <li class="ui-swipe__row">
-      <div class="ui-swipe__actions"><button class="flag">Flag</button><button class="del">Trash</button></div>
+      <div class="ui-swipe__actions"><button type="button" class="flag">Flag</button><button type="button" class="del">Trash</button></div>
       <div class="ui-swipe__content" data-tx="0">
         <span class="ui-swipe__dot"></span>
         <div class="ui-swipe__msg"><strong>Sarah Chen</strong><span class="ui-swipe__time">Yesterday</span><p class="ui-swipe__pre">Re: Design review notes</p><p class="ui-swipe__pre ui-swipe__pre--lite">Thanks for the detailed feedback — pushed v3 this morning.</p></div>
       </div>
     </li>
     <li class="ui-swipe__row">
-      <div class="ui-swipe__actions"><button class="flag">Flag</button><button class="del">Trash</button></div>
+      <div class="ui-swipe__actions"><button type="button" class="flag">Flag</button><button type="button" class="del">Trash</button></div>
       <div class="ui-swipe__content" data-tx="0">
         <span class="ui-swipe__dot ui-swipe__dot--off"></span>
         <div class="ui-swipe__msg"><strong>GitHub</strong><span class="ui-swipe__time">Mon</span><p class="ui-swipe__pre">[acme/web] PR #482 was merged</p><p class="ui-swipe__pre ui-swipe__pre--lite">Branch feat/onboarding has been deleted.</p></div>
@@ -725,28 +725,28 @@ export const category = {
       detailEn: 'Stories present a horizontal row of circular avatars at the top of a screen; tapping one launches a fullscreen sequence of short photos or videos. Popularized by Snapchat and Instagram, each avatar wears a colored ring that signals unread content, so users can dip into whichever account interests them with a single tap. The combination of ephemerality — content that vanishes after 24 hours — and immersive vertical media has spread beyond social apps to news and e-commerce. The colored ring around the avatar has become an icon in its own right.',
       code: `/* Inspired by Instagram Stories */
 <div class="ui-stories">
-  <button class="ui-story ui-story--me">
+  <button type="button" class="ui-story ui-story--me">
     <span class="ui-story__avatar" style="background:#888"></span>
     <span class="ui-story__plus">+</span>
     <span class="ui-story__name">Your story</span>
   </button>
-  <button class="ui-story ui-story--unread">
+  <button type="button" class="ui-story ui-story--unread">
     <span class="ui-story__ring"><span class="ui-story__avatar" style="background:linear-gradient(135deg,#ff6b6b,#ffa94d)"></span></span>
     <span class="ui-story__name">emma.k</span>
   </button>
-  <button class="ui-story ui-story--unread">
+  <button type="button" class="ui-story ui-story--unread">
     <span class="ui-story__ring"><span class="ui-story__avatar" style="background:linear-gradient(135deg,#4dabf7,#3bc9db)"></span></span>
     <span class="ui-story__name">jakob_w</span>
   </button>
-  <button class="ui-story ui-story--unread">
+  <button type="button" class="ui-story ui-story--unread">
     <span class="ui-story__ring"><span class="ui-story__avatar" style="background:linear-gradient(135deg,#9775fa,#f783ac)"></span></span>
     <span class="ui-story__name">sofia.dev</span>
   </button>
-  <button class="ui-story">
+  <button type="button" class="ui-story">
     <span class="ui-story__ring ui-story__ring--seen"><span class="ui-story__avatar" style="background:linear-gradient(135deg,#51cf66,#fcc419)"></span></span>
     <span class="ui-story__name">marcus.t</span>
   </button>
-  <button class="ui-story">
+  <button type="button" class="ui-story">
     <span class="ui-story__ring ui-story__ring--seen"><span class="ui-story__avatar" style="background:linear-gradient(135deg,#ff8787,#74c0fc)"></span></span>
     <span class="ui-story__name">yuki_77</span>
   </button>
@@ -774,11 +774,11 @@ export const category = {
       code: `/* Inspired by Gmail mobile */
 <div class="ui-app">
   <header class="ui-appbar">
-    <button class="ui-appbar__btn" aria-label="Menu">
+    <button type="button" class="ui-appbar__btn" aria-label="Menu">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#5f6368" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <input class="ui-appbar__search" placeholder="Search in mail" />
-    <button class="ui-appbar__avatar" aria-label="Account">A</button>
+    <input aria-label="Search in mail" class="ui-appbar__search" placeholder="Search in mail" />
+    <button type="button" class="ui-appbar__avatar" aria-label="Account">A</button>
   </header>
   <div class="ui-app__list">
     <div class="ui-app__date">Today</div>

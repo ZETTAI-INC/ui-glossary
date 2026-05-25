@@ -93,22 +93,22 @@ export const category = {
 <div class="ui-ps-wrap">
   <h2 class="ui-ps-hello">こんにちは、Shun さん<br><span>今日はどんなお手伝いをしましょうか?</span></h2>
   <div class="ui-ps-grid">
-    <button class="ui-ps-chip">
+    <button type="button" class="ui-ps-chip">
       <span class="ui-ps-icon" style="background:linear-gradient(135deg,#4285f4,#9b72ff)">✦</span>
       <span class="ui-ps-title">プレゼン用の構成案を作って</span>
       <span class="ui-ps-sub">新規事業の社内ピッチ向け</span>
     </button>
-    <button class="ui-ps-chip">
+    <button type="button" class="ui-ps-chip">
       <span class="ui-ps-icon" style="background:linear-gradient(135deg,#34a853,#7bd389)">📝</span>
       <span class="ui-ps-title">議事録を3行に要約</span>
       <span class="ui-ps-sub">長いMTG議事録を貼り付け</span>
     </button>
-    <button class="ui-ps-chip">
+    <button type="button" class="ui-ps-chip">
       <span class="ui-ps-icon" style="background:linear-gradient(135deg,#ea4335,#fbbc04)">💡</span>
       <span class="ui-ps-title">アイデアを10個ください</span>
       <span class="ui-ps-sub">休日のカフェの集客案</span>
     </button>
-    <button class="ui-ps-chip">
+    <button type="button" class="ui-ps-chip">
       <span class="ui-ps-icon" style="background:linear-gradient(135deg,#9b72ff,#ff7ab6)">🐍</span>
       <span class="ui-ps-title">Pythonコードをレビュー</span>
       <span class="ui-ps-sub">バグや改善点を指摘して</span>
@@ -218,23 +218,23 @@ export const category = {
 <div class="ui-rt-wrap">
   <p class="ui-rt-msg">Sure — here is the summary in three bullet points, plus the key tradeoffs.</p>
   <div class="ui-rt-bar" role="toolbar">
-    <button class="ui-rt-btn" data-tip="Copy">
+    <button type="button" class="ui-rt-btn" data-tip="Copy">
       <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="10" height="11" rx="2"/><path d="M4 14V5a2 2 0 0 1 2-2h7"/></svg>
     </button>
-    <button class="ui-rt-btn" data-tip="Good response">
+    <button type="button" class="ui-rt-btn" data-tip="Good response">
       <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 9V5a2 2 0 0 1 2-2l3 7v7H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h1zm5 0h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3"/></svg>
     </button>
-    <button class="ui-rt-btn" data-tip="Bad response">
+    <button type="button" class="ui-rt-btn" data-tip="Bad response">
       <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 11v4a2 2 0 0 1-2 2l-3-7V3h6a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1zM8 11H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h3"/></svg>
     </button>
-    <button class="ui-rt-btn" data-tip="Read aloud">
+    <button type="button" class="ui-rt-btn" data-tip="Read aloud">
       <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7v6h3l4 3V4L7 7H4z"/><path d="M14 7a4 4 0 0 1 0 6"/></svg>
     </button>
-    <button class="ui-rt-btn" data-tip="Regenerate">
+    <button type="button" class="ui-rt-btn" data-tip="Regenerate">
       <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 10a6 6 0 1 1-1.76-4.24"/><path d="M16 4v3.5h-3.5"/></svg>
     </button>
     <span class="ui-rt-sep"></span>
-    <button class="ui-rt-btn ui-rt-btn--continue">Continue ↓</button>
+    <button type="button" class="ui-rt-btn ui-rt-btn--continue">Continue ↓</button>
   </div>
 </div>
 
@@ -261,7 +261,7 @@ export const category = {
   <div class="ui-cb">
     <div class="ui-cb__bar">
       <span class="ui-cb__lang">python</span>
-      <button class="ui-cb__copy" id="cbCopy">
+      <button type="button" class="ui-cb__copy" id="cbCopy">
         <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="10" height="11" rx="2"/><path d="M4 14V5a2 2 0 0 1 2-2h7"/></svg>
         <span>Copy code</span>
       </button>
@@ -360,7 +360,7 @@ export const category = {
         <div class="ui-fu-name">Q3-financial-report.pdf</div>
         <div class="ui-fu-sub">Document · 1.2 MB</div>
       </div>
-      <button class="ui-fu-x" aria-label="Remove">×</button>
+      <button type="button" class="ui-fu-x" aria-label="Remove">×</button>
     </div>
     <div class="ui-fu-chip">
       <span class="ui-fu-icon ui-fu-icon--csv">CSV</span>
@@ -368,7 +368,7 @@ export const category = {
         <div class="ui-fu-name">sales-2024-q3.csv</div>
         <div class="ui-fu-sub">Spreadsheet · 84 KB</div>
       </div>
-      <button class="ui-fu-x" aria-label="Remove">×</button>
+      <button type="button" class="ui-fu-x" aria-label="Remove">×</button>
     </div>
     <div class="ui-fu-chip ui-fu-chip--loading">
       <span class="ui-fu-icon ui-fu-icon--img">IMG</span>
@@ -377,7 +377,7 @@ export const category = {
         <div class="ui-fu-sub">Uploading… 62%</div>
         <div class="ui-fu-bar"><div class="ui-fu-bar__fill" style="width:62%"></div></div>
       </div>
-      <button class="ui-fu-x" aria-label="Remove">×</button>
+      <button type="button" class="ui-fu-x" aria-label="Remove">×</button>
     </div>
   </div>
   <div class="ui-fu-input">Summarize the attached files…</div>

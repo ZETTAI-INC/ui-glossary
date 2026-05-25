@@ -83,10 +83,10 @@ export const category = {
       <span class="ui-pc-hours">· 23:00に閉店</span>
     </div>
     <div class="ui-pc-actions">
-      <button class="ui-pc-btn ui-pc-btn--primary"><span>🧭</span>経路</button>
-      <button class="ui-pc-btn"><span>🔖</span>保存</button>
-      <button class="ui-pc-btn"><span>↗</span>共有</button>
-      <button class="ui-pc-btn"><span>📞</span>電話</button>
+      <button type="button" class="ui-pc-btn ui-pc-btn--primary"><span>🧭</span>経路</button>
+      <button type="button" class="ui-pc-btn"><span>🔖</span>保存</button>
+      <button type="button" class="ui-pc-btn"><span>↗</span>共有</button>
+      <button type="button" class="ui-pc-btn"><span>📞</span>電話</button>
     </div>
   </div>
 </div>
@@ -188,7 +188,7 @@ export const category = {
     <div class="ui-lc-photo" style="background:linear-gradient(135deg,#a8d5e2 0%,#5d9cb3 60%,#3d6e80 100%)">
       <div class="ui-lc-photo__house">🏡</div>
     </div>
-    <button class="ui-lc-heart" aria-label="Save">♡</button>
+    <button type="button" class="ui-lc-heart" aria-label="Save">♡</button>
     <div class="ui-lc-badge">ゲストのお気に入り</div>
     <div class="ui-lc-dots">
       <span class="is-active"></span><span></span><span></span><span></span><span></span>
@@ -236,12 +236,12 @@ export const category = {
       code: `<!-- Inspired by Booking.com -->
 <div class="ui-dr-picker">
   <div class="ui-dr-head">
-    <button class="ui-dr-nav">‹</button>
+    <button type="button" class="ui-dr-nav">‹</button>
     <div class="ui-dr-months">
       <div class="ui-dr-month">2026年3月</div>
       <div class="ui-dr-month">2026年4月</div>
     </div>
-    <button class="ui-dr-nav">›</button>
+    <button type="button" class="ui-dr-nav">›</button>
   </div>
   <div class="ui-dr-grids">
     <div class="ui-dr-grid">
@@ -295,17 +295,17 @@ export const category = {
       code: `<!-- Inspired by Airbnb -->
 <div class="ui-fc-wrap">
   <div class="ui-fc-bar">
-    <button class="ui-fc-chip is-active"><span>✓</span> すべて</button>
-    <button class="ui-fc-chip">¥ 〜10,000</button>
-    <button class="ui-fc-chip is-active">🏠 一軒家</button>
-    <button class="ui-fc-chip">🏨 ホテル</button>
-    <button class="ui-fc-chip">🏖️ ビーチ近く</button>
-    <button class="ui-fc-chip is-active">📶 Wi-Fi</button>
-    <button class="ui-fc-chip">🚗 駐車場あり</button>
-    <button class="ui-fc-chip">🐾 ペットOK</button>
-    <button class="ui-fc-chip">🍳 キッチン</button>
-    <button class="ui-fc-chip">♨️ 温泉</button>
-    <button class="ui-fc-chip">🌊 オーシャンビュー</button>
+    <button type="button" class="ui-fc-chip is-active"><span>✓</span> すべて</button>
+    <button type="button" class="ui-fc-chip">¥ 〜10,000</button>
+    <button type="button" class="ui-fc-chip is-active">🏠 一軒家</button>
+    <button type="button" class="ui-fc-chip">🏨 ホテル</button>
+    <button type="button" class="ui-fc-chip">🏖️ ビーチ近く</button>
+    <button type="button" class="ui-fc-chip is-active">📶 Wi-Fi</button>
+    <button type="button" class="ui-fc-chip">🚗 駐車場あり</button>
+    <button type="button" class="ui-fc-chip">🐾 ペットOK</button>
+    <button type="button" class="ui-fc-chip">🍳 キッチン</button>
+    <button type="button" class="ui-fc-chip">♨️ 温泉</button>
+    <button type="button" class="ui-fc-chip">🌊 オーシャンビュー</button>
   </div>
 </div>
 
@@ -417,7 +417,7 @@ export const category = {
       <div class="ui-fe-price">¥4,580</div>
     </div>
   </div>
-  <button class="ui-fe-cta">UberX を選択 · ¥1,840</button>
+  <button type="button" class="ui-fe-cta">UberX を選択 · ¥1,840</button>
 </div>
 
 <style>
@@ -455,7 +455,7 @@ export const category = {
   <div class="ui-pg-thumb" style="background:linear-gradient(135deg,#fde2a8,#e0b04a)">🍳</div>
   <div class="ui-pg-thumb ui-pg-thumb--last" style="background:linear-gradient(135deg,#b4d8e7,#5d9cb3)">
     🛁
-    <button class="ui-pg-all">▦ すべての写真を表示</button>
+    <button type="button" class="ui-pg-all">▦ すべての写真を表示</button>
   </div>
 </div>
 

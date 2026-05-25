@@ -26,15 +26,15 @@ export const category = {
       <div class="ui-npb__title">Sunset Drive</div>
       <div class="ui-npb__artist">The Midnight</div>
     </div>
-    <button class="ui-npb__heart" aria-label="Save">♡</button>
+    <button type="button" class="ui-npb__heart" aria-label="Save">♡</button>
   </div>
   <div class="ui-npb__center">
     <div class="ui-npb__ctrls">
-      <button class="ui-npb__btn" aria-label="Shuffle">⤭</button>
-      <button class="ui-npb__btn" aria-label="Prev">⏮</button>
-      <button class="ui-npb__play" aria-label="Play">▶</button>
-      <button class="ui-npb__btn" aria-label="Next">⏭</button>
-      <button class="ui-npb__btn" aria-label="Repeat">↻</button>
+      <button type="button" class="ui-npb__btn" aria-label="Shuffle">⤭</button>
+      <button type="button" class="ui-npb__btn" aria-label="Prev">⏮</button>
+      <button type="button" class="ui-npb__play" aria-label="Play">▶</button>
+      <button type="button" class="ui-npb__btn" aria-label="Next">⏭</button>
+      <button type="button" class="ui-npb__btn" aria-label="Repeat">↻</button>
     </div>
     <div class="ui-npb__bar">
       <span class="ui-npb__t">1:24</span>
@@ -43,8 +43,8 @@ export const category = {
     </div>
   </div>
   <div class="ui-npb__right">
-    <button class="ui-npb__btn" aria-label="Queue">≡</button>
-    <button class="ui-npb__btn" aria-label="Device">🔊</button>
+    <button type="button" class="ui-npb__btn" aria-label="Queue">≡</button>
+    <button type="button" class="ui-npb__btn" aria-label="Device">🔊</button>
   </div>
 </div>
 
@@ -146,7 +146,7 @@ export const category = {
   <div class="ui-aac">
     <div class="ui-aac__art" style="background:linear-gradient(135deg,#7e22ce,#ec4899)">
       <svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="20" fill="rgba(0,0,0,.4)"/><circle cx="50" cy="50" r="4" fill="#fff"/></svg>
-      <button class="ui-aac__play" aria-label="Play">▶</button>
+      <button type="button" class="ui-aac__play" aria-label="Play">▶</button>
     </div>
     <div class="ui-aac__title">Midnights</div>
     <div class="ui-aac__artist">Taylor Swift</div>
@@ -154,7 +154,7 @@ export const category = {
   <div class="ui-aac">
     <div class="ui-aac__art" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)">
       <svg viewBox="0 0 100 100" width="100%" height="100%"><rect x="20" y="20" width="60" height="60" fill="rgba(255,255,255,.18)"/><circle cx="50" cy="50" r="12" fill="#fff"/></svg>
-      <button class="ui-aac__play" aria-label="Play">▶</button>
+      <button type="button" class="ui-aac__play" aria-label="Play">▶</button>
     </div>
     <div class="ui-aac__title">Harry's House</div>
     <div class="ui-aac__artist">Harry Styles</div>
@@ -162,7 +162,7 @@ export const category = {
   <div class="ui-aac">
     <div class="ui-aac__art" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">
       <svg viewBox="0 0 100 100" width="100%" height="100%"><path d="M30 70 L50 30 L70 70 Z" fill="rgba(0,0,0,.35)"/></svg>
-      <button class="ui-aac__play" aria-label="Play">▶</button>
+      <button type="button" class="ui-aac__play" aria-label="Play">▶</button>
     </div>
     <div class="ui-aac__title">After Hours</div>
     <div class="ui-aac__artist">The Weeknd</div>
@@ -219,7 +219,7 @@ export const category = {
       detailEn: 'A volume slider pairs a speaker icon with a horizontal track. Drag the slider to set any level from 0 to 100, or click the speaker icon to mute/unmute in one action — clicking again restores the previous volume. You will spot it at the bottom-right of Spotify, the top-right of YouTube Music, and in essentially every desktop player. The horizontal-knob metaphor is so universal that almost anyone can use it without instruction, which is why it has stayed unchanged for decades.',
       code: `<!-- Inspired by Spotify -->
 <div class="ui-vol" id="vol">
-  <button class="ui-vol__icon" id="volIcon" aria-label="Mute toggle">
+  <button type="button" class="ui-vol__icon" id="volIcon" aria-label="Mute toggle">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4H1a1 1 0 0 1-1-1V6.85a1 1 0 0 1 1-1h1.066L8.991.85a.75.75 0 0 1 .75 0Z"/><path d="M11.5 5.5a3 3 0 0 1 0 5"/><path d="M13.5 3.5a6 6 0 0 1 0 9" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
   </button>
   <div class="ui-vol__track" id="volTrack">
@@ -242,10 +242,10 @@ export const category = {
 
 <script>
   (function(){
-    var icon=document.getElementById('volIcon');
-    var fill=document.getElementById('volFill');
-    var thumb=document.getElementById('volThumb');
-    var last=70;
+    const icon=document.getElementById('volIcon');
+    const fill=document.getElementById('volFill');
+    const thumb=document.getElementById('volThumb');
+    let last=70;
     icon.addEventListener('click',function(){
       if(icon.classList.contains('muted')){
         icon.classList.remove('muted');
@@ -407,7 +407,7 @@ export const category = {
       <div class="ui-like__title">As It Was</div>
       <div class="ui-like__artist">Harry Styles</div>
     </div>
-    <button class="ui-like__btn" id="likeBtn" aria-label="Save to Liked Songs">
+    <button type="button" class="ui-like__btn" id="likeBtn" aria-label="Save to Liked Songs">
       <svg class="ui-like__heart" viewBox="0 0 24 24" width="22" height="22"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
     </button>
   </div>
@@ -430,7 +430,7 @@ export const category = {
 
 <script>
   (function(){
-    var btn=document.getElementById('likeBtn');
+    const btn=document.getElementById('likeBtn');
     btn.addEventListener('click',function(){btn.classList.toggle('is-liked');});
   })();
 </script>`,
@@ -452,14 +452,14 @@ export const category = {
       <div class="ui-mmp__title">Heat Waves</div>
       <div class="ui-mmp__artist">Glass Animals · Dreamland</div>
     </div>
-    <button class="ui-mmp__btn ui-mmp__btn--small" aria-label="Devices">📱</button>
-    <button class="ui-mmp__btn" aria-label="Play/Pause">▶</button>
+    <button type="button" class="ui-mmp__btn ui-mmp__btn--small" aria-label="Devices">📱</button>
+    <button type="button" class="ui-mmp__btn" aria-label="Play/Pause">▶</button>
   </div>
   <div class="ui-mmp__progress"><div class="ui-mmp__fill"></div></div>
   <nav class="ui-mmp__tabs">
-    <button class="ui-mmp__tab is-active"><span>🏠</span>Home</button>
-    <button class="ui-mmp__tab"><span>🔍</span>Search</button>
-    <button class="ui-mmp__tab"><span>📚</span>Library</button>
+    <button type="button" class="ui-mmp__tab is-active"><span>🏠</span>Home</button>
+    <button type="button" class="ui-mmp__tab"><span>🔍</span>Search</button>
+    <button type="button" class="ui-mmp__tab"><span>📚</span>Library</button>
   </nav>
 </div>
 

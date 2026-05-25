@@ -18,9 +18,9 @@ export const category = {
       detailEn: 'A toast (or snackbar) shows a brief message at the edge of the screen and disappears on its own after a few seconds. It is ideal for low-stakes confirmations like "Copied" or "Message sent" that should not interrupt the user. Reserve modals for critical errors or confirmations. Toasts are usually anchored to the bottom-right or top of the screen, and stack when several appear at once.',
       code: `<!-- Inspired by Gmail "Sent. Undo" snackbar -->
 <div class="ui-toast-demo">
-  <button class="ui-toast-trigger" onclick="gShowToast('Message sent')">Send email</button>
-  <button class="ui-toast-trigger" onclick="gShowToast('Conversation archived')">Archive</button>
-  <button class="ui-toast-trigger" onclick="gShowToast('Conversation moved to Trash')">Delete</button>
+  <button type="button" class="ui-toast-trigger" onclick="gShowToast('Message sent')">Send email</button>
+  <button type="button" class="ui-toast-trigger" onclick="gShowToast('Conversation archived')">Archive</button>
+  <button type="button" class="ui-toast-trigger" onclick="gShowToast('Conversation moved to Trash')">Delete</button>
 </div>
 <div class="ui-toast-wrap" id="gToastWrap"></div>
 
@@ -43,7 +43,7 @@ export const category = {
   function gShowToast(msg){
     const c=document.getElementById('gToastWrap');
     const t=document.createElement('div');t.className='ui-toast';
-    t.innerHTML='<span class="ui-toast__msg">'+msg+'</span><button class="ui-toast__undo">Undo</button><button class="ui-toast__x">✕</button>';
+    t.innerHTML='<span class="ui-toast__msg">'+msg+'</span><button type="button" class="ui-toast__undo">Undo</button><button type="button" class="ui-toast__x">✕</button>';
     c.appendChild(t);
     const close=()=>{t.classList.add('out');setTimeout(()=>t.remove(),200)};
     t.querySelector('.ui-toast__undo').onclick=close;
@@ -60,12 +60,12 @@ export const category = {
       descEn: 'Dims background and shows content in the foreground. Forces user attention.',
       detailEn: 'A modal dialog appears centered on the screen and dims the background, temporarily blocking interaction with everything behind it. Use it for confirmations, logins, or terms agreements where the user must read and decide. Because the user cannot continue until they finish or dismiss it, modals demand a high level of attention. Use them sparingly and only when the decision really cannot wait.',
       code: `<!-- Inspired by Linear command palette -->
-<button class="ui-modal-open" onclick="document.getElementById('uiModal').showModal()">Open command menu</button>
+<button type="button" class="ui-modal-open" onclick="document.getElementById('uiModal').showModal()">Open command menu</button>
 
 <dialog id="uiModal" class="ui-modal">
   <div class="ui-modal__search">
     <span class="ui-modal__kicon">⌘</span>
-    <input class="ui-modal__input" placeholder="Type a command or search..." autofocus>
+    <input aria-label="Type a command or search..." class="ui-modal__input" placeholder="Type a command or search..." autofocus>
     <kbd class="ui-modal__esc">esc</kbd>
   </div>
   <div class="ui-modal__section">Suggestions</div>
@@ -125,7 +125,7 @@ export const category = {
     <div class="ui-pop__cover"></div>
     <div class="ui-pop__top">
       <div class="ui-pop__avatar">A</div>
-      <button class="ui-pop__follow">Follow</button>
+      <button type="button" class="ui-pop__follow">Follow</button>
     </div>
     <div class="ui-pop__name">Aoi Sato <span class="ui-pop__verify">✓</span></div>
     <div class="ui-pop__handle">@aoi_designs</div>
@@ -192,7 +192,7 @@ export const category = {
     <li class="active"><span class="ui-spin ui-spin--xs"></span>Building application<small>00:24</small></li>
     <li class="pending"><span>○</span>Deploying outputs<small>—</small></li>
   </ul>
-  <button class="ui-spin-card__cancel">Cancel deployment</button>
+  <button type="button" class="ui-spin-card__cancel">Cancel deployment</button>
 </div>
 
 <style>
@@ -223,12 +223,12 @@ export const category = {
       descEn: 'A dialog asking the user to confirm before destructive actions.',
       detailEn: 'A confirmation dialog appears right before an irreversible action — deleting, cancelling, leaving a service — and asks "Are you sure?" Its main job is to prevent accidental damage, so it must clearly offer two choices: cancel and proceed. Mark the destructive action with a warning color like red, and default the keyboard focus to the safer "cancel" side to reduce mishaps. Avoid using it for routine safe actions, where it would only slow people down.',
       code: `<!-- Inspired by GitHub repository deletion dialog -->
-<button class="ui-confirm-trigger" onclick="document.getElementById('uiConfirm').showModal()">Delete this repository</button>
+<button type="button" class="ui-confirm-trigger" onclick="document.getElementById('uiConfirm').showModal()">Delete this repository</button>
 
 <dialog id="uiConfirm" class="ui-confirm">
   <div class="ui-confirm__head">
     <h2>Are you absolutely sure?</h2>
-    <button class="ui-confirm__close" onclick="document.getElementById('uiConfirm').close()">✕</button>
+    <button type="button" class="ui-confirm__close" onclick="document.getElementById('uiConfirm').close()">✕</button>
   </div>
   <div class="ui-confirm__body">
     <div class="ui-confirm__warn">
@@ -237,7 +237,7 @@ export const category = {
     <p>This action <strong>cannot</strong> be undone. This will permanently delete the <strong>acme/web</strong> repository, wiki, issues, and comments, and remove all collaborator associations.</p>
     <label>Please type <strong>acme/web</strong> to confirm.</label>
     <input class="ui-confirm__input" id="ghConfirm" autocomplete="off">
-    <button class="ui-confirm__danger" id="ghDanger" disabled>I understand the consequences, delete this repository</button>
+    <button type="button" class="ui-confirm__danger" id="ghDanger" disabled>I understand the consequences, delete this repository</button>
   </div>
 </dialog>
 
@@ -283,7 +283,7 @@ export const category = {
       <div class="ui-notif__tabs">
         <span class="active">For you</span><span>Unreads <em>5</em></span><span>Mentions</span>
       </div>
-      <button class="ui-notif__mark">Mark all as read</button>
+      <button type="button" class="ui-notif__mark">Mark all as read</button>
     </div>
     <ul class="ui-notif__list">
       <li class="unread">
@@ -369,7 +369,7 @@ export const category = {
   </div>
   <form class="ui-chat__form" onsubmit="event.preventDefault()">
     <span>😊</span>
-    <input type="text" placeholder="Message">
+    <input aria-label="Message" type="text" placeholder="Message">
     <span>📎</span>
     <button type="submit">🎤</button>
   </form>
@@ -429,7 +429,7 @@ export const category = {
       <div class="ui-thread__body">
         <div class="ui-thread__meta"><strong>hana-sato</strong> <span class="role">Author</span> commented <time>3 hours ago</time></div>
         <p>Should we add a <code>destructive</code> variant here too? We're using it in the delete dialogs already.</p>
-        <div class="ui-thread__actions"><button>👍 4</button><button>👀 1</button><button>Reply</button></div>
+        <div class="ui-thread__actions"><button type="button">👍 4</button><button type="button">👀 1</button><button type="button">Reply</button></div>
       </div>
     </div>
     <div class="ui-thread__item">
@@ -437,7 +437,7 @@ export const category = {
       <div class="ui-thread__body">
         <div class="ui-thread__meta"><strong>mei-r</strong> <span class="role rev">Reviewer</span> commented <time>2 hours ago</time></div>
         <p>Good catch. Let's keep that for a follow-up PR though — there's also some token work needed in the theme file before we add it.</p>
-        <div class="ui-thread__actions"><button>♥ 2</button><button>Reply</button></div>
+        <div class="ui-thread__actions"><button type="button">♥ 2</button><button type="button">Reply</button></div>
       </div>
     </div>
     <div class="ui-thread__item resolved">
@@ -448,7 +448,7 @@ export const category = {
     </div>
     <div class="ui-thread__reply-form">
       <textarea placeholder="Leave a comment" rows="2"></textarea>
-      <div class="ui-thread__reply-bar"><button class="ghost">Resolve conversation</button><button class="primary">Comment</button></div>
+      <div class="ui-thread__reply-bar"><button type="button" class="ghost">Resolve conversation</button><button type="button" class="primary">Comment</button></div>
     </div>
   </div>
 </div>
@@ -503,11 +503,11 @@ export const category = {
       <div class="ui-react__meta"><strong>Mei R.</strong> <time>11:42 AM</time></div>
       <div class="ui-react__msg">Just pushed the new auth flow to staging — link in <a href="#">#engineering</a>. Would love a quick review before EOD 🙏</div>
       <div class="ui-react__bar">
-        <button class="chip me">👀 <span>3</span></button>
-        <button class="chip">🚀 <span>5</span></button>
-        <button class="chip me">🙌 <span>2</span></button>
-        <button class="chip">🔥 <span>1</span></button>
-        <button class="chip add" id="uiReactAdd" aria-label="Add reaction">
+        <button type="button" class="chip me">👀 <span>3</span></button>
+        <button type="button" class="chip">🚀 <span>5</span></button>
+        <button type="button" class="chip me">🙌 <span>2</span></button>
+        <button type="button" class="chip">🔥 <span>1</span></button>
+        <button type="button" class="chip add" id="uiReactAdd" aria-label="Add reaction">
           <svg width="14" height="14" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="7" r="1" fill="currentColor"/><circle cx="10" cy="7" r="1" fill="currentColor"/><path d="M5.5 9.5 Q8 11.5 10.5 9.5" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
           <span class="plus">+</span>
         </button>
@@ -515,12 +515,12 @@ export const category = {
     </div>
   </div>
   <div class="ui-react__picker" id="uiReactPicker">
-    <div class="ui-react__picker-head"><input placeholder="Search all emoji"></div>
+    <div class="ui-react__picker-head"><input aria-label="Search all emoji" placeholder="Search all emoji"></div>
     <div class="ui-react__picker-section">Frequently used</div>
     <div class="ui-react__picker-grid">
-      <button>👍</button><button>👀</button><button>🙏</button><button>🚀</button>
-      <button>🔥</button><button>🎉</button><button>💯</button><button>😂</button>
-      <button>❤️</button><button>✨</button><button>👏</button><button>💡</button>
+      <button type="button">👍</button><button type="button">👀</button><button type="button">🙏</button><button type="button">🚀</button>
+      <button type="button">🔥</button><button type="button">🎉</button><button type="button">💯</button><button type="button">😂</button>
+      <button type="button">❤️</button><button type="button">✨</button><button type="button">👏</button><button type="button">💡</button>
     </div>
     <div class="ui-react__picker-foot"><span>👋</span><small>:wave:</small></div>
   </div>
@@ -585,7 +585,7 @@ export const category = {
     <header class="ui-feed__head">
       <div class="ui-feed__name">aoi.designs <span class="ui-feed__verify">✓</span></div>
       <time>2h</time>
-      <button class="ui-feed__more" aria-label="More">⋯</button>
+      <button type="button" class="ui-feed__more" aria-label="More">⋯</button>
     </header>
     <p class="ui-feed__body">finally finished the redesign of our settings page after 3 weeks of iteration. small win but it feels good 🌱</p>
     <p class="ui-feed__body">things I learned: less is almost always more, and the radio buttons can wait until v2.</p>
@@ -594,10 +594,10 @@ export const category = {
       <div class="ui-feed__media-img alt"></div>
     </div>
     <footer class="ui-feed__actions">
-      <button><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 8.5 3 5 6.5 5 8.5 5 10.5 6 12 8c1.5-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 8-2.5 4.5-9.5 8-9.5 8z"/></svg></button>
-      <button><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13 8l-5 1 1-4A9 9 0 1 1 21 12z"/></svg></button>
-      <button><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2 7 7v15l5-3 5 3V2z"/></svg></button>
-      <button><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12l8 8 8-8M12 20V4"/></svg></button>
+      <button type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-9.5-9C1 8.5 3 5 6.5 5 8.5 5 10.5 6 12 8c1.5-2 3.5-3 5.5-3 3.5 0 5.5 3.5 4 8-2.5 4.5-9.5 8-9.5 8z"/></svg></button>
+      <button type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13 8l-5 1 1-4A9 9 0 1 1 21 12z"/></svg></button>
+      <button type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2 7 7v15l5-3 5 3V2z"/></svg></button>
+      <button type="button"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12l8 8 8-8M12 20V4"/></svg></button>
     </footer>
     <div class="ui-feed__meta">12 replies · 482 likes</div>
   </div>
@@ -643,7 +643,7 @@ export const category = {
     <div contenteditable="true" class="ui-mention__input" id="uiMentionInput" data-placeholder="Message #design-system"></div>
     <div class="ui-mention__toolbar">
       <span>B</span><span><em>I</em></span><span>S</span><span>🔗</span><span>•</span><span>1.</span><span>@</span><span>:smile:</span>
-      <button class="ui-mention__send">Send</button>
+      <button type="button" class="ui-mention__send">Send</button>
     </div>
   </div>
   <div class="ui-mention__popup" id="uiMentionList">
@@ -737,7 +737,7 @@ export const category = {
       <p>Click the buttons highlighted in the tour to learn the basics.</p>
     </div>
   </div>
-  <button class="ui-wt-start" id="uiWtStart">Start the tour</button>
+  <button type="button" class="ui-wt-start" id="uiWtStart">Start the tour</button>
 </div>
 
 <div class="ui-wt" id="uiWt" hidden>
@@ -749,10 +749,10 @@ export const category = {
     <p>Click <strong>+ New page</strong> in the sidebar to start writing. Pages can hold text, tables, databases, and more — they are the building blocks of Notion.</p>
     <div class="ui-wt__progress"><span></span><span class="on"></span><span></span><span></span><span></span></div>
     <div class="ui-wt__actions">
-      <button class="ui-wt__skip" onclick="closeWt()">Skip tour</button>
+      <button type="button" class="ui-wt__skip" onclick="closeWt()">Skip tour</button>
       <div class="ui-wt__nav">
-        <button class="ui-wt__back">Back</button>
-        <button class="ui-wt__next" onclick="closeWt()">Next →</button>
+        <button type="button" class="ui-wt__back">Back</button>
+        <button type="button" class="ui-wt__next" onclick="closeWt()">Next →</button>
       </div>
     </div>
   </div>
@@ -838,8 +838,8 @@ export const category = {
     </div>
   </div>
   <div class="ui-welcome__foot">
-    <button class="ui-welcome__skip">Sign in instead</button>
-    <button class="ui-welcome__next">Continue →</button>
+    <button type="button" class="ui-welcome__skip">Sign in instead</button>
+    <button type="button" class="ui-welcome__next">Continue →</button>
   </div>
 </div>
 
@@ -888,9 +888,9 @@ export const category = {
   <ul class="ui-checklist__list">
     <li class="done"><span class="ui-checklist__check">✓</span><div><strong>Verify your email address</strong><small>Completed Sep 15</small></div></li>
     <li class="done"><span class="ui-checklist__check">✓</span><div><strong>Add your business details</strong><small>Acme Inc · United States</small></div></li>
-    <li class="active"><span class="ui-checklist__check"></span><div><strong>Add bank account for payouts</strong><small>Required · Takes about 2 minutes</small></div><button class="primary">Add bank</button></li>
-    <li><span class="ui-checklist__check"></span><div><strong>Verify your identity</strong><small>Upload a government-issued ID</small></div><button>Start →</button></li>
-    <li><span class="ui-checklist__check"></span><div><strong>Customize your branding</strong><small>Optional · Add logo and colors</small></div><button>Add →</button></li>
+    <li class="active"><span class="ui-checklist__check"></span><div><strong>Add bank account for payouts</strong><small>Required · Takes about 2 minutes</small></div><button type="button" class="primary">Add bank</button></li>
+    <li><span class="ui-checklist__check"></span><div><strong>Verify your identity</strong><small>Upload a government-issued ID</small></div><button type="button">Start →</button></li>
+    <li><span class="ui-checklist__check"></span><div><strong>Customize your branding</strong><small>Optional · Add logo and colors</small></div><button type="button">Add →</button></li>
   </ul>
   <a class="ui-checklist__skip" href="#">I'll do this later →</a>
 </div>

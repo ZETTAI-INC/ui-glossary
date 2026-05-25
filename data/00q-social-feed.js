@@ -24,15 +24,15 @@ export const category = {
       <span class="ui-pc__name">Saki Kobayashi</span>
       <svg class="ui-pc__verified" viewBox="0 0 22 22" width="16" height="16" aria-hidden="true"><path fill="#1d9bf0" d="M20.4 11l-1.7-2 0.3-2.6-2.5-0.6-1.4-2.3L12.7 4.5 11 3.4 9.3 4.5 6.9 3.5 5.5 5.8 3 6.4 3.3 9l-1.7 2L3.3 13l-0.3 2.6 2.5 0.6 1.4 2.3 2.4-1L11 18.6l1.7-1.1 2.4 1 1.4-2.3 2.5-0.6L18.7 13zM9.8 14.4 6.6 11.2l1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4z"/></svg>
       <span class="ui-pc__handle">@sakikb · 2h</span>
-      <button class="ui-pc__more" aria-label="More">···</button>
+      <button type="button" class="ui-pc__more" aria-label="More">···</button>
     </header>
     <p class="ui-pc__body">夜中に書いたコード、朝見ると別人が書いたみたいに見える現象に名前つけてほしい。<br>typoだけ直して今日も出社します ☕️</p>
     <footer class="ui-pc__metrics">
-      <button class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M1.75 3a.75.75 0 00-.75.75v15.5c0 .41.34.75.75.75h20.5a.75.75 0 00.75-.75V3.75A.75.75 0 0022.25 3H1.75zM3 18V5h18v13H6.31L3 19.5V18z"/></svg><span>24</span></button>
-      <button class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4.5 3.88l4.43 4.43-1.41 1.41L5.5 7.69V14c0 1.1.9 2 2 2h6v2H7.5a4 4 0 01-4-4V7.7L1.49 9.7.08 8.3 4.5 3.88zm15 16.24l-4.43-4.43 1.41-1.41 2.02 2.02V10a2 2 0 00-2-2h-6V6h6a4 4 0 014 4v6.31l2.02-2.02 1.41 1.41-4.43 4.43z"/></svg><span>312</span></button>
-      <button class="ui-pc__m ui-pc__m--like"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16.7 4c-1.7 0-3.5 1.2-4.7 3-1.2-1.8-3-3-4.7-3C4.4 4 2 6.4 2 9.3c0 4.5 4.4 7.6 10 13.2 5.6-5.6 10-8.7 10-13.2C22 6.4 19.6 4 16.7 4z"/></svg><span>2.4K</span></button>
-      <button class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 4.5C4 3.67 4.67 3 5.5 3h13c.83 0 1.5.67 1.5 1.5V21l-8-4-8 4V4.5z"/></svg></button>
-      <button class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41L7.71 9.71 6.3 8.29 12 2.59zM4 14v6a1 1 0 001 1h14a1 1 0 001-1v-6h-2v5H6v-5H4z"/></svg></button>
+      <button type="button" class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M1.75 3a.75.75 0 00-.75.75v15.5c0 .41.34.75.75.75h20.5a.75.75 0 00.75-.75V3.75A.75.75 0 0022.25 3H1.75zM3 18V5h18v13H6.31L3 19.5V18z"/></svg><span>24</span></button>
+      <button type="button" class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4.5 3.88l4.43 4.43-1.41 1.41L5.5 7.69V14c0 1.1.9 2 2 2h6v2H7.5a4 4 0 01-4-4V7.7L1.49 9.7.08 8.3 4.5 3.88zm15 16.24l-4.43-4.43 1.41-1.41 2.02 2.02V10a2 2 0 00-2-2h-6V6h6a4 4 0 014 4v6.31l2.02-2.02 1.41 1.41-4.43 4.43z"/></svg><span>312</span></button>
+      <button type="button" class="ui-pc__m ui-pc__m--like"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16.7 4c-1.7 0-3.5 1.2-4.7 3-1.2-1.8-3-3-4.7-3C4.4 4 2 6.4 2 9.3c0 4.5 4.4 7.6 10 13.2 5.6-5.6 10-8.7 10-13.2C22 6.4 19.6 4 16.7 4z"/></svg><span>2.4K</span></button>
+      <button type="button" class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 4.5C4 3.67 4.67 3 5.5 3h13c.83 0 1.5.67 1.5 1.5V21l-8-4-8 4V4.5z"/></svg></button>
+      <button type="button" class="ui-pc__m"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41L7.71 9.71 6.3 8.29 12 2.59zM4 14v6a1 1 0 001 1h14a1 1 0 001-1v-6h-2v5H6v-5H4z"/></svg></button>
     </footer>
   </div>
 </article>
@@ -131,14 +131,14 @@ export const category = {
       code: `<!-- Inspired by Facebook -->
 <div class="ui-rxn">
   <div class="ui-rxn__pop" role="menu" aria-label="Reactions">
-    <button class="ui-rxn__emoji" title="Like">👍</button>
-    <button class="ui-rxn__emoji" title="Love">❤️</button>
-    <button class="ui-rxn__emoji" title="Haha">😆</button>
-    <button class="ui-rxn__emoji" title="Wow">😮</button>
-    <button class="ui-rxn__emoji" title="Sad">😢</button>
-    <button class="ui-rxn__emoji" title="Celebrate">🎉</button>
+    <button type="button" class="ui-rxn__emoji" title="Like">👍</button>
+    <button type="button" class="ui-rxn__emoji" title="Love">❤️</button>
+    <button type="button" class="ui-rxn__emoji" title="Haha">😆</button>
+    <button type="button" class="ui-rxn__emoji" title="Wow">😮</button>
+    <button type="button" class="ui-rxn__emoji" title="Sad">😢</button>
+    <button type="button" class="ui-rxn__emoji" title="Celebrate">🎉</button>
   </div>
-  <button class="ui-rxn__trigger">
+  <button type="button" class="ui-rxn__trigger">
     <span>👍</span>
     <span>Like</span>
   </button>
@@ -162,8 +162,8 @@ export const category = {
       detailEn: 'The follow button is the most critical CTA on any social product, and it almost always has three states. Before you follow, it\'s a solid brand-color "Follow" that begs for a click. Once you do, it dims to an outlined "Following". Hover over that and it turns red "Unfollow" — a soft visual warning instead of a heavy confirmation modal. X, Threads, and Instagram all share this pattern, and it falls naturally out of a CSS `:hover` swap. The slight friction without a full dialog is the whole point.',
       code: `<!-- Inspired by X (Twitter) -->
 <div class="ui-fb">
-  <button class="ui-fb__btn" data-state="idle">Follow</button>
-  <button class="ui-fb__btn" data-state="following">
+  <button type="button" class="ui-fb__btn" data-state="idle">Follow</button>
+  <button type="button" class="ui-fb__btn" data-state="following">
     <span class="ui-fb__on">Following</span>
     <span class="ui-fb__off">Unfollow</span>
   </button>
@@ -195,7 +195,7 @@ export const category = {
     <div class="ui-ct__body">
       <div class="ui-ct__head"><b>Nao Kondo</b> <span>@naokondo · 6h</span></div>
       <p>新しいエディタ、フォントを Inter から Geist にしたら、なんか集中できる気がする。気のせいかな</p>
-      <div class="ui-ct__actions"><button>Reply</button><button>Like · 12</button></div>
+      <div class="ui-ct__actions"><button type="button">Reply</button><button type="button">Like · 12</button></div>
     </div>
   </article>
   <article class="ui-ct__item ui-ct__item--reply">
@@ -203,7 +203,7 @@ export const category = {
     <div class="ui-ct__body">
       <div class="ui-ct__head"><b>Yui Hayama</b> <span>@yuih · 5h</span></div>
       <p>気のせいではないはず。等幅っぽい数字が読みやすくなる効果ある気がしてる</p>
-      <div class="ui-ct__actions"><button>Reply</button><button>Like · 4</button></div>
+      <div class="ui-ct__actions"><button type="button">Reply</button><button type="button">Like · 4</button></div>
     </div>
   </article>
   <article class="ui-ct__item ui-ct__item--reply ui-ct__item--reply2">
@@ -211,7 +211,7 @@ export const category = {
     <div class="ui-ct__body">
       <div class="ui-ct__head"><b>Nao Kondo</b> <span>@naokondo · 5h</span></div>
       <p>それだ。コードの数字が綺麗に揃って見えるのが地味に効いてるかも</p>
-      <div class="ui-ct__actions"><button>Reply</button><button>Like · 2</button></div>
+      <div class="ui-ct__actions"><button type="button">Reply</button><button type="button">Like · 2</button></div>
     </div>
   </article>
   <article class="ui-ct__item ui-ct__item--reply">
@@ -219,7 +219,7 @@ export const category = {
     <div class="ui-ct__body">
       <div class="ui-ct__head"><b>Miki Oda</b> <span>@miki_o · 4h</span></div>
       <p>Geist いいですよね。Mono版もおすすめ</p>
-      <div class="ui-ct__actions"><button>Reply</button><button>Like · 1</button></div>
+      <div class="ui-ct__actions"><button type="button">Reply</button><button type="button">Like · 1</button></div>
     </div>
   </article>
 </div>
@@ -297,7 +297,7 @@ export const category = {
   <div class="ui-phc__card" role="dialog">
     <header class="ui-phc__head">
       <div class="ui-phc__avatar" style="background:linear-gradient(135deg,#22c55e,#0ea5e9)">RC</div>
-      <button class="ui-phc__follow">Follow</button>
+      <button type="button" class="ui-phc__follow">Follow</button>
     </header>
     <div class="ui-phc__name"><b>Rio Chen</b></div>
     <div class="ui-phc__handle">@rio.codes</div>
@@ -379,13 +379,13 @@ export const category = {
       detailEn: 'A bookmark button toggles "save for later" with a single tap. Across virtually every social app, the convention is the same: outline icon when empty, filled icon when saved. Instagram\'s collections, Twitter\'s bookmarks, and Pinterest\'s "Save" all exploded by giving users a personal stash that\'s distinct from the public "like." Pair the toggle with a tiny bounce animation and a confirmation toast so users know it worked. This snippet flips the SVG between stroke-only and a solid fill — minimal but instantly readable.',
       code: `<!-- Inspired by Pinterest -->
 <div class="ui-bm">
-  <button class="ui-bm__btn" aria-pressed="false">
+  <button type="button" class="ui-bm__btn" aria-pressed="false">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
       <path class="ui-bm__path" d="M6 3.5h12c.55 0 1 .45 1 1V21l-7-3.2L5 21V4.5c0-.55.45-1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
     </svg>
     <span class="ui-bm__label">Save</span>
   </button>
-  <button class="ui-bm__btn ui-bm__btn--saved" aria-pressed="true">
+  <button type="button" class="ui-bm__btn ui-bm__btn--saved" aria-pressed="true">
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
       <path d="M6 3.5h12c.55 0 1 .45 1 1V21l-7-3.2L5 21V4.5c0-.55.45-1 1-1z" fill="currentColor"/>
     </svg>

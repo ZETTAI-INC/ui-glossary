@@ -179,7 +179,7 @@ export const category = {
     <h3 class="ui-del-outlook__title">Tech Trends 2026 Outlook</h3>
     <p class="ui-del-outlook__sub">Spatial computing, AI agents, and the engineering renaissance — six chapters covering <b>18 emerging trends</b> shaping the next 18–24 months.</p>
     <div class="ui-del-outlook__row">
-      <button class="ui-del-outlook__btn">Download the report (PDF)</button>
+      <button type="button" class="ui-del-outlook__btn">Download the report (PDF)</button>
       <span class="ui-del-outlook__size">PDF · 84 pages · 8.2 MB</span>
     </div>
   </div>
@@ -220,7 +220,7 @@ export const category = {
       </svg>
       <div class="ui-hbr-ep__brand">IDEA<br>CAST</div>
     </div>
-    <button class="ui-hbr-ep__play" aria-label="Play episode">▶</button>
+    <button type="button" class="ui-hbr-ep__play" aria-label="Play episode">▶</button>
   </div>
   <div class="ui-hbr-ep__body">
     <div class="ui-hbr-ep__num">Episode 947 · May 19, 2026</div>
@@ -322,7 +322,7 @@ export const category = {
     <h3 class="ui-hbr-news__h">The Daily Newsletter from <i>Harvard Business Review</i></h3>
     <p class="ui-hbr-news__p">Five new ideas every weekday morning — from leadership to AI strategy. Curated for working managers. Free, takes 30 seconds.</p>
     <div class="ui-hbr-news__field">
-      <input class="ui-hbr-news__in" type="email" placeholder="you@company.com" required>
+      <input aria-label="you@company.com" class="ui-hbr-news__in" type="email" placeholder="you@company.com" required>
       <button class="ui-hbr-news__btn" type="submit">Subscribe</button>
     </div>
     <div class="ui-hbr-news__fine">By signing up you agree to our <u>Terms of Use</u>. Unsubscribe anytime.</div>
@@ -397,7 +397,7 @@ export const category = {
       </div>
     </div>
     <div class="ui-bain-evt__cta">
-      <button class="ui-bain-evt__btn">Register free</button>
+      <button type="button" class="ui-bain-evt__btn">Register free</button>
       <span class="ui-bain-evt__seats">2,140 registered · 1,860 seats left</span>
     </div>
   </div>
@@ -515,19 +515,19 @@ export const category = {
         <li>Updated May 2026</li>
       </ul>
       <div class="ui-acn-wp__cta">
-        <button class="ui-acn-wp__btn" onclick="document.getElementById('ui-acn-wp').classList.add('open')">⬇ Download (gated)</button>
+        <button type="button" class="ui-acn-wp__btn" onclick="document.getElementById('ui-acn-wp').classList.add('open')">⬇ Download (gated)</button>
         <span class="ui-acn-wp__note">Requires email · No spam</span>
       </div>
     </div>
   </article>
   <div class="ui-acn-wp__form" role="dialog" aria-label="Download form">
     <div class="ui-acn-wp__form-h">Tell us about yourself</div>
-    <input class="ui-acn-wp__in" placeholder="Full name" value="">
-    <input class="ui-acn-wp__in" placeholder="Work email" value="">
-    <input class="ui-acn-wp__in" placeholder="Company" value="">
+    <input aria-label="Full name" class="ui-acn-wp__in" placeholder="Full name" value="">
+    <input aria-label="Work email" class="ui-acn-wp__in" placeholder="Work email" value="">
+    <input aria-label="Company" class="ui-acn-wp__in" placeholder="Company" value="">
     <div class="ui-acn-wp__row">
       <button class="ui-acn-wp__btn ui-acn-wp__btn--p" type="button">Get the PDF</button>
-      <button class="ui-acn-wp__cancel" onclick="document.getElementById('ui-acn-wp').classList.remove('open')">Cancel</button>
+      <button type="button" class="ui-acn-wp__cancel" onclick="document.getElementById('ui-acn-wp').classList.remove('open')">Cancel</button>
     </div>
   </div>
 </div>

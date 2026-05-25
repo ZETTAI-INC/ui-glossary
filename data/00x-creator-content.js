@@ -118,11 +118,11 @@ export const category = {
 <div class="ui-ht-wrap">
   <p class="ui-ht-text">In the end, the best products are not the ones with the most features but <mark class="ui-ht-sel">the ones that respect your time the most</mark>. Everything else is just decoration.</p>
   <div class="ui-ht-pop" role="toolbar">
-    <button class="ui-ht-btn" title="Highlight"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 17l9-9 4 4-9 9H5v-4z"/></svg><span>Highlight</span></button>
+    <button type="button" class="ui-ht-btn" title="Highlight"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 17l9-9 4 4-9 9H5v-4z"/></svg><span>Highlight</span></button>
     <span class="ui-ht-sep"></span>
-    <button class="ui-ht-btn" title="Share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>
+    <button type="button" class="ui-ht-btn" title="Share"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>
     <span class="ui-ht-sep"></span>
-    <button class="ui-ht-btn" title="Note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg><span>Note</span></button>
+    <button type="button" class="ui-ht-btn" title="Note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg><span>Note</span></button>
     <span class="ui-ht-arrow"></span>
   </div>
 </div>
@@ -194,7 +194,7 @@ export const category = {
   <h3 class="ui-ns-title">The Weekend Read</h3>
   <p class="ui-ns-lead">One long-form essay on tech, taste, and craft. Every Saturday morning. No ads, no AI summaries. Currently read by 24,318 thoughtful people.</p>
   <div class="ui-ns-row">
-    <input type="email" class="ui-ns-input" placeholder="your@email.com" required>
+    <input aria-label="your@email.com" type="email" class="ui-ns-input" placeholder="your@email.com" required>
     <button class="ui-ns-btn" type="submit">Subscribe</button>
   </div>
   <p class="ui-ns-foot">Free · No spam · Unsubscribe anytime</p>

@@ -194,21 +194,21 @@ export const category = {
   <div class="ui-cal__head">
     <div class="ui-cal__month">May 2026</div>
     <div class="ui-cal__nav">
-      <button aria-label="Previous">‹</button>
-      <button aria-label="Next">›</button>
+      <button type="button" aria-label="Previous">‹</button>
+      <button type="button" aria-label="Next">›</button>
     </div>
   </div>
   <div class="ui-cal__weekdays"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>
   <div class="ui-cal__grid">
-    <button class="ui-cal__day is-muted">26</button><button class="ui-cal__day is-muted">27</button><button class="ui-cal__day is-muted">28</button><button class="ui-cal__day is-muted">29</button><button class="ui-cal__day is-muted">30</button><button class="ui-cal__day">1</button><button class="ui-cal__day">2</button>
-    <button class="ui-cal__day">3</button><button class="ui-cal__day">4</button><button class="ui-cal__day">5</button><button class="ui-cal__day">6</button><button class="ui-cal__day">7</button><button class="ui-cal__day">8</button><button class="ui-cal__day">9</button>
-    <button class="ui-cal__day">10</button><button class="ui-cal__day">11</button><button class="ui-cal__day">12</button><button class="ui-cal__day">13</button><button class="ui-cal__day">14</button><button class="ui-cal__day">15</button><button class="ui-cal__day">16</button>
-    <button class="ui-cal__day">17</button><button class="ui-cal__day">18</button><button class="ui-cal__day">19</button><button class="ui-cal__day is-today">20</button><button class="ui-cal__day">21</button><button class="ui-cal__day is-selected">22</button><button class="ui-cal__day">23</button>
-    <button class="ui-cal__day">24</button><button class="ui-cal__day">25</button><button class="ui-cal__day">26</button><button class="ui-cal__day">27</button><button class="ui-cal__day">28</button><button class="ui-cal__day">29</button><button class="ui-cal__day">30</button>
-    <button class="ui-cal__day">31</button>
+    <button type="button" class="ui-cal__day is-muted">26</button><button type="button" class="ui-cal__day is-muted">27</button><button type="button" class="ui-cal__day is-muted">28</button><button type="button" class="ui-cal__day is-muted">29</button><button type="button" class="ui-cal__day is-muted">30</button><button type="button" class="ui-cal__day">1</button><button type="button" class="ui-cal__day">2</button>
+    <button type="button" class="ui-cal__day">3</button><button type="button" class="ui-cal__day">4</button><button type="button" class="ui-cal__day">5</button><button type="button" class="ui-cal__day">6</button><button type="button" class="ui-cal__day">7</button><button type="button" class="ui-cal__day">8</button><button type="button" class="ui-cal__day">9</button>
+    <button type="button" class="ui-cal__day">10</button><button type="button" class="ui-cal__day">11</button><button type="button" class="ui-cal__day">12</button><button type="button" class="ui-cal__day">13</button><button type="button" class="ui-cal__day">14</button><button type="button" class="ui-cal__day">15</button><button type="button" class="ui-cal__day">16</button>
+    <button type="button" class="ui-cal__day">17</button><button type="button" class="ui-cal__day">18</button><button type="button" class="ui-cal__day">19</button><button type="button" class="ui-cal__day is-today">20</button><button type="button" class="ui-cal__day">21</button><button type="button" class="ui-cal__day is-selected">22</button><button type="button" class="ui-cal__day">23</button>
+    <button type="button" class="ui-cal__day">24</button><button type="button" class="ui-cal__day">25</button><button type="button" class="ui-cal__day">26</button><button type="button" class="ui-cal__day">27</button><button type="button" class="ui-cal__day">28</button><button type="button" class="ui-cal__day">29</button><button type="button" class="ui-cal__day">30</button>
+    <button type="button" class="ui-cal__day">31</button>
   </div>
   <div class="ui-cal__times">
-    <button>9:00 am</button><button class="is-selected">9:30 am</button><button>10:00 am</button><button>10:30 am</button>
+    <button type="button">9:00 am</button><button type="button" class="is-selected">9:30 am</button><button type="button">10:00 am</button><button type="button">10:30 am</button>
   </div>
 </div>
 
@@ -293,11 +293,11 @@ export const category = {
     <div class="ui-cart-row__price">$42.00</div>
   </div>
   <div class="ui-stepper-input" id="sp">
-    <button class="ui-stepper-input__btn" data-act="dec" aria-label="Decrease">
+    <button type="button" class="ui-stepper-input__btn" data-act="dec" aria-label="Decrease">
       <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 5h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
     <input class="ui-stepper-input__val" type="number" value="2" min="1" max="10" aria-label="Quantity">
-    <button class="ui-stepper-input__btn" data-act="inc" aria-label="Increase">
+    <button type="button" class="ui-stepper-input__btn" data-act="inc" aria-label="Increase">
       <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 5h8M5 1v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
   </div>

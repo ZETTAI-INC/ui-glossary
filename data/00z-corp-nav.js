@@ -21,7 +21,7 @@ export const category = {
   <header class="ui-mega__bar">
     <div class="ui-mega__brand"><span class="ui-mega__logo"></span>Contoso</div>
     <nav class="ui-mega__nav">
-      <button class="ui-mega__trigger is-open">Products <span>⌄</span></button>
+      <button type="button" class="ui-mega__trigger is-open">Products <span>⌄</span></button>
       <a>Industries</a><a>Resources</a><a>Support</a>
     </nav>
     <div class="ui-mega__cta">Sign in</div>
@@ -81,7 +81,7 @@ export const category = {
   <header class="ui-shead__inner">
     <div class="ui-shead__brand"><span class="ui-shead__mark"></span>Lumen</div>
     <nav class="ui-shead__nav"><a>Products</a><a>Solutions</a><a>Developers</a><a>Pricing</a></nav>
-    <div class="ui-shead__right"><a>Sign in</a><button class="ui-shead__cta">Contact sales →</button></div>
+    <div class="ui-shead__right"><a>Sign in</a><button type="button" class="ui-shead__cta">Contact sales →</button></div>
   </header>
   <section class="ui-shead__hero">
     <h1>Payments infrastructure for the internet.</h1>
@@ -184,15 +184,15 @@ export const category = {
   <header class="ui-srch__bar">
     <div class="ui-srch__brand">◐ Aurora</div>
     <nav class="ui-srch__nav"><a>Store</a><a>Mac</a><a>iPhone</a><a>Watch</a><a>Support</a></nav>
-    <button class="ui-srch__icon" id="usrch-open" aria-label="Search">⌕</button>
+    <button type="button" class="ui-srch__icon" id="usrch-open" aria-label="Search">⌕</button>
   </header>
   <section class="ui-srch__body">Press the ⌕ icon to open search.</section>
   <div class="ui-srch__overlay" id="usrch-ov" hidden>
     <div class="ui-srch__panel">
       <div class="ui-srch__input">
         <span>⌕</span>
-        <input type="text" placeholder="Search aurora.com" autofocus>
-        <button class="ui-srch__close" id="usrch-close">Cancel</button>
+        <input aria-label="Search aurora.com" type="text" placeholder="Search aurora.com" autofocus>
+        <button type="button" class="ui-srch__close" id="usrch-close">Cancel</button>
       </div>
       <div class="ui-srch__section">Quick Links</div>
       <ul class="ui-srch__list">
@@ -320,7 +320,7 @@ export const category = {
     </nav>
     <div class="ui-uln__right">
       <a class="ui-uln__signin">Log in</a>
-      <button class="ui-uln__cta">Sign up</button>
+      <button type="button" class="ui-uln__cta">Sign up</button>
     </div>
   </header>
   <section class="ui-uln__hero">
@@ -358,10 +358,10 @@ export const category = {
       detailEn: 'The "choose your country/region" picker is a fixture of any globally distributed corporate site — Apple, PwC, Cisco, Microsoft all ship a version of it. The current locale (say, "Japan / 日本語") sits in the header or footer; clicking it opens a panel with a search field and a long alphabetized list of flags and country names. Users filter, pick, and hit Apply, after which language, currency, and content swap accordingly. With nearly 200 possible entries, both a search box and alphabetical grouping are effectively required.',
       code: `<!-- Inspired by Apple -->
 <div class="ui-reg" id="ureg">
-  <button class="ui-reg__trigger" id="ureg-t">🌐 Japan / 日本語 <span>⌄</span></button>
+  <button type="button" class="ui-reg__trigger" id="ureg-t">🌐 Japan / 日本語 <span>⌄</span></button>
   <div class="ui-reg__panel" id="ureg-p" hidden>
     <div class="ui-reg__head">
-      <input type="text" placeholder="Search 175 countries…" class="ui-reg__search">
+      <input aria-label="Search 175 countries…" type="text" placeholder="Search 175 countries…" class="ui-reg__search">
     </div>
     <ul class="ui-reg__list">
       <li><span class="ui-reg__flag">🇯🇵</span>Japan<span class="ui-reg__lang">日本語</span></li>
@@ -374,7 +374,7 @@ export const category = {
     </ul>
     <div class="ui-reg__foot">
       <span class="ui-reg__note">Changes site language &amp; currency</span>
-      <button class="ui-reg__apply">Apply</button>
+      <button type="button" class="ui-reg__apply">Apply</button>
     </div>
   </div>
 </div>
@@ -431,7 +431,7 @@ export const category = {
     <span class="ui-bc__sep">/</span>
     <a>Compute</a>
     <span class="ui-bc__sep">/</span>
-    <button class="ui-bc__current" id="ubc-cur">EC2 <span>⌄</span></button>
+    <button type="button" class="ui-bc__current" id="ubc-cur">EC2 <span>⌄</span></button>
   </nav>
   <ul class="ui-bc__menu" id="ubc-menu" hidden>
     <li class="is-current">EC2 <span>Virtual servers</span></li>
@@ -541,7 +541,7 @@ export const category = {
     </nav>
     <div class="ui-pair__cta">
       <a class="ui-pair__signin">Sign in</a>
-      <button class="ui-pair__signup">Get started free →</button>
+      <button type="button" class="ui-pair__signup">Get started free →</button>
     </div>
   </header>
   <section class="ui-pair__hero">

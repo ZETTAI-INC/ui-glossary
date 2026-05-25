@@ -29,7 +29,7 @@ export const category = {
     <li class="ui-kb-col__card"><span class="ui-kb-col__lbl ui-kb-col__lbl--yellow"></span>QA: empty-state copy edits</li>
     <li class="ui-kb-col__card"><span class="ui-kb-col__lbl ui-kb-col__lbl--red"></span>Hotfix: timezone bug on calendar</li>
   </ul>
-  <button class="ui-kb-col__add">＋ Add a card</button>
+  <button type="button" class="ui-kb-col__add">＋ Add a card</button>
 </div>
 
 <style>
@@ -106,27 +106,27 @@ export const category = {
       code: `<!-- Inspired by Notion -->
 <div class="ui-slash">
   <div class="ui-slash__hint">BASIC BLOCKS</div>
-  <button class="ui-slash__row is-active">
+  <button type="button" class="ui-slash__row is-active">
     <span class="ui-slash__ico">📝</span>
     <span class="ui-slash__text"><b>Text</b><i>Just start writing with plain text.</i></span>
     <span class="ui-slash__kbd">⌘ ⇧ 0</span>
   </button>
-  <button class="ui-slash__row">
+  <button type="button" class="ui-slash__row">
     <span class="ui-slash__ico" style="background:#f7eed3;color:#7a5b00">H1</span>
     <span class="ui-slash__text"><b>Heading 1</b><i>Big section heading.</i></span>
     <span class="ui-slash__kbd">⌘ ⇧ 1</span>
   </button>
-  <button class="ui-slash__row">
+  <button type="button" class="ui-slash__row">
     <span class="ui-slash__ico" style="background:#e3f1e3;color:#2e7c3a">H2</span>
     <span class="ui-slash__text"><b>Heading 2</b><i>Medium section heading.</i></span>
     <span class="ui-slash__kbd">⌘ ⇧ 2</span>
   </button>
-  <button class="ui-slash__row">
+  <button type="button" class="ui-slash__row">
     <span class="ui-slash__ico">☑</span>
     <span class="ui-slash__text"><b>To-do list</b><i>Track tasks with a checkbox.</i></span>
     <span class="ui-slash__kbd">⌘ ⇧ 4</span>
   </button>
-  <button class="ui-slash__row">
+  <button type="button" class="ui-slash__row">
     <span class="ui-slash__ico">＜＞</span>
     <span class="ui-slash__text"><b>Code</b><i>Capture a code snippet.</i></span>
     <span class="ui-slash__kbd">⌘ ⇧ 8</span>
@@ -156,24 +156,24 @@ export const category = {
 <div class="ui-mention">
   <div class="ui-mention__hint">@ Mention a person, page, or date</div>
   <div class="ui-mention__group">PEOPLE</div>
-  <button class="ui-mention__row is-active">
+  <button type="button" class="ui-mention__row is-active">
     <span class="ui-mention__av" style="background:#f06292">MN</span>
     <span class="ui-mention__name">Mika Nakamura<i> · Design Lead</i></span>
   </button>
-  <button class="ui-mention__row">
+  <button type="button" class="ui-mention__row">
     <span class="ui-mention__av" style="background:#5c6bc0">JS</span>
     <span class="ui-mention__name">Jonas Sato<i> · Engineering</i></span>
   </button>
-  <button class="ui-mention__row">
+  <button type="button" class="ui-mention__row">
     <span class="ui-mention__av" style="background:#43a047">EH</span>
     <span class="ui-mention__name">Emma Huang<i> · PM, Mobile</i></span>
   </button>
   <div class="ui-mention__group">PAGES</div>
-  <button class="ui-mention__row">
+  <button type="button" class="ui-mention__row">
     <span class="ui-mention__pg">📄</span>
     <span class="ui-mention__name">Mobile launch plan<i> · Engineering / Q3</i></span>
   </button>
-  <button class="ui-mention__row">
+  <button type="button" class="ui-mention__row">
     <span class="ui-mention__pg">📐</span>
     <span class="ui-mention__name">Mobile redesign spec<i> · Design</i></span>
   </button>
@@ -201,9 +201,9 @@ export const category = {
       code: `<!-- Inspired by Google Calendar -->
 <div class="ui-cal">
   <header class="ui-cal__hd">
-    <button class="ui-cal__nav">‹</button>
+    <button type="button" class="ui-cal__nav">‹</button>
     <h3>May 2026</h3>
-    <button class="ui-cal__nav">›</button>
+    <button type="button" class="ui-cal__nav">›</button>
   </header>
   <div class="ui-cal__dow">
     <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
@@ -429,7 +429,7 @@ export const category = {
     <header class="ui-ct__hd">
       <div class="ui-ct__stack"><span style="background:#f06292">MN</span><span style="background:#5c6bc0">JS</span><span style="background:#43a047">EH</span></div>
       <span class="ui-ct__count">3 replies</span>
-      <button class="ui-ct__resolve">✓ Resolve</button>
+      <button type="button" class="ui-ct__resolve">✓ Resolve</button>
     </header>
     <div class="ui-ct__msg">
       <div class="ui-ct__row"><span class="ui-ct__av" style="background:#f06292">MN</span><b>Mika Nakamura</b><i>2h</i></div>
@@ -483,29 +483,29 @@ export const category = {
 <div class="ui-cp">
   <div class="ui-cp__hd">Background</div>
   <div class="ui-cp__grid">
-    <button class="ui-cp__sw" style="background:#ffffff" title="Default"><span></span></button>
-    <button class="ui-cp__sw" style="background:#f1f1ef" title="Gray"><span></span></button>
-    <button class="ui-cp__sw is-selected" style="background:#faebdd" title="Brown"><span>✓</span></button>
-    <button class="ui-cp__sw" style="background:#fbecdd" title="Orange"><span></span></button>
-    <button class="ui-cp__sw" style="background:#fbf3db" title="Yellow"><span></span></button>
-    <button class="ui-cp__sw" style="background:#ddedea" title="Green"><span></span></button>
-    <button class="ui-cp__sw" style="background:#ddebf1" title="Blue"><span></span></button>
-    <button class="ui-cp__sw" style="background:#eae4f2" title="Purple"><span></span></button>
-    <button class="ui-cp__sw" style="background:#f4dfeb" title="Pink"><span></span></button>
-    <button class="ui-cp__sw" style="background:#fbe4e4" title="Red"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#ffffff" title="Default"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#f1f1ef" title="Gray"><span></span></button>
+    <button type="button" class="ui-cp__sw is-selected" style="background:#faebdd" title="Brown"><span>✓</span></button>
+    <button type="button" class="ui-cp__sw" style="background:#fbecdd" title="Orange"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#fbf3db" title="Yellow"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#ddedea" title="Green"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#ddebf1" title="Blue"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#eae4f2" title="Purple"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#f4dfeb" title="Pink"><span></span></button>
+    <button type="button" class="ui-cp__sw" style="background:#fbe4e4" title="Red"><span></span></button>
   </div>
   <div class="ui-cp__hd">Color</div>
   <div class="ui-cp__grid">
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#37352f">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#787774">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#976d57">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#cc782f">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#c29243">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#548164">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#477da5">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#a48bbe">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#b35488">A</button>
-    <button class="ui-cp__sw ui-cp__sw--text" style="color:#c4554d">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#37352f">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#787774">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#976d57">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#cc782f">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#c29243">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#548164">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#477da5">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#a48bbe">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#b35488">A</button>
+    <button type="button" class="ui-cp__sw ui-cp__sw--text" style="color:#c4554d">A</button>
   </div>
 </div>
 

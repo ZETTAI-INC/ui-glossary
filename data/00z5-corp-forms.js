@@ -288,7 +288,7 @@ export const category = {
   </header>
   <div class="ui-db__grid">
     <div class="ui-db__cal">
-      <div class="ui-db__month"><button>‹</button><b>May 2026</b><button>›</button></div>
+      <div class="ui-db__month"><button type="button">‹</button><b>May 2026</b><button type="button">›</button></div>
       <div class="ui-db__dow"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
       <div class="ui-db__days">
         <span class="dim">27</span><span class="dim">28</span><span class="dim">29</span><span class="dim">30</span><span>1</span><span class="off">2</span><span class="off">3</span>
@@ -301,13 +301,13 @@ export const category = {
     <div class="ui-db__slots">
       <div class="ui-db__day">Wed, May 20</div>
       <div class="ui-db__list">
-        <button>9:00 AM</button>
-        <button>9:30 AM</button>
-        <button class="is-on">10:00 AM</button>
-        <button>11:30 AM</button>
-        <button>1:00 PM</button>
-        <button>2:30 PM</button>
-        <button>4:00 PM</button>
+        <button type="button">9:00 AM</button>
+        <button type="button">9:30 AM</button>
+        <button type="button" class="is-on">10:00 AM</button>
+        <button type="button">11:30 AM</button>
+        <button type="button">1:00 PM</button>
+        <button type="button">2:30 PM</button>
+        <button type="button">4:00 PM</button>
       </div>
     </div>
   </div>
@@ -479,7 +479,7 @@ export const category = {
       detailEn: 'A persistent bottom-right floating chat button. Closed state shows just a colored circle; click it and a small chat-style mini form (name + message + send) slides up. Patterns popularized by Intercom, Drift, and Crisp — it gives visitors a "I can ask any time" entry point throughout the site. Including an "average reply in N minutes" line at the top calibrates expectations and bumps response feel.',
       code: `<!-- Inspired by Intercom Messenger -->
 <div class="ui-fc" id="fc">
-  <button class="ui-fc__btn" id="fcBtn" aria-label="Open chat">
+  <button type="button" class="ui-fc__btn" id="fcBtn" aria-label="Open chat">
     <svg viewBox="0 0 28 28" width="26" height="26" fill="#fff"><path d="M14 2C7.4 2 2 6.7 2 12.5c0 2.7 1.2 5.2 3.2 7L4 23l4-1.3c1.8.9 3.8 1.3 6 1.3 6.6 0 12-4.7 12-10.5S20.6 2 14 2z"/></svg>
     <span class="ui-fc__badge">1</span>
   </button>
@@ -488,7 +488,7 @@ export const category = {
       <div class="ui-fc__avatars"><span style="background:#7d3cff">A</span><span style="background:#ff6b6b">R</span><span style="background:#36d399">N</span></div>
       <h4>Hi 👋 How can we help?</h4>
       <small>Avg reply in 4 min · Mon–Fri 9am–6pm JST</small>
-      <button class="ui-fc__x" id="fcX">×</button>
+      <button type="button" class="ui-fc__x" id="fcX">×</button>
     </header>
     <div class="ui-fc__body">
       <div class="ui-fc__msg">Hey there! Drop a question and we'll get back to you here or by email.</div>

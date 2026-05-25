@@ -27,8 +27,8 @@ export const category = {
       <span>image</span><span>GIF</span><span>poll</span><span>emoji</span>
     </div>
     <div class="ui-textarea__right">
-      <svg class="ui-textarea__ring" viewBox="0 0 20 20" width="22" height="22"><circle cx="10" cy="10" r="9" fill="none" stroke="#2f3336" stroke-width="2"/><circle id="taRing" cx="10" cy="10" r="9" fill="none" stroke="#1d9bf0" stroke-width="2" stroke-dasharray="56.5" stroke-dashoffset="56.5" transform="rotate(-90 10 10)"/></svg>
-      <button class="ui-textarea__post">Post</button>
+      <svg class="ui-textarea__ring" viewBox="0 0 20 20" width="22" height="22"><circle cx="10" cy="10" r="9" fill="none" stroke="#2f3336" stroke-width="2"/><circle id="taProgRing" cx="10" cy="10" r="9" fill="none" stroke="#1d9bf0" stroke-width="2" stroke-dasharray="56.5" stroke-dashoffset="56.5" transform="rotate(-90 10 10)"/></svg>
+      <button type="button" class="ui-textarea__post">Post</button>
     </div>
   </div>
 </div>
@@ -49,7 +49,7 @@ export const category = {
 </style>
 
 <script>
-  const ta=document.getElementById('ta'),ring=document.getElementById('taRing'),btn=document.querySelector('.ui-textarea__post');
+  const ta=document.getElementById('ta'),ring=document.getElementById('taProgRing'),btn=document.querySelector('.ui-textarea__post');
   ta.addEventListener('input',()=>{
     const p=ta.value.length/280;ring.style.strokeDashoffset=56.5*(1-p);
     ring.style.stroke=p>0.9?'#f4212e':p>0.7?'#ffd400':'#1d9bf0';
@@ -66,12 +66,12 @@ export const category = {
       detailEn: 'A select lets users pick one value from a fixed set of options. Clicking it expands a list, and the chosen item shows up in the visible field. It is ideal for inputs with a known set of answers — prefectures, countries, occupations, categories — letting users move fast without worrying about typos. The native select element comes with built-in accessibility and keyboard support, which is hard to beat.',
       code: `<!-- Inspired by Linear filter dropdown -->
 <div class="ui-select" id="lnSel">
-  <button class="ui-select__trigger">
+  <button type="button" class="ui-select__trigger">
     <span class="ui-select__dot"></span>Priority<span class="ui-select__val">Urgent</span>
     <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 5l3 3 3-3" stroke="#8a8f98" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
   </button>
   <div class="ui-select__menu">
-    <input class="ui-select__search" placeholder="Change priority...">
+    <input aria-label="Change priority..." class="ui-select__search" placeholder="Change priority...">
     <div class="ui-select__opt selected"><span class="p p-urgent"></span>Urgent<kbd>1</kbd></div>
     <div class="ui-select__opt"><span class="p p-high"></span>High<kbd>2</kbd></div>
     <div class="ui-select__opt"><span class="p p-med"></span>Medium<kbd>3</kbd></div>
@@ -225,8 +225,8 @@ export const category = {
   <div class="ui-upload__tabs">
     <span class="active">Upload</span><span>Embed link</span><span>Unsplash</span>
   </div>
-  <label class="ui-upload__drop" id="up">
-    <input type="file" class="ui-upload__input" id="upInput">
+  <label class="ui-upload__drop" id="fuDrop">
+    <input type="file" class="ui-upload__input" id="fuInput">
     <div class="ui-upload__btn">Choose a file</div>
     <div class="ui-upload__hint">The maximum size per file is 5 MB</div>
   </label>
@@ -262,7 +262,7 @@ export const category = {
 </style>
 
 <script>
-  const up=document.getElementById('up');
+  const up=document.getElementById('fuDrop');
   ['dragenter','dragover'].forEach(e=>up.addEventListener(e,ev=>{ev.preventDefault();up.classList.add('drag')}));
   ['dragleave','drop'].forEach(e=>up.addEventListener(e,ev=>{ev.preventDefault();up.classList.remove('drag')}));
 </script>`,
@@ -405,7 +405,7 @@ export const category = {
     <label><span>ZIP</span><input value="94114"></label>
   </div>
   <label class="ui-msf__check"><input type="checkbox" checked><span>Save this information for next time</span></label>
-  <button class="ui-msf__pay">Continue to payment</button>
+  <button type="button" class="ui-msf__pay">Continue to payment</button>
   <div class="ui-msf__foot">Powered by <strong>stripe</strong> · Terms · Privacy</div>
 </div>
 
@@ -807,7 +807,7 @@ export const category = {
       <div class="ui-chart__value">128,492 <span class="ui-chart__delta up">↑ 12.4%</span></div>
     </div>
     <div class="ui-chart__range">
-      <button>24h</button><button class="active">7d</button><button>30d</button><button>90d</button>
+      <button type="button">24h</button><button type="button" class="active">7d</button><button type="button">30d</button><button type="button">90d</button>
     </div>
   </div>
   <div class="ui-chart__plot">

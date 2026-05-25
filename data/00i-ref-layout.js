@@ -78,7 +78,7 @@ export const category = {
       code: `<!-- Inspired by Airbnb -->
 <div class="ui-abnb">
   <article class="ui-abnb__card">
-    <div class="ui-abnb__img" style="background:linear-gradient(135deg,#ff9a8b,#ff6a88,#ff99ac)"><button class="ui-abnb__heart">♥</button><span class="ui-abnb__badge">Guest favorite</span></div>
+    <div class="ui-abnb__img" style="background:linear-gradient(135deg,#ff9a8b,#ff6a88,#ff99ac)"><button type="button" class="ui-abnb__heart">♥</button><span class="ui-abnb__badge">Guest favorite</span></div>
     <div class="ui-abnb__info">
       <div class="ui-abnb__row"><strong>Malibu, California</strong><span>★ 4.97</span></div>
       <div class="ui-abnb__sub">Ocean view · 2 beds</div>
@@ -87,7 +87,7 @@ export const category = {
     </div>
   </article>
   <article class="ui-abnb__card">
-    <div class="ui-abnb__img" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><button class="ui-abnb__heart">♥</button></div>
+    <div class="ui-abnb__img" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><button type="button" class="ui-abnb__heart">♥</button></div>
     <div class="ui-abnb__info">
       <div class="ui-abnb__row"><strong>Kyoto, Japan</strong><span>★ 4.89</span></div>
       <div class="ui-abnb__sub">Traditional machiya · 4 guests</div>
@@ -191,8 +191,8 @@ export const category = {
       detailEn: 'The "Holy Grail" layout is a five-region pattern dating back to the early web: header, footer, left sidebar, main content, and right sidebar. It earned its mythical name because, before modern CSS, it was notoriously hard to build well — but CSS Grid now makes it a few lines of code. The left sidebar typically holds navigation, the center holds the main article, and the right sidebar carries supplementary info or ads. It is a staple of news sites and admin dashboards.',
       code: `<!-- Inspired by Gmail -->
 <div class="ui-gmail">
-  <header class="ui-gmail__top"><span class="ui-gmail__logo">M</span><span class="ui-gmail__brand">Gmail</span><input placeholder="Search mail"><span class="ui-gmail__avatar">A</span></header>
-  <nav class="ui-gmail__nav"><button class="compose">✎ Compose</button><a class="on">📥 Inbox <span>1,284</span></a><a>⭐ Starred</a><a>🕓 Snoozed</a><a>📤 Sent</a><a>📝 Drafts</a></nav>
+  <header class="ui-gmail__top"><span class="ui-gmail__logo">M</span><span class="ui-gmail__brand">Gmail</span><input aria-label="Search mail" placeholder="Search mail"><span class="ui-gmail__avatar">A</span></header>
+  <nav class="ui-gmail__nav"><button type="button" class="compose">✎ Compose</button><a class="on">📥 Inbox <span>1,284</span></a><a>⭐ Starred</a><a>🕓 Snoozed</a><a>📤 Sent</a><a>📝 Drafts</a></nav>
   <main class="ui-gmail__list">
     <div class="ui-gmail__row unread"><b>GitHub</b><span>[claude-ai/sdk] PR #4821 merged into main</span><time>10:42</time></div>
     <div class="ui-gmail__row unread"><b>Vercel</b><span>Deployment succeeded for ui-glossary</span><time>09:18</time></div>
@@ -332,8 +332,8 @@ export const category = {
     <div class="ui-nflx__tile" style="background:linear-gradient(135deg,#3d0000,#950000)"><span class="ui-nflx__rank">5</span><span class="ui-nflx__label">Money Heist</span></div>
     <div class="ui-nflx__tile" style="background:linear-gradient(135deg,#1f1f1f,#3a3a3a)"><span class="ui-nflx__rank">6</span><span class="ui-nflx__label">Black Mirror</span></div>
   </div>
-  <button class="ui-nflx__nav prev" data-d="-1">‹</button>
-  <button class="ui-nflx__nav next" data-d="1">›</button>
+  <button type="button" class="ui-nflx__nav prev" data-d="-1">‹</button>
+  <button type="button" class="ui-nflx__nav next" data-d="1">›</button>
 </div>
 
 <style>
@@ -364,11 +364,11 @@ export const category = {
       detailEn: 'A lightbox dims the entire screen and shows a clicked thumbnail at a much larger size in the center. The name comes from photography — a light box was the illuminated panel for viewing slides, and the UI evokes that "brightly highlighted display" feel. It is great for galleries, product photos, and portfolios where users need to really study an image. Pair it with previous/next buttons, an Esc-to-close shortcut, and click-the-backdrop-to-close behavior for a polished experience.',
       code: `<!-- Inspired by X (Twitter) -->
 <div class="ui-x">
-  <button class="ui-x__close">✕</button>
+  <button type="button" class="ui-x__close">✕</button>
   <div class="ui-x__stage">
-    <button class="ui-x__arrow prev">‹</button>
+    <button type="button" class="ui-x__arrow prev">‹</button>
     <div class="ui-x__photo"></div>
-    <button class="ui-x__arrow next">›</button>
+    <button type="button" class="ui-x__arrow next">›</button>
   </div>
   <div class="ui-x__meta">
     <div class="ui-x__user"><div class="ui-x__avatar">J</div><div><b>Jane Doe</b> <span>@janedoe · 4h</span><p>Caught this sunrise from my hotel window in Lisbon this morning. Worth the early alarm 🌅</p></div></div>
@@ -408,7 +408,7 @@ export const category = {
     <h3>Hobby</h3>
     <p class="ui-vc__sub">For personal projects.</p>
     <div class="ui-vc__price">Free</div>
-    <button class="ui-vc__btn">Start Deploying</button>
+    <button type="button" class="ui-vc__btn">Start Deploying</button>
     <ul>
       <li>✓ 100 GB Bandwidth</li>
       <li>✓ Unlimited Projects</li>
@@ -421,7 +421,7 @@ export const category = {
     <h3>Pro</h3>
     <p class="ui-vc__sub">For professional developers.</p>
     <div class="ui-vc__price">$20<span> per user / month</span></div>
-    <button class="ui-vc__btn primary">Upgrade to Pro</button>
+    <button type="button" class="ui-vc__btn primary">Upgrade to Pro</button>
     <ul>
       <li>✓ 1 TB Bandwidth</li>
       <li>✓ Advanced Analytics</li>
@@ -433,7 +433,7 @@ export const category = {
     <h3>Enterprise</h3>
     <p class="ui-vc__sub">For large teams.</p>
     <div class="ui-vc__price">Custom</div>
-    <button class="ui-vc__btn">Contact Sales</button>
+    <button type="button" class="ui-vc__btn">Contact Sales</button>
     <ul>
       <li>✓ Unlimited Bandwidth</li>
       <li>✓ SAML SSO</li>
@@ -631,15 +631,15 @@ export const category = {
     <div class="ui-yt__seek"><div class="ui-yt__buffered"></div><div class="ui-yt__played"></div><div class="ui-yt__dot"></div></div>
   </div>
   <div class="ui-yt__ctrls">
-    <button class="ui-yt__btn play">▶</button>
-    <button class="ui-yt__btn">⏭</button>
-    <button class="ui-yt__btn">🔊</button>
+    <button type="button" class="ui-yt__btn play">▶</button>
+    <button type="button" class="ui-yt__btn">⏭</button>
+    <button type="button" class="ui-yt__btn">🔊</button>
     <span class="ui-yt__time">12:34 / 47:18</span>
     <div class="ui-yt__sp"></div>
-    <button class="ui-yt__btn">CC</button>
-    <button class="ui-yt__btn">⚙</button>
-    <button class="ui-yt__btn">⊟</button>
-    <button class="ui-yt__btn">⛶</button>
+    <button type="button" class="ui-yt__btn">CC</button>
+    <button type="button" class="ui-yt__btn">⚙</button>
+    <button type="button" class="ui-yt__btn">⊟</button>
+    <button type="button" class="ui-yt__btn">⛶</button>
   </div>
 </div>
 
@@ -675,13 +675,13 @@ export const category = {
       <b>Blinding Lights</b>
       <span>The Weeknd</span>
     </div>
-    <button class="ui-sp__heart">♥</button>
+    <button type="button" class="ui-sp__heart">♥</button>
   </div>
   <div class="ui-sp__player">
     <div class="ui-sp__btns">
-      <button>⇄</button><button>⏮</button>
-      <button class="ui-sp__play">▶</button>
-      <button>⏭</button><button>↻</button>
+      <button type="button">⇄</button><button type="button">⏮</button>
+      <button type="button" class="ui-sp__play">▶</button>
+      <button type="button">⏭</button><button type="button">↻</button>
     </div>
     <div class="ui-sp__seek">
       <span>1:24</span>
@@ -690,7 +690,7 @@ export const category = {
     </div>
   </div>
   <div class="ui-sp__extra">
-    <button>≡</button><button>🖥</button><button>🔊</button>
+    <button type="button">≡</button><button type="button">🖥</button><button type="button">🔊</button>
     <div class="ui-sp__vol"><div></div></div>
   </div>
 </div>

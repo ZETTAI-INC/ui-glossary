@@ -140,7 +140,7 @@ export const category = {
     <h3 class="ui-plan__name">Hobby</h3>
     <p class="ui-plan__tag">For personal projects.</p>
     <div class="ui-plan__price">$0<small>/month</small></div>
-    <button class="ui-plan__btn">Start Deploying</button>
+    <button type="button" class="ui-plan__btn">Start Deploying</button>
     <ul class="ui-plan__features">
       <li>100 GB Fast Data Transfer</li>
       <li>100 hr Build Execution / mo</li>
@@ -153,7 +153,7 @@ export const category = {
     <h3 class="ui-plan__name">Pro</h3>
     <p class="ui-plan__tag">For small teams shipping production apps.</p>
     <div class="ui-plan__price">$20<small>/user/month</small></div>
-    <button class="ui-plan__btn ui-plan__btn--solid">Upgrade to Pro</button>
+    <button type="button" class="ui-plan__btn ui-plan__btn--solid">Upgrade to Pro</button>
     <ul class="ui-plan__features">
       <li>1 TB Fast Data Transfer</li>
       <li>Unlimited Preview Deployments</li>
@@ -166,7 +166,7 @@ export const category = {
     <h3 class="ui-plan__name">Enterprise</h3>
     <p class="ui-plan__tag">For large teams and businesses.</p>
     <div class="ui-plan__price ui-plan__price--custom">Custom</div>
-    <button class="ui-plan__btn">Contact Sales</button>
+    <button type="button" class="ui-plan__btn">Contact Sales</button>
     <ul class="ui-plan__features">
       <li>Everything in Pro</li>
       <li>SAML SSO and HIPAA BAA</li>
@@ -263,8 +263,8 @@ export const category = {
     <h1 class="ui-hero__title">Linear is a purpose-built tool for planning and building products.</h1>
     <p class="ui-hero__lead">Meet the system for modern software development. Streamline issues, projects, and product roadmaps.</p>
     <div class="ui-hero__actions">
-      <button class="ui-hero__btn ui-hero__btn--primary">Get started</button>
-      <button class="ui-hero__btn ui-hero__btn--ghost">Open Linear<span>→</span></button>
+      <button type="button" class="ui-hero__btn ui-hero__btn--primary">Get started</button>
+      <button type="button" class="ui-hero__btn ui-hero__btn--ghost">Open Linear<span>→</span></button>
     </div>
     <p class="ui-hero__note">Free for teams up to 10 — no credit card required</p>
   </div>
@@ -305,7 +305,7 @@ export const category = {
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 1A1.75 1.75 0 000 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0016 13.25V4.75A1.75 1.75 0 0014.25 3H7.5L6.06 1.56A1.75 1.75 0 004.81 1H1.75z"/></svg>
       <span>src/utils/<strong>format-date.ts</strong></span>
     </div>
-    <button class="ui-code__copy" onclick="copyCode(this)" aria-label="Copy">
+    <button type="button" class="ui-code__copy" onclick="copyCode(this)" aria-label="Copy">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25z"/></svg>
     </button>
   </div>

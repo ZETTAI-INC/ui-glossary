@@ -20,7 +20,7 @@ export const category = {
 <div class="ui-autocomplete" id="ac">
   <div class="ui-autocomplete__field">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="#7d8590"><path d="M10.68 11.74a6 6 0 01-7.92-8.5 6 6 0 018.5 7.92l3.85 3.85a.75.75 0 01-1.06 1.06l-3.86-3.85zM11.5 7a4.5 4.5 0 10-9 0 4.5 4.5 0 009 0z"/></svg>
-    <input class="ui-autocomplete__input" type="text" placeholder="Type / to search" value="react">
+    <input aria-label="Type / to search" class="ui-autocomplete__input" type="text" placeholder="Type / to search" value="react">
     <kbd>/</kbd>
   </div>
   <ul class="ui-autocomplete__list" role="listbox"></ul>
@@ -66,7 +66,7 @@ export const category = {
 <div class="ui-tag-input" id="ti">
   <span class="ui-tag-input__label">To</span>
   <ul class="ui-tag-input__tags"></ul>
-  <input class="ui-tag-input__field" type="text" placeholder="">
+  <input aria-label="Input" class="ui-tag-input__field" type="text" placeholder="">
   <a class="ui-tag-input__cc" href="#">Cc</a>
   <a class="ui-tag-input__cc" href="#">Bcc</a>
 </div>
@@ -88,7 +88,7 @@ export const category = {
 <script>
   (()=>{const ti=document.getElementById('ti'),tags=ti.querySelector('.ui-tag-input__tags'),inp=ti.querySelector('.ui-tag-input__field');
     const palette=['#1a73e8','#188038','#d93025','#e8710a','#9334e6'];
-    const add=(t)=>{const li=document.createElement('li');const initial=t.charAt(0).toUpperCase();const color=palette[tags.children.length%palette.length];li.innerHTML='<span class="ui-tag-input__chip-avatar" style="background:'+color+'">'+initial+'</span><span></span><button class="ui-tag-input__remove" aria-label="Remove">×</button>';li.querySelectorAll('span')[1].textContent=t;li.querySelector('button').onclick=()=>li.remove();tags.appendChild(li)};
+    const add=(t)=>{const li=document.createElement('li');const initial=t.charAt(0).toUpperCase();const color=palette[tags.children.length%palette.length];li.innerHTML='<span class="ui-tag-input__chip-avatar" style="background:'+color+'">'+initial+'</span><span></span><button type="button" class="ui-tag-input__remove" aria-label="Remove">×</button>';li.querySelectorAll('span')[1].textContent=t;li.querySelector('button').onclick=()=>li.remove();tags.appendChild(li)};
     ['hiroshi.tanaka@gmail.com','yuki.sato@gmail.com','design-team@company.co.jp'].forEach(add);
     inp.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===',')&&inp.value.trim()){e.preventDefault();add(inp.value.trim());inp.value=''}else if(e.key==='Backspace'&&!inp.value&&tags.lastElementChild){tags.lastElementChild.remove()}});
   })();
@@ -109,14 +109,14 @@ export const category = {
   <h2>Two-step verification</h2>
   <p>Enter the 6-digit code we sent to +81 ••• ••• 4421</p>
   <div class="ui-otp" id="otp">
-    <input type="text" maxlength="1" inputmode="numeric" value="4">
-    <input type="text" maxlength="1" inputmode="numeric" value="2">
-    <input type="text" maxlength="1" inputmode="numeric" value="7">
-    <input type="text" maxlength="1" inputmode="numeric">
-    <input type="text" maxlength="1" inputmode="numeric">
-    <input type="text" maxlength="1" inputmode="numeric">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric" value="4">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric" value="2">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric" value="7">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric">
+    <input aria-label="Number" type="text" maxlength="1" inputmode="numeric">
   </div>
-  <button class="ui-otp-resend">Didn't get a code? Resend in 0:42</button>
+  <button type="button" class="ui-otp-resend">Didn't get a code? Resend in 0:42</button>
 </div>
 
 <style>
@@ -151,7 +151,7 @@ export const category = {
 <div class="ui-color-picker" id="cp">
   <div class="ui-color-picker__head">
     <span>Fill</span>
-    <button aria-label="close">×</button>
+    <button type="button" aria-label="close">×</button>
   </div>
   <div class="ui-color-picker__canvas"><div class="ui-color-picker__cursor"></div></div>
   <div class="ui-color-picker__hue"><div class="ui-color-picker__hue-thumb"></div></div>
@@ -165,13 +165,13 @@ export const category = {
     </div>
   </div>
   <div class="ui-color-picker__recent">
-    <button style="background:#7c3aed" data-c="#7c3aed"></button>
-    <button style="background:#0acf83" data-c="#0acf83"></button>
-    <button style="background:#ff7262" data-c="#ff7262"></button>
-    <button style="background:#1abcfe" data-c="#1abcfe"></button>
-    <button style="background:#f24e1e" data-c="#f24e1e"></button>
-    <button style="background:#a259ff" data-c="#a259ff"></button>
-    <button style="background:#ffc700" data-c="#ffc700"></button>
+    <button type="button" style="background:#7c3aed" data-c="#7c3aed"></button>
+    <button type="button" style="background:#0acf83" data-c="#0acf83"></button>
+    <button type="button" style="background:#ff7262" data-c="#ff7262"></button>
+    <button type="button" style="background:#1abcfe" data-c="#1abcfe"></button>
+    <button type="button" style="background:#f24e1e" data-c="#f24e1e"></button>
+    <button type="button" style="background:#a259ff" data-c="#a259ff"></button>
+    <button type="button" style="background:#ffc700" data-c="#ffc700"></button>
   </div>
 </div>
 
@@ -262,18 +262,18 @@ export const category = {
       code: `/* Inspired by Notion */
 <div class="ui-toggle-wrap">
   <div class="ui-toggle-group" role="group" aria-label="Text formatting">
-    <button class="ui-toggle-group__btn" aria-pressed="true" title="Bold ⌘B"><b>B</b></button>
-    <button class="ui-toggle-group__btn" aria-pressed="true" title="Italic ⌘I"><i>i</i></button>
-    <button class="ui-toggle-group__btn" aria-pressed="false" title="Underline ⌘U"><u>U</u></button>
-    <button class="ui-toggle-group__btn" aria-pressed="false" title="Strikethrough"><s>S</s></button>
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="true" title="Bold ⌘B"><b>B</b></button>
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="true" title="Italic ⌘I"><i>i</i></button>
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="false" title="Underline ⌘U"><u>U</u></button>
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="false" title="Strikethrough"><s>S</s></button>
     <span class="ui-toggle-group__sep"></span>
-    <button class="ui-toggle-group__btn" aria-pressed="false" title="Code">
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="false" title="Code">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
     </button>
-    <button class="ui-toggle-group__btn" aria-pressed="true" title="Link">
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="true" title="Link">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg>
     </button>
-    <button class="ui-toggle-group__btn" aria-pressed="false" title="Comment">
+    <button type="button" class="ui-toggle-group__btn" aria-pressed="false" title="Comment">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     </button>
   </div>
@@ -305,17 +305,17 @@ export const category = {
   <div class="ui-textarea-grow__row">
     <div class="ui-textarea-grow__avatar">M</div>
     <div class="ui-textarea-grow__main">
-      <button class="ui-textarea-grow__audience">Everyone <span>▾</span></button>
+      <button type="button" class="ui-textarea-grow__audience">Everyone <span>▾</span></button>
       <textarea id="taG" placeholder="What is happening?!" rows="2" maxlength="280">Just shipped a redesign of our settings page after weeks of work. The little details matter</textarea>
       <div class="ui-textarea-grow__tools">
         <div class="ui-textarea-grow__icons">
-          <button>🖼</button><button>📊</button><button>😊</button><button>📅</button><button>📍</button>
+          <button type="button">🖼</button><button type="button">📊</button><button type="button">😊</button><button type="button">📅</button><button type="button">📍</button>
         </div>
         <div class="ui-textarea-grow__right">
           <svg id="taRing" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="none" stroke="#2f3336" stroke-width="2"/><circle id="taProg" cx="10" cy="10" r="9" fill="none" stroke="#1d9bf0" stroke-width="2" stroke-dasharray="56.5" stroke-dashoffset="56.5" transform="rotate(-90 10 10)"/></svg>
           <span id="taCount" class="ui-textarea-grow__count"></span>
           <span class="ui-textarea-grow__plus">+</span>
-          <button class="ui-textarea-grow__post">Post</button>
+          <button type="button" class="ui-textarea-grow__post">Post</button>
         </div>
       </div>
     </div>

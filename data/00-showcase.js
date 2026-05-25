@@ -18,9 +18,9 @@ export const category = {
       detailEn: 'A button is the most fundamental control in a UI: pressing it tells users something will happen. Visual hierarchy through color, shape, and size signals importance — the action you most want to promote gets a bold "primary" style, while less critical ones become "secondary" (subtle) or "ghost" (outline only). Use buttons whenever an action has real consequences: form submission, payment, deletion. Good button design lets a user predict the result before they click.',
       code: `<!-- Inspired by Linear -->
 <div class="ui-btn-wrap">
-  <button class="ui-btn ui-btn--primary">Create issue</button>
-  <button class="ui-btn ui-btn--secondary">Assign</button>
-  <button class="ui-btn ui-btn--ghost">Cancel</button>
+  <button type="button" class="ui-btn ui-btn--primary">Create issue</button>
+  <button type="button" class="ui-btn ui-btn--secondary">Assign</button>
+  <button type="button" class="ui-btn ui-btn--ghost">Cancel</button>
 </div>
 
 <style>
@@ -129,7 +129,7 @@ export const category = {
       descEn: 'A small notification message that briefly appears at the edge of the screen and disappears on its own — think "Saved!"',
       detailEn: 'A toast delivers a quiet but reliable confirmation that an action succeeded. It slides in from the edge of the screen (usually the bottom-right or top) and fades away after a few seconds. It is perfect for low-stakes confirmations like "Copied" or "Message sent" that should not interrupt what the user is doing. Avoid using toasts for critical confirmations or errors — they are meant for light feedback only.',
       code: `<!-- Inspired by Slack -->
-<button class="ui-trigger" onclick="showToast('Message sent to #design-crit')">Send message</button>
+<button type="button" class="ui-trigger" onclick="showToast('Message sent to #design-crit')">Send message</button>
 <div class="ui-toast-stack" id="toastStack"></div>
 
 <style>
@@ -147,7 +147,7 @@ export const category = {
   function showToast(msg){
     const s=document.getElementById('toastStack');
     const t=document.createElement('div');t.className='ui-toast';
-    t.innerHTML='<span class="ui-toast__check">✓</span>'+msg+'<button class="ui-toast__close">✕</button>';
+    t.innerHTML='<span class="ui-toast__check">✓</span>'+msg+'<button type="button" class="ui-toast__close">✕</button>';
     t.querySelector('.ui-toast__close').onclick=()=>t.remove();
     s.appendChild(t);
     setTimeout(()=>t.remove(),3000);
@@ -196,18 +196,18 @@ export const category = {
       descEn: 'A small window layered over the screen for important confirmations or quick input.',
       detailEn: 'A modal appears centered on the screen while everything behind it dims and becomes uninteractive. Use it to focus attention on something the user must read or decide — a delete confirmation, login form, or terms agreement. Make sure it can be dismissed with the Esc key or by clicking the backdrop. For accessibility, move keyboard focus inside the modal when it opens so it is easy to navigate.',
       code: `<!-- Inspired by Stripe Checkout -->
-<button class="ui-pay-trigger" onclick="document.getElementById('sm').showModal()">Pay $49.00</button>
+<button type="button" class="ui-pay-trigger" onclick="document.getElementById('sm').showModal()">Pay $49.00</button>
 
 <dialog id="sm" class="ui-stripe-modal">
   <div class="ui-stripe-modal__head">
     <div class="ui-stripe-modal__logo">stripe</div>
-    <button class="ui-stripe-modal__x" onclick="document.getElementById('sm').close()">✕</button>
+    <button type="button" class="ui-stripe-modal__x" onclick="document.getElementById('sm').close()">✕</button>
   </div>
   <h2 class="ui-stripe-modal__title">Pay Acme, Inc.</h2>
   <div class="ui-stripe-modal__amt">$49.00 <span>USD</span></div>
   <div class="ui-stripe-modal__field"><label>Email</label><input value="lena.nakamura@gmail.com"></div>
   <div class="ui-stripe-modal__field"><label>Card information</label><input placeholder="1234 1234 1234 1234"></div>
-  <button class="ui-stripe-modal__pay" onclick="document.getElementById('sm').close()">Pay $49.00</button>
+  <button type="button" class="ui-stripe-modal__pay" onclick="document.getElementById('sm').close()">Pay $49.00</button>
   <p class="ui-stripe-modal__foot">Powered by <b>stripe</b> · Terms · Privacy</p>
 </dialog>
 
@@ -270,11 +270,11 @@ export const category = {
       detailEn: 'Pagination breaks large amounts of content — product listings, search results, article archives — into bite-sized pages. It typically combines numbered page links, previous/next buttons, and sometimes jumps to the first or last page. Users do not have to scroll endlessly, and any specific page can be bookmarked or shared. While "Load more" buttons and infinite scroll have grown popular, traditional pagination is still the standard for search results and e-commerce.',
       code: `<!-- Inspired by Reddit -->
 <nav class="ui-reddit-pager" aria-label="Pagination">
-  <button class="ui-reddit-pager__prev" disabled>‹ prev</button>
+  <button type="button" class="ui-reddit-pager__prev" disabled>‹ prev</button>
   <div class="ui-reddit-pager__view">
     viewing page <strong>2</strong>
   </div>
-  <button class="ui-reddit-pager__next">next ›</button>
+  <button type="button" class="ui-reddit-pager__next">next ›</button>
 </nav>
 
 <div class="ui-reddit-pager-alt">
@@ -310,7 +310,7 @@ export const category = {
       code: `<!-- Inspired by YouTube mobile -->
 <div class="ui-yt">
   <header class="ui-yt__bar">
-    <button class="ui-hamburger" id="hb" aria-label="Guide">
+    <button type="button" class="ui-hamburger" id="hb" aria-label="Guide">
       <span></span><span></span><span></span>
     </button>
     <span class="ui-yt__logo"><b style="color:#ff0000">▶</b> YouTube</span>
@@ -369,7 +369,7 @@ export const category = {
     <span class="ui-gmail__subj"><b>Re: Q2 design review</b> — Happy to share the Figma file later today…</span>
     <span class="ui-gmail__date">2:14 PM</span>
     <div class="ui-kebab" id="kb">
-      <button class="ui-kebab__btn" aria-label="More">⋮</button>
+      <button type="button" class="ui-kebab__btn" aria-label="More">⋮</button>
       <ul class="ui-kebab__menu" role="menu">
         <li role="menuitem"><span>↩︎</span>Reply</li>
         <li role="menuitem"><span>↪︎</span>Forward</li>
@@ -420,7 +420,7 @@ export const category = {
   <div class="ui-goog__bar">
     <span class="ui-goog__title">Gmail</span>
     <div class="ui-bento" id="bn">
-      <button class="ui-bento__btn" aria-label="Google apps">
+      <button type="button" class="ui-bento__btn" aria-label="Google apps">
         <span></span><span></span><span></span>
         <span></span><span></span><span></span>
         <span></span><span></span><span></span>
@@ -477,7 +477,7 @@ export const category = {
       <span>Shibuya, Tokyo</span>
     </div>
     <div class="ui-meatball" id="mb">
-      <button class="ui-meatball__btn" aria-label="More options">⋯</button>
+      <button type="button" class="ui-meatball__btn" aria-label="More options">⋯</button>
       <ul class="ui-meatball__menu" role="menu">
         <li role="menuitem" class="danger">Report</li>
         <li role="menuitem" class="danger">Unfollow</li>
@@ -526,7 +526,7 @@ export const category = {
       descEn: 'An icon of horizontal lines of varying lengths, often used to open a filter panel or sort menu.',
       detailEn: 'The doner menu icon shows three or four horizontal lines of different lengths, evoking a Turkish doner kebab. It typically opens a filter (refinement) panel or acts as an entry point to sort options. The number or color of the lines can hint at the current state — "three filters are active," for example. Compared with the hamburger menu, it leans more toward "refine and adjust" than general navigation.',
       code: `<!-- Inspired by Airbnb -->
-<button class="ui-doner" id="dn" aria-expanded="false">
+<button type="button" class="ui-doner" id="dn" aria-expanded="false">
   <span class="ui-doner__icon">
     <span></span><span></span><span></span>
   </span>
@@ -536,9 +536,9 @@ export const category = {
 <div class="ui-doner__panel" id="dnP">
   <h4>Price range</h4>
   <div class="ui-doner__pills">
-    <button class="pill active">¥0–10,000</button>
-    <button class="pill">¥10–20,000</button>
-    <button class="pill">¥20,000+</button>
+    <button type="button" class="pill active">¥0–10,000</button>
+    <button type="button" class="pill">¥10–20,000</button>
+    <button type="button" class="pill">¥20,000+</button>
   </div>
   <h4>Type of place</h4>
   <label><input type="checkbox" checked>Entire place</label>
@@ -546,7 +546,7 @@ export const category = {
   <label><input type="checkbox">Shared room</label>
   <h4>Amenities</h4>
   <label><input type="checkbox" checked>Wifi</label>
-  <button class="ui-doner__show">Show 248 stays</button>
+  <button type="button" class="ui-doner__show">Show 248 stays</button>
 </div>
 
 <style>
@@ -654,13 +654,13 @@ export const category = {
       detailEn: 'A tooltip is a small speech-bubble of extra info that appears on hover (or keyboard focus). It is great for explaining icon-only buttons like "Settings" or "Favorites," or for adding fine-print rules to a form field. Because tooltips do not appear easily on touch devices, never put essential info inside one — treat them as a helpful supplement, not a replacement for clear labels.',
       code: `<!-- Inspired by Figma -->
 <div class="ui-fig-toolbar">
-  <button class="ui-tip" data-tip="Move" data-key="V"><span>▱</span></button>
-  <button class="ui-tip" data-tip="Frame" data-key="F"><span>▢</span></button>
-  <button class="ui-tip" data-tip="Rectangle" data-key="R"><span>◻</span></button>
-  <button class="ui-tip" data-tip="Pen" data-key="P"><span>✎</span></button>
-  <button class="ui-tip" data-tip="Text" data-key="T"><span>T</span></button>
+  <button type="button" class="ui-tip" data-tip="Move" data-key="V"><span>▱</span></button>
+  <button type="button" class="ui-tip" data-tip="Frame" data-key="F"><span>▢</span></button>
+  <button type="button" class="ui-tip" data-tip="Rectangle" data-key="R"><span>◻</span></button>
+  <button type="button" class="ui-tip" data-tip="Pen" data-key="P"><span>✎</span></button>
+  <button type="button" class="ui-tip" data-tip="Text" data-key="T"><span>T</span></button>
   <span class="ui-fig-toolbar__sep"></span>
-  <button class="ui-tip" data-tip="Comment" data-key="C"><span>💬</span></button>
+  <button type="button" class="ui-tip" data-tip="Comment" data-key="C"><span>💬</span></button>
 </div>
 
 <style>

@@ -256,7 +256,7 @@ export const category = {
       code: `<!-- Inspired by WhatsApp -->
 <div class="ui-vm">
   <div class="ui-vm-bar">
-    <button class="ui-vm-play" aria-label="play">
+    <button type="button" class="ui-vm-play" aria-label="play">
       <svg viewBox="0 0 14 14" width="14" height="14"><path d="M3 1.5v11l9-5.5z" fill="#fff"/></svg>
     </button>
     <div class="ui-vm-wave">
@@ -400,11 +400,11 @@ export const category = {
       <div class="ui-rx-head"><b>Jen K.</b> <span class="ui-rx-time">2:14 PM</span></div>
       <div class="ui-rx-text">Final designs are merged. Shipping tomorrow morning 🚀</div>
       <div class="ui-rx-bar">
-        <button class="ui-rx-chip ui-rx-chip--mine"><span>🎉</span><span>4</span></button>
-        <button class="ui-rx-chip"><span>❤️</span><span>3</span></button>
-        <button class="ui-rx-chip"><span>🚀</span><span>7</span></button>
-        <button class="ui-rx-chip"><span>👀</span><span>2</span></button>
-        <button class="ui-rx-chip ui-rx-chip--add" aria-label="Add reaction">
+        <button type="button" class="ui-rx-chip ui-rx-chip--mine"><span>🎉</span><span>4</span></button>
+        <button type="button" class="ui-rx-chip"><span>❤️</span><span>3</span></button>
+        <button type="button" class="ui-rx-chip"><span>🚀</span><span>7</span></button>
+        <button type="button" class="ui-rx-chip"><span>👀</span><span>2</span></button>
+        <button type="button" class="ui-rx-chip ui-rx-chip--add" aria-label="Add reaction">
           <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7"/><path d="M7 8.5h.01M13 8.5h.01M7 12c1 1 1.8 1.5 3 1.5s2-.5 3-1.5"/></svg>
           <span class="ui-rx-plus">+</span>
         </button>

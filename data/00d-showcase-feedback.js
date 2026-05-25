@@ -17,7 +17,7 @@ export const category = {
       descEn: 'A text input with a magnifier icon and a clear button that appears once you start typing.',
       detailEn: 'The search bar is the entry point for finding content by keyword. A magnifier icon on the left signals "type here," and showing a small × button on the right while text is entered lets users clear the input in one tap. On content-rich services like e-commerce sites, social apps, and documentation, placing a prominent search bar in the header invites a "search first" flow. A descriptive placeholder hints at what can be searched, making the bar even easier to use.',
       code: `/* Inspired by GitHub */
-<div class="ui-search" id="sb">
+<div class="ui-search" id="ghSearch">
   <svg class="ui-search__icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M11.5 7a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"/></svg>
   <input type="search" class="ui-search__input" placeholder="Type / to search" aria-label="Search GitHub">
   <kbd class="ui-search__kbd">/</kbd>
@@ -40,7 +40,7 @@ export const category = {
 </style>
 
 <script>
-  const sb=document.getElementById('sb');
+  const sb=document.getElementById('ghSearch');
   const inp=sb.querySelector('.ui-search__input');
   const clr=sb.querySelector('.ui-search__clear');
   inp.addEventListener('input',()=>{clr.hidden=!inp.value});
@@ -65,8 +65,8 @@ export const category = {
   <h3 class="ui-empty__title">Inbox zero</h3>
   <p class="ui-empty__body">You've caught up on all your notifications. Nice work.</p>
   <div class="ui-empty__actions">
-    <button class="ui-empty__btn ui-empty__btn--primary">Create issue<kbd>C</kbd></button>
-    <button class="ui-empty__btn">View archive</button>
+    <button type="button" class="ui-empty__btn ui-empty__btn--primary">Create issue<kbd>C</kbd></button>
+    <button type="button" class="ui-empty__btn">View archive</button>
   </div>
 </div>
 
@@ -99,7 +99,7 @@ export const category = {
     <strong>New deployment ready.</strong>
     <span>Preview is available at <a href="#">my-app-git-main.vercel.app</a></span>
   </div>
-  <button class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
+  <button type="button" class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
     <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </button>
 </div>
@@ -111,7 +111,7 @@ export const category = {
     <strong>Build cache disabled.</strong>
     <span>Subsequent builds will be slower. <a href="#">Re-enable in settings</a></span>
   </div>
-  <button class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
+  <button type="button" class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
     <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </button>
 </div>
@@ -123,7 +123,7 @@ export const category = {
     <strong>Build failed.</strong>
     <span>Module not found: Can't resolve './components/Hero' in /pages</span>
   </div>
-  <button class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
+  <button type="button" class="ui-alert__close" aria-label="Dismiss" onclick="this.parentElement.remove()">
     <svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
   </button>
 </div>
@@ -152,7 +152,7 @@ export const category = {
       descEn: 'A short notification at the bottom of the screen that includes an action like "Undo".',
       detailEn: 'A snackbar is a short notification that pops up at the bottom of the screen — similar to a toast but with an extra action link. For example, right after deleting an email, it might show "Email deleted" with an "Undo" button to reverse the action. Defined in Material Design, snackbars give users both confirmation of what happened and a quick way to recover, which is especially valuable for destructive actions like deletion.',
       code: `/* Inspired by Gmail */
-<button class="ui-btn" onclick="showSnack()">Send message</button>
+<button type="button" class="ui-btn" onclick="showSnack()">Send message</button>
 <div class="ui-snackbar-wrap" id="snackWrap"></div>
 
 <style>
@@ -174,7 +174,7 @@ export const category = {
     wrap.innerHTML='';
     const el=document.createElement('div');
     el.className='ui-snackbar';
-    el.innerHTML='<span class="ui-snackbar__msg">Message sent.</span><button class="ui-snackbar__action">Undo</button><button class="ui-snackbar__action">View message</button><button class="ui-snackbar__close" aria-label="Dismiss"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>';
+    el.innerHTML='<span class="ui-snackbar__msg">Message sent.</span><button type="button" class="ui-snackbar__action">Undo</button><button type="button" class="ui-snackbar__action">View message</button><button type="button" class="ui-snackbar__close" aria-label="Dismiss"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>';
     wrap.appendChild(el);
     const t=setTimeout(()=>el.remove(),6000);
     el.querySelectorAll('.ui-snackbar__action')[0].onclick=()=>{clearTimeout(t);el.remove()};
@@ -190,7 +190,7 @@ export const category = {
       descEn: 'A round "+" button that floats fixed in the bottom-right corner for the app\'s primary action.',
       detailEn: 'A floating action button (FAB) is a round button that stays anchored — usually at the bottom-right — and triggers the most important action in the app: composing a post, starting a new email, adding a note. Popularized by Material Design, it stays visible during scroll so users can act at any time. The rule is one FAB per screen, and the icon should be instantly recognizable, like "+", "✎", or "✉".',
       code: `/* Inspired by Gmail */
-<button class="ui-fab" aria-label="Compose">
+<button type="button" class="ui-fab" aria-label="Compose">
   <span class="ui-fab__icon" aria-hidden="true">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.7 7.04l-3.74-3.74a1 1 0 00-1.42 0L3 15.84V20h4.16L20.7 8.46a1 1 0 000-1.42zM6.34 18H5v-1.34l9.65-9.65 1.34 1.34L6.34 18zm10.65-10.65l-1.34-1.34L17 4.66 18.34 6l-1.35 1.35z" fill="#3c4043"/></svg>
   </span>
@@ -213,11 +213,11 @@ export const category = {
       detailEn: 'A speed dial extends the FAB pattern: tapping the main round button reveals a set of smaller buttons that fan out, usually upward. It is useful when one entry point needs to lead to multiple related actions — "Post photo," "Post video," "Post text." For a friendly implementation, swap the main icon to an × when expanded (so users know how to close it) and show labels next to each sub-button so their purpose is clear.',
       code: `/* Inspired by Notion */
 <div class="ui-speed" id="sd">
-  <button class="ui-speed__action" data-label="Text"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3h12v2H2zM2 7h12v2H2zM2 11h8v2H2z"/></svg></button>
-  <button class="ui-speed__action" data-label="To-do list"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 8l2 2 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  <button class="ui-speed__action" data-label="Heading"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h2v5h6V2h2v12h-2V9H4v5H2z"/></svg></button>
-  <button class="ui-speed__action" data-label="Page"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 1.5h6L13 5.5v9a1 1 0 01-1 1H3a1 1 0 01-1-1v-12a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M9 1.5V6h4" stroke="currentColor" stroke-width="1.5"/></svg></button>
-  <button class="ui-speed__main" aria-label="Add a block" aria-expanded="false">
+  <button type="button" class="ui-speed__action" data-label="Text"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3h12v2H2zM2 7h12v2H2zM2 11h8v2H2z"/></svg></button>
+  <button type="button" class="ui-speed__action" data-label="To-do list"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M4.5 8l2 2 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button type="button" class="ui-speed__action" data-label="Heading"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h2v5h6V2h2v12h-2V9H4v5H2z"/></svg></button>
+  <button type="button" class="ui-speed__action" data-label="Page"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 1.5h6L13 5.5v9a1 1 0 01-1 1H3a1 1 0 01-1-1v-12a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M9 1.5V6h4" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <button type="button" class="ui-speed__main" aria-label="Add a block" aria-expanded="false">
     <span class="ui-speed__plus">+</span>
   </button>
 </div>
@@ -254,8 +254,8 @@ export const category = {
   <header class="ui-carousel__head">
     <h2>Made For You</h2>
     <div class="ui-carousel__nav">
-      <button class="ui-carousel__btn" data-dir="-1" aria-label="Previous">‹</button>
-      <button class="ui-carousel__btn" data-dir="1" aria-label="Next">›</button>
+      <button type="button" class="ui-carousel__btn" data-dir="-1" aria-label="Previous">‹</button>
+      <button type="button" class="ui-carousel__btn" data-dir="1" aria-label="Next">›</button>
     </div>
   </header>
   <div class="ui-carousel__viewport">
@@ -309,7 +309,7 @@ export const category = {
       descEn: 'A side panel that slides in from the edge of the screen for settings or extra info.',
       detailEn: 'A drawer is a panel that slides in smoothly from the left or right edge — named for opening and closing like a real drawer. It is great for content that needs some elbow room but does not warrant a full page change: navigation menus, filter settings, detail views. The standard pattern is to dim the rest of the page with a semi-transparent overlay, and let users close the drawer by clicking outside it or pressing Esc.',
       code: `/* Inspired by Slack */
-<button class="ui-btn" id="dwOpen">Open workspace</button>
+<button type="button" class="ui-btn" id="dwOpen">Open workspace</button>
 
 <div class="ui-drawer-overlay" id="dwOv"></div>
 <aside class="ui-drawer-panel" id="dwP" aria-hidden="true" aria-label="Workspace sidebar">
@@ -318,7 +318,7 @@ export const category = {
       <strong>Acme Design</strong>
       <span>shun.fujieda</span>
     </div>
-    <button class="ui-drawer-panel__close" id="dwClose" aria-label="Close">✕</button>
+    <button type="button" class="ui-drawer-panel__close" id="dwClose" aria-label="Close">✕</button>
   </header>
   <nav class="ui-drawer-panel__body">
     <div class="ui-drawer-panel__section">

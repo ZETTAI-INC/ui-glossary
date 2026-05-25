@@ -22,7 +22,7 @@ export const category = {
     <div class="ui-pc-hero">
       <div class="ui-pc-watch"></div>
     </div>
-    <button class="ui-pc-fav" aria-label="お気に入り">♡</button>
+    <button type="button" class="ui-pc-fav" aria-label="お気に入り">♡</button>
   </div>
   <div class="ui-pc-body">
     <div class="ui-pc-eyebrow">New</div>
@@ -69,12 +69,12 @@ export const category = {
     <a class="ui-sz-guide" href="#">サイズガイド</a>
   </div>
   <div class="ui-sz-grid">
-    <button class="ui-sz-chip">XS</button>
-    <button class="ui-sz-chip">S</button>
-    <button class="ui-sz-chip is-active">M</button>
-    <button class="ui-sz-chip">L</button>
-    <button class="ui-sz-chip is-disabled" disabled>XL</button>
-    <button class="ui-sz-chip is-disabled" disabled>XXL</button>
+    <button type="button" class="ui-sz-chip">XS</button>
+    <button type="button" class="ui-sz-chip">S</button>
+    <button type="button" class="ui-sz-chip is-active">M</button>
+    <button type="button" class="ui-sz-chip">L</button>
+    <button type="button" class="ui-sz-chip is-disabled" disabled>XL</button>
+    <button type="button" class="ui-sz-chip is-disabled" disabled>XXL</button>
   </div>
   <p class="ui-sz-note">Mサイズ・残り <b>3点</b></p>
 </div>
@@ -108,12 +108,12 @@ export const category = {
     <span class="ui-cs-name">ミッドナイト</span>
   </div>
   <div class="ui-cs-swatches" id="cs">
-    <button class="ui-cs-dot is-active" style="--c:#1f2937" data-name="ミッドナイト" aria-label="ミッドナイト"></button>
-    <button class="ui-cs-dot" style="--c:#e8e3d9" data-name="スターライト" aria-label="スターライト"></button>
-    <button class="ui-cs-dot" style="--c:#5b6ea8" data-name="ブルー" aria-label="ブルー"></button>
-    <button class="ui-cs-dot" style="--c:#a23b3b" data-name="(PRODUCT)RED" aria-label="レッド"></button>
-    <button class="ui-cs-dot" style="--c:#b89f6a" data-name="ゴールド" aria-label="ゴールド"></button>
-    <button class="ui-cs-dot" style="--c:#f5f5f7" data-name="ホワイト" aria-label="ホワイト"></button>
+    <button type="button" class="ui-cs-dot is-active" style="--c:#1f2937" data-name="ミッドナイト" aria-label="ミッドナイト"></button>
+    <button type="button" class="ui-cs-dot" style="--c:#e8e3d9" data-name="スターライト" aria-label="スターライト"></button>
+    <button type="button" class="ui-cs-dot" style="--c:#5b6ea8" data-name="ブルー" aria-label="ブルー"></button>
+    <button type="button" class="ui-cs-dot" style="--c:#a23b3b" data-name="(PRODUCT)RED" aria-label="レッド"></button>
+    <button type="button" class="ui-cs-dot" style="--c:#b89f6a" data-name="ゴールド" aria-label="ゴールド"></button>
+    <button type="button" class="ui-cs-dot" style="--c:#f5f5f7" data-name="ホワイト" aria-label="ホワイト"></button>
   </div>
 </div>
 
@@ -148,11 +148,11 @@ export const category = {
       code: `<!-- Inspired by Shopify -->
 <div class="ui-atc">
   <div class="ui-atc-qty">
-    <button class="ui-atc-qty__btn" data-act="-">−</button>
-    <input class="ui-atc-qty__num" value="1" inputmode="numeric">
-    <button class="ui-atc-qty__btn" data-act="+">+</button>
+    <button type="button" class="ui-atc-qty__btn" data-act="-">−</button>
+    <input aria-label="Number" class="ui-atc-qty__num" value="1" inputmode="numeric">
+    <button type="button" class="ui-atc-qty__btn" data-act="+">+</button>
   </div>
-  <button class="ui-atc-buy">
+  <button type="button" class="ui-atc-buy">
     <span class="ui-atc-buy__icon">🛒</span>
     <span>カートに入れる</span>
     <span class="ui-atc-buy__price">¥4,980</span>
@@ -275,11 +275,11 @@ export const category = {
     <p class="ui-cdi-variant">ホワイト / 27.0cm</p>
     <div class="ui-cdi-controls">
       <div class="ui-cdi-qty">
-        <button data-act="-">−</button>
+        <button type="button" data-act="-">−</button>
         <span>1</span>
-        <button data-act="+">+</button>
+        <button type="button" data-act="+">+</button>
       </div>
-      <button class="ui-cdi-remove" aria-label="削除">×</button>
+      <button type="button" class="ui-cdi-remove" aria-label="削除">×</button>
     </div>
   </div>
   <div class="ui-cdi-price">¥14,300</div>
@@ -357,14 +357,14 @@ export const category = {
   <details>
     <summary>クーポンコードをお持ちですか？</summary>
     <form class="ui-pc-form" onsubmit="event.preventDefault();this.classList.add('is-applied')">
-      <input class="ui-pc-input" placeholder="例: SUMMER10" value="SUMMER10">
+      <input aria-label="例: SUMMER10" class="ui-pc-input" placeholder="例: SUMMER10" value="SUMMER10">
       <button class="ui-pc-apply" type="submit">適用</button>
     </form>
     <div class="ui-pc-chip">
       <span class="ui-pc-chip__check">✓</span>
       <span><b>SUMMER10</b> を適用済み</span>
       <span class="ui-pc-chip__save">−¥500</span>
-      <button class="ui-pc-chip__x" aria-label="削除">×</button>
+      <button type="button" class="ui-pc-chip__x" aria-label="削除">×</button>
     </div>
   </details>
 </div>

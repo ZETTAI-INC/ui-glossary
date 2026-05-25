@@ -55,25 +55,25 @@ export const category = {
       code: `<!-- Inspired by iOS Control Center -->
 <div class="ui-cct-wrap">
   <div class="ui-cct-panel">
-    <button class="ui-cct-tile is-on">
+    <button type="button" class="ui-cct-tile is-on">
       <span class="ui-cct-dot" style="background:#0a84ff">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M13 3v8.59L9.7 8.3 8.3 9.7l4.6 4.6-4.6 4.6 1.4 1.4 4.7-4.7V21h.5l5-5-3.6-4 3.6-4-5-5H13Zm2 4 2 2-2 2V7Zm0 8 2 2-2 2v-4Z"/></svg>
       </span>
       <span class="ui-cct-lbl">Bluetooth</span>
     </button>
-    <button class="ui-cct-tile is-on">
+    <button type="button" class="ui-cct-tile is-on">
       <span class="ui-cct-dot" style="background:#0a84ff">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M12 18a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm0-4.5c2 0 3.8.7 5.2 2l-1.4 1.4a5.4 5.4 0 0 0-7.6 0L6.8 15.5A7.4 7.4 0 0 1 12 13.5Zm0-4a11 11 0 0 1 7.8 3.2l-1.4 1.4a9 9 0 0 0-12.8 0L4.2 12.7A11 11 0 0 1 12 9.5Zm0-4c4.3 0 8.2 1.7 11 4.5l-1.4 1.4a13.6 13.6 0 0 0-19.2 0L1 10A15.6 15.6 0 0 1 12 5.5Z"/></svg>
       </span>
       <span class="ui-cct-lbl">Wi-Fi</span>
     </button>
-    <button class="ui-cct-tile">
+    <button type="button" class="ui-cct-tile">
       <span class="ui-cct-dot" style="background:rgba(120,120,128,.32)">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3Zm4 5-4 4-4-4h3V3h2v5h3Z"/></svg>
       </span>
       <span class="ui-cct-lbl">AirDrop</span>
     </button>
-    <button class="ui-cct-tile">
+    <button type="button" class="ui-cct-tile">
       <span class="ui-cct-dot" style="background:rgba(255,255,255,.95)">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="#222"><path d="M9 2h6l1 6-4 14-4-14 1-6Zm1.5 1.5-.7 4.5h4.4l-.7-4.5h-3Z"/></svg>
       </span>
@@ -102,15 +102,15 @@ export const category = {
       code: `<!-- Inspired by Android Material You -->
 <div class="ui-m3seg-wrap">
   <div class="ui-m3seg" role="group" id="m3seg">
-    <button class="ui-m3seg__btn is-selected" data-v="day">
+    <button type="button" class="ui-m3seg__btn is-selected" data-v="day">
       <svg class="ui-m3seg__check" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>日</span>
     </button>
-    <button class="ui-m3seg__btn" data-v="week">
+    <button type="button" class="ui-m3seg__btn" data-v="week">
       <svg class="ui-m3seg__check" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>週</span>
     </button>
-    <button class="ui-m3seg__btn" data-v="month">
+    <button type="button" class="ui-m3seg__btn" data-v="month">
       <svg class="ui-m3seg__check" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>月</span>
     </button>
@@ -207,12 +207,12 @@ export const category = {
   <div class="ui-iosas">
     <div class="ui-iosas__group">
       <div class="ui-iosas__title">写真を追加</div>
-      <button class="ui-iosas__btn">写真を撮る</button>
-      <button class="ui-iosas__btn">フォトライブラリから選択</button>
-      <button class="ui-iosas__btn">ファイルを選択</button>
-      <button class="ui-iosas__btn ui-iosas__btn--danger">投稿を削除</button>
+      <button type="button" class="ui-iosas__btn">写真を撮る</button>
+      <button type="button" class="ui-iosas__btn">フォトライブラリから選択</button>
+      <button type="button" class="ui-iosas__btn">ファイルを選択</button>
+      <button type="button" class="ui-iosas__btn ui-iosas__btn--danger">投稿を削除</button>
     </div>
-    <button class="ui-iosas__cancel">キャンセル</button>
+    <button type="button" class="ui-iosas__cancel">キャンセル</button>
   </div>
 </div>
 
@@ -257,7 +257,7 @@ export const category = {
       <div class="ui-fab-row__bar" style="width:50%"></div>
     </div>
   </div>
-  <button class="ui-fab" aria-label="新規作成">
+  <button type="button" class="ui-fab" aria-label="新規作成">
     <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6Z"/></svg>
   </button>
 </div>
@@ -334,13 +334,13 @@ export const category = {
       <div class="ui-asnav-screen__bar" style="width:45%"></div>
     </div>
     <nav class="ui-asnav" aria-label="システムナビ">
-      <button class="ui-asnav__btn" aria-label="戻る">
+      <button type="button" class="ui-asnav__btn" aria-label="戻る">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M14 6 8 12l6 6V6Z"/></svg>
       </button>
-      <button class="ui-asnav__btn" aria-label="ホーム">
+      <button type="button" class="ui-asnav__btn" aria-label="ホーム">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="7"/></svg>
       </button>
-      <button class="ui-asnav__btn" aria-label="最近のアプリ">
+      <button type="button" class="ui-asnav__btn" aria-label="最近のアプリ">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
       </button>
     </nav>
@@ -380,7 +380,7 @@ export const category = {
         <div class="ui-iswd-row__sub">明日の打ち合わせ、14時で大丈夫ですか？</div>
       </div>
       <div class="ui-iswd-row__time">昨日</div>
-      <button class="ui-iswd-row__del">削除</button>
+      <button type="button" class="ui-iswd-row__del">削除</button>
     </div>
     <div class="ui-iswd-row">
       <div class="ui-iswd-row__content">
@@ -415,23 +415,23 @@ export const category = {
       code: `<!-- Inspired by Android Material You -->
 <div class="ui-mchip-wrap">
   <div class="ui-mchip-row" id="mchipRow">
-    <button class="ui-mchip is-on">
+    <button type="button" class="ui-mchip is-on">
       <svg class="ui-mchip__check" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>カフェ</span>
     </button>
-    <button class="ui-mchip">
+    <button type="button" class="ui-mchip">
       <svg class="ui-mchip__check" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>レストラン</span>
     </button>
-    <button class="ui-mchip is-on">
+    <button type="button" class="ui-mchip is-on">
       <svg class="ui-mchip__check" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>テイクアウト可</span>
     </button>
-    <button class="ui-mchip">
+    <button type="button" class="ui-mchip">
       <svg class="ui-mchip__check" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>24時間</span>
     </button>
-    <button class="ui-mchip">
+    <button type="button" class="ui-mchip">
       <svg class="ui-mchip__check" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="m9 16.2-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5Z"/></svg>
       <span>★4.0以上</span>
     </button>

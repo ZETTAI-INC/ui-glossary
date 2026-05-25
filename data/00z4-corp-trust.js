@@ -90,9 +90,9 @@ export const category = {
     <div class="ui-tc__who"><span class="ui-tc__av" style="background:#00a1e0">RT</span><div><b>Ravi Tandon</b><div>VP Customer Success · Borealis Logistics</div></div></div>
   </div>
   <div class="ui-tc__dots">
-    <button class="ui-tc__dot is-on" data-i="0" aria-label="Slide 1"></button>
-    <button class="ui-tc__dot" data-i="1" aria-label="Slide 2"></button>
-    <button class="ui-tc__dot" data-i="2" aria-label="Slide 3"></button>
+    <button type="button" class="ui-tc__dot is-on" data-i="0" aria-label="Slide 1"></button>
+    <button type="button" class="ui-tc__dot" data-i="1" aria-label="Slide 2"></button>
+    <button type="button" class="ui-tc__dot" data-i="2" aria-label="Slide 3"></button>
   </div>
 </section>
 
@@ -404,7 +404,7 @@ export const category = {
 <section class="ui-ts">
   <h2 class="ui-ts__h">Start accepting payments today</h2>
   <p class="ui-ts__sub">Set up in minutes. Scale to millions in volume.</p>
-  <button class="ui-ts__cta">Start now <span>→</span></button>
+  <button type="button" class="ui-ts__cta">Start now <span>→</span></button>
   <ul class="ui-ts__strip">
     <li><span class="ui-ts__check">✓</span> No credit card needed</li>
     <li><span class="ui-ts__check">✓</span> 14-day free trial</li>
