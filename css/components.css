@@ -57,8 +57,13 @@
 /* Term Grid */
 .term-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: var(--space-6);
+}
+
+/* Parts cards (with iframe) get extra width so the preview reads better. */
+body[data-section='parts'] .term-grid {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 
 .term-grid.list-mode {
@@ -287,7 +292,7 @@
   background: var(--demo-bg);
   border-bottom: 1px solid var(--color-border-subtle);
   padding: var(--space-8) var(--space-6);
-  min-height: 160px;
+  min-height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,24 +300,67 @@
   overflow: hidden;
 }
 
-/* iframe preview for UI parts */
+/* iframe preview for UI parts — a real "screenshot" feeling */
 .term-card-demo--iframe {
   padding: 0;
-  background: #ffffff;
-  min-height: 180px;
+  min-height: 260px;
+  background:
+    linear-gradient(45deg, #f3f3f5 25%, transparent 25%, transparent 75%, #f3f3f5 75%),
+    linear-gradient(45deg, #f3f3f5 25%, #ffffff 25%, #ffffff 75%, #f3f3f5 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+  position: relative;
+}
+
+[data-theme="dark"] .term-card-demo--iframe {
+  background:
+    linear-gradient(45deg, #17181b 25%, transparent 25%, transparent 75%, #17181b 75%),
+    linear-gradient(45deg, #17181b 25%, #1d1d1f 25%, #1d1d1f 75%, #17181b 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
 }
 
 .term-card-demo--iframe::before {
   display: none;
 }
 
+/* Subtle "live preview" tag overlay in the top-left corner so users see
+   that this is an interactive rendering, not just an image. */
+.term-card-demo--iframe::after {
+  content: 'LIVE';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font: 600 9px var(--font-mono);
+  letter-spacing: 0.18em;
+  padding: 3px 7px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
 .term-card-iframe {
   width: 100%;
-  height: 200px;
+  height: 280px;
   border: 0;
-  background: transparent;
+  background: #ffffff;
   pointer-events: none;
   display: block;
+  transition: transform 350ms ease;
+}
+
+[data-theme="dark"] .term-card-iframe {
+  background: #1d1d1f;
+}
+
+/* Slight zoom on card hover so users get visual feedback that the
+   preview is interactive (clicking opens the larger modal). */
+.term-card:hover .term-card-iframe {
+  transform: scale(1.02);
 }
 
 /* Card type badge */
@@ -432,8 +480,17 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .term-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  .term-grid,
+  body[data-section='parts'] .term-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .term-card-iframe {
+    height: 240px;
+  }
+
+  .term-card-demo--iframe {
+    min-height: 220px;
   }
 
   .term-grid.list-mode .term-card {

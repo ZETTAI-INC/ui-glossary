@@ -74,9 +74,9 @@ export const buildIframeDoc = (code, opts = {}) => {
         s.style.transform='translate(-50%, -50%) scale(0.5)';
         return;
       }
-      // Generous padding on every side so content always sits in the
-      // middle of the preview with breathing room.
-      var pad=48;
+      // Modest padding so content fills the preview without feeling
+      // cropped. Smaller pad = bigger visible parts.
+      var pad=24;
       var sx=(w-pad)/cw;
       var sy=(h-pad)/ch;
       // Scale down only when content is bigger than the iframe — never zoom past 1.
@@ -162,9 +162,9 @@ export const buildIframeDoc = (code, opts = {}) => {
       width:${VW}px;height:${VH}px;
       position:absolute;top:50%;left:50%;
       display:grid;place-items:center;
-      padding:32px;box-sizing:border-box;
+      padding:16px;box-sizing:border-box;
       transform-origin:50% 50%;
-      transform:translate(-50%, -50%) scale(0.42);
+      transform:translate(-50%, -50%) scale(0.55);
       will-change:transform;
       text-align:center;
     }
