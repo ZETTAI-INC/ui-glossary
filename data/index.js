@@ -32,9 +32,9 @@ import { category as corpLeadership } from './00z6-corp-leadership.js'
 import { category as corpFooter } from './00z7-corp-footer.js'
 import { category as corpPricing } from './00z8-corp-pricing.js'
 import { category as corpCareer } from './00z9-corp-career.js'
-import { category as siteApple } from './00zA-site-apple.js'
-import { category as siteAccenture } from './00zB-site-accenture.js'
-import { category as sitePwc } from './00zC-site-pwc.js'
+import { category as siteMinimal } from './00zA-site-apple.js'
+import { category as siteDark } from './00zB-site-accenture.js'
+import { category as sitePhoto } from './00zC-site-pwc.js'
 import { category as basic } from './01-basic.js'
 import { category as navigation } from './02-navigation.js'
 import { category as buttonAction } from './03-button-action.js'
@@ -95,9 +95,9 @@ export const categories = [
   corpFooter,
   corpPricing,
   corpCareer,
-  siteApple,
-  siteAccenture,
-  sitePwc,
+  siteMinimal,
+  siteDark,
+  sitePhoto,
   basic,
   navigation,
   buttonAction,
